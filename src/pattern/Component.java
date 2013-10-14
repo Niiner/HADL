@@ -3,6 +3,10 @@ package pattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import elements.Port;
+import elements.Properties;
+import elements.Service;
+
 public class Component implements IComponentType {
 	
 	private String name;

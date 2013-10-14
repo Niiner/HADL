@@ -3,6 +3,12 @@ package pattern;
 import java.util.ArrayList;
 import java.util.List;
 
+import links.Link;
+import elements.Port;
+import elements.Properties;
+import elements.Role;
+import elements.Service;
+
 public class Configuration implements IComponentType, IConnectorType {
 	
 	private List<IComponentType> childComponent = new ArrayList<IComponentType>();
@@ -16,6 +22,6 @@ public class Configuration implements IComponentType, IConnectorType {
 	
 	private List<Role> roles = new ArrayList<Role>();
 	
-	private List<Links> links = new ArrayList<Links>();
+	private List<Link> links = new ArrayList<Link>();
 
 }
