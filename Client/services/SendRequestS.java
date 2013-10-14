@@ -1,12 +1,13 @@
-package ports;
+package services;
 
-import elements.SynchronPort;
+import elements.Service;
 import enumerations.InterfaceType;
 
-public class SendRequestP extends SynchronPort{
+public class SendRequestS extends Service {
 	public InterfaceType m_interface;
 	
-	public SendRequestP(){
+	public SendRequestS(){
 		this.m_interface = InterfaceType.Provided;
 	}
+
 }
