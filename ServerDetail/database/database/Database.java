@@ -7,8 +7,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import database.ports.Query;
+import database.ports.SecurityManagement;
+
 public class Database extends Component{
 
+	// Provided ports
+	private SecurityManagement securityManagementPort;
+	private Query queryPort;
+	
 	private static Database instance;
 	private Connection connection = null;
 
