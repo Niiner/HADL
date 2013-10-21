@@ -1,4 +1,4 @@
-package pattern;
+package containers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import elements.Port;
 import elements.Properties;
 import elements.Service;
+
 
 public class Component implements IComponentType {
 	

@@ -1,7 +1,7 @@
-import elements.Properties;
-import pattern.Component;
 import properties.SourceCode;
 import properties.Visualization;
+import containers.Component;
+import elements.Properties;
 
 
 public class Client extends Component{
