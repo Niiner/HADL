@@ -5,7 +5,6 @@ import properties.Visualization;
 import services.ReceiveRequestS;
 import containers.Component;
 import elements.Port;
-import elements.Properties;
 
 
 public class Client extends Component{
