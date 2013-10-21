@@ -1,5 +1,5 @@
 package links;
 
 public class Link {
-	public String name;
+	protected String name;
 }

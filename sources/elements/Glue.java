@@ -1,5 +1,5 @@
 package elements;
 
 public class Glue {
-	public String name;
+	private String name;
 }

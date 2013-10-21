@@ -9,11 +9,11 @@ import elements.Service;
 
 public class Component implements IComponentType {
 	
-	private String name;
-	private List<Properties> properties = new ArrayList<Properties>();
+	protected String name;
+	protected List<Properties> properties = new ArrayList<Properties>();
 	
-	private List<Port> ports = new ArrayList<Port>();
-	private List<Service> services = new ArrayList<Service>();
+	protected List<Port> ports = new ArrayList<Port>();
+	protected List<Service> services = new ArrayList<Service>();
 	
 
 }

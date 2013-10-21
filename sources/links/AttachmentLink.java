@@ -4,6 +4,6 @@ import elements.Port;
 import elements.Role;
 
 public class AttachmentLink extends Link {
-	public Port fromPortComp;
-	public Role toRoleConn;
+	private Port fromPortComp;
+	private Role toRoleConn;
 }

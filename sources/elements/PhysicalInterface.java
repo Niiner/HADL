@@ -4,8 +4,8 @@ import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
 public abstract class PhysicalInterface {
-	public VisibilityType m_visibility;
-	public InterfaceType m_interface;
-	public String m_name;
+	protected VisibilityType m_visibility;
+	protected InterfaceType m_interface;
+	protected String m_name;
 }
 

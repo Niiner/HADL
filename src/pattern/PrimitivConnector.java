@@ -9,11 +9,11 @@ import elements.Role;
 
 public class PrimitivConnector implements IConnectorType {
 	
-	private String name;
-	private List<Properties> properties = new ArrayList<Properties>();
+	protected String name;
+	protected List<Properties> properties = new ArrayList<Properties>();
 	
-	private List<Role> roles = new ArrayList<Role>();
+	protected List<Role> roles = new ArrayList<Role>();
 	
-	private List<Glue> glues = new ArrayList<Glue>();
+	protected List<Glue> glues = new ArrayList<Glue>();
 
 }

@@ -11,17 +11,17 @@ import elements.Service;
 
 public class Configuration implements IComponentType, IConnectorType {
 	
-	private List<IComponentType> childComponent = new ArrayList<IComponentType>();
-	private List<IConnectorType> childConnector = new ArrayList<IConnectorType>();
+	protected List<IComponentType> childComponent = new ArrayList<IComponentType>();
+	protected List<IConnectorType> childConnector = new ArrayList<IConnectorType>();
 	
-	private String name;
-	private List<Properties> properties = new ArrayList<Properties>();
+	protected String name;
+	protected List<Properties> properties = new ArrayList<Properties>();
 	
-	private List<Port> ports = new ArrayList<Port>();
-	private List<Service> services = new ArrayList<Service>();
+	protected List<Port> ports = new ArrayList<Port>();
+	protected List<Service> services = new ArrayList<Service>();
 	
-	private List<Role> roles = new ArrayList<Role>();
+	protected List<Role> roles = new ArrayList<Role>();
 	
-	private List<Link> links = new ArrayList<Link>();
+	protected List<Link> links = new ArrayList<Link>();
 
 }
