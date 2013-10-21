@@ -6,8 +6,6 @@ import java.util.List;
 import elements.Port;
 import elements.Properties;
 import elements.Service;
-import elements.SynchronPort;
-import enumerations.InterfaceType;
 
 
 public class Component implements IComponentType {
@@ -32,4 +30,13 @@ public class Component implements IComponentType {
 		// this.name = name;
 	
 	}
+
+	public List<Port> getPorts() {
+		return ports;
+	}
+
+	public void setPorts(List<Port> ports) {
+		this.ports = ports;
+	}
+
 }

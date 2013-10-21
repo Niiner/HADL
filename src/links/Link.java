@@ -1,5 +1,11 @@
 package links;
 
-public class Link {
+public abstract class Link {
+	
 	protected String name;
+	
+	public Link(String name){
+		this.name = name;
+	}
+
 }

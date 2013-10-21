@@ -15,5 +15,9 @@ public class PrimitivConnector implements IConnectorType {
 	protected List<Role> roles = new ArrayList<Role>();
 	
 	protected List<Glue> glues = new ArrayList<Glue>();
+	
+	public PrimitivConnector(String name){
+		this.name = name;
+	}
 
 }
