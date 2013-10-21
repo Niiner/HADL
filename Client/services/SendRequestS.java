@@ -2,12 +2,12 @@ package services;
 
 import elements.Service;
 import enumerations.InterfaceType;
+import enumerations.VisibilityType;
 
 public class SendRequestS extends Service {
-	public InterfaceType m_interface;
 	
-	public SendRequestS(){
-		this.m_interface = InterfaceType.Provided;
+	public SendRequestS(String name){
+		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
 }
