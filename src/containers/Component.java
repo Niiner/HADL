@@ -18,15 +18,15 @@ public class Component implements IComponentType {
 	protected List<Port> ports = new ArrayList<Port>();
 	protected List<Service> services = new ArrayList<Service>();
 	
-	public Component(String name, List<Port> portList){
+	public Component(String name/*, List<Port> portList*/){
 		
 		boolean oneProvided;
 		
-		for(Port port : portList){
+		/*for(Port port : portList){
 			if(port.getInterfaceType() == InterfaceType.Provided){
 				oneProvided = true;
 			}
-		}
+		}*/
 		
 		// Créer sa propre exception : instancier si au moins un port provided 
 		// this.name = name;

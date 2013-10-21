@@ -7,6 +7,6 @@ public class SendRequestP extends SynchronPort{
 	
 	public SendRequestP(){
 		super();
-		this.m_interface = InterfaceType.Provided;
+		this.interfaceType = InterfaceType.Provided;
 	}
 }
