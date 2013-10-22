@@ -1,8 +1,8 @@
 import roles.Called;
 import roles.Caller;
 import containers.PrimitivConnector;
-import elements.Glue;
 import elements.Role;
+import glues.Glue1;
 
 
 public class RPC extends PrimitivConnector{
@@ -11,7 +11,7 @@ public class RPC extends PrimitivConnector{
 		super(name);
 		this.roles.add(new Called("Called"));
 		this.roles.add(new Caller("Caller"));
-		this.glues.add(new Glue("Glue1"));
+		this.glues.add(new Glue1("Glue1"));
 	}
 	
 	public Caller getCaller(){

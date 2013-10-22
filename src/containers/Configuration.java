@@ -23,5 +23,9 @@ public class Configuration implements IComponentType, IConnectorType {
 	protected List<Role> roles = new ArrayList<Role>();
 	
 	protected List<Link> links = new ArrayList<Link>();
+	
+	public Configuration(String name){
+		this.name = name;
+	}
 
 }
