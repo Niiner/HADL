@@ -75,7 +75,7 @@ public class PersonController {
 	 * @return A Person List matching the entered id
 	 * @throws SQLException
 	 */
-	public List<Person> getParkingById(int id) throws SQLException {
+	public List<Person> getPersonById(int id) throws SQLException {
 		List<Person> persons = new ArrayList();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
@@ -98,7 +98,6 @@ public class PersonController {
 
 	public static void main(String args[]){
 
-		System.out.print(System.getProperty("user.dir" ));
 		PersonController personContr = new PersonController();
 		try {
 			personContr.removeAll();

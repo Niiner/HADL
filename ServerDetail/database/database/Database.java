@@ -12,10 +12,6 @@ import database.ports.SecurityManagement;
 
 public class Database extends Component{
 
-	// Provided ports
-	private SecurityManagement securityManagementPort;
-	private Query queryPort;
-	
 	private static Database instance;
 	private Connection connection = null;
 
@@ -25,16 +21,23 @@ public class Database extends Component{
 	 */
 	private Database(String name){
 		super(name);
-		
-		try {			
+
+		try {
 			Class.forName("com.mysql.jdbc.Driver"); //loads the driver
-			setConnection(DriverManager.getConnection("jdbc:mysql://localhost:3306/HADL", "root", "root"));
+			this.setConnection(DriverManager.getConnection("jdbc:mysql://localhost:3306/hadl", "root", "root"));
 
 			// Create table for the database
 			createTablePerson();
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if ( connection != null )
+				try {
+					connection.close();
+				} catch ( SQLException ignore ) {
+					/* If an error occurs during application fermeture, we just need to ignore it */
+				}
 		}
 	}
 
@@ -45,8 +48,8 @@ public class Database extends Component{
 		String sqlquery = "CREATE TABLE IF NOT EXISTS Person"+
 				"(id INT,"
 				+ "name VARCHAR(20),"
-				+ "PRIMARY KEY(numero));";
-		
+				+ "PRIMARY KEY(id));";
+
 		try{
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(sqlquery);
