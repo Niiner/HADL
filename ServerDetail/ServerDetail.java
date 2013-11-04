@@ -30,7 +30,6 @@ public class ServerDetail extends Configuration {
 	private A6 a6;
 	private A7 a7;
 	private A8 a8;
-	private B1 b1;
 	
 	public ServerDetail(String name) {
 		super(name);
@@ -48,9 +47,15 @@ public class ServerDetail extends Configuration {
 		a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
 		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
 		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
-		
-		// TODO:Comment on fait pour faire le lien avec Server
-//		b1 = new B1("B1", /*Mettre ici la récupération de RequestP de Server*/ , connectionManager.getExternalSocket());
-		
 	}
+
+	public ConnectionManager getConnectionManager() {
+		return connectionManager;
+	}
+
+	public void setConnectionManager(ConnectionManager connectionManager) {
+		this.connectionManager = connectionManager;
+	}
+	
+	
 }
