@@ -7,8 +7,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import securityManager.ports.SecurityAuthorization;
 import database.ports.Query;
 import database.ports.SecurityManagement;
+import elements.Port;
 
 public class Database extends Component{
 
@@ -92,5 +94,25 @@ public class Database extends Component{
 	 */
 	public Connection getConnection(){
 		return this.connection;
+	}
+	
+	public SecurityManagement getSecurityManagement(){
+		SecurityManagement p = null;
+		for (Port port : ports){
+			if (port instanceof SecurityManagement){
+				p = (SecurityManagement) port;
+			}
+		}
+		return p;
+	}
+	
+	public Query getQuery(){
+		Query p = null;
+		for (Port port : ports){
+			if (port instanceof Query){
+				p = (Query) port;
+			}
+		}
+		return p;
 	}
 }

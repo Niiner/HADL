@@ -1,7 +1,13 @@
+import links.A3;
+import links.A4;
+import links.A5;
+import links.A6;
 import links.A7;
 import links.A8;
 import links.B1;
 import securityManager.securityManager.SecurityManager;
+import securityquery.securityquery.SecurityQuery;
+import sqlquery.sqlquery.SQLQuery;
 import clearanceRequest.clearanceRequest.ClearanceRequest;
 import connectionManager.connectionManager.ConnectionManager;
 import containers.Configuration;
@@ -14,14 +20,14 @@ public class ServerDetail extends Configuration {
 	private Database database;
 	private SecurityManager securityManager;
 	
-//	private SQLQuery sqlQuery;
-//	private SecurityQuery securityQuery;
+	private SQLQuery sqlQuery;
+	private SecurityQuery securityQuery;
 	private ClearanceRequest clearanceRequest;
 	
-//	private A3 a3;
-//	private A4 a4;
-//	private A5 a5;
-//	private A6 a6;
+	private A3 a3;
+	private A4 a4;
+	private A5 a5;
+	private A6 a6;
 	private A7 a7;
 	private A8 a8;
 	private B1 b1;
@@ -29,17 +35,17 @@ public class ServerDetail extends Configuration {
 	public ServerDetail(String name) {
 		super(name);
 		connectionManager = new ConnectionManager("connectionManager");
-//		database = new Database("database");
+		database = Database.getInstance();
 		securityManager = new SecurityManager("securityManager");
 		
-//		sqlQuery = new SQLQuery();
-//		securityQuery = new SecurityQuery();
+		sqlQuery = new SQLQuery("SQLQuery");
+		securityQuery = new SecurityQuery("SecurityQuery");
 		clearanceRequest = new ClearanceRequest("clearanceRequest");
 		
-//		a3 = new A3();
-//		a4 = new A4();
-//		a5 = new A5();
-//		a6 = new A6();
+		a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());
+		a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());
+		a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor());
+		a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
 		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
 		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
 		
