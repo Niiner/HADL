@@ -3,7 +3,7 @@ import clearanceRequest.glues.Glue4;
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.PrimitivConnector;
-import elements.Role;
+import elements.ports.Role;
 
 
 public class ClearanceRequest extends PrimitivConnector{

@@ -1,6 +1,6 @@
 package securityquery.glues;
 
-import elements.Glue;
+import elements.ports.Glue;
 
 public class SecurityQueryGlue extends Glue{
 

@@ -1,7 +1,7 @@
-package links;
+package elements.links;
 
-import elements.Port;
-import elements.Role;
+import elements.ports.Port;
+import elements.ports.Role;
 
 public class AttachmentLink extends Link {
 	

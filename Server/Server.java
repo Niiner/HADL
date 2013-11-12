@@ -4,7 +4,7 @@ import ports.SendRequestP;
 import ports.SendRequestP2;
 import services.ReceiveRequestS;
 import containers.Component;
-import elements.Port;
+import elements.ports.Port;
 
 
 public class Server extends Component{

@@ -2,6 +2,7 @@ package links;
 
 import securityManager.ports.SecurityAuthorization;
 import clearanceRequest.roles.Grantor;
+import elements.links.AttachmentLink;
 
 /**
  * This class provides an implementation for an attachment link A7

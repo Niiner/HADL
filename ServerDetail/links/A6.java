@@ -1,5 +1,6 @@
 package links;
 
+import elements.links.AttachmentLink;
 import securityManager.ports.CredentialQuery;
 import securityquery.roles.SecurityManagerR;
 

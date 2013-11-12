@@ -4,7 +4,7 @@ import database.controller.PersonController;
 public class Initialize {
 	 public static void main(String args[]){
 	        
-	        /** Initialize the PMV **/
+	        /** Initialize the Person **/
 	        PersonController personController = new PersonController();
 	        
 	        try {

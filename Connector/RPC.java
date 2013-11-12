@@ -1,7 +1,7 @@
 import roles.Called;
 import roles.Caller;
 import containers.PrimitivConnector;
-import elements.Role;
+import elements.ports.Role;
 import glues.Glue1;
 
 

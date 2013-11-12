@@ -3,7 +3,7 @@ package securityquery.securityquery;
 import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
 import containers.PrimitivConnector;
-import elements.Role;
+import elements.ports.Role;
 
 public class SecurityQuery extends PrimitivConnector{
 

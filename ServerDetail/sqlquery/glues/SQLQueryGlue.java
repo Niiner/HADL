@@ -1,6 +1,6 @@
 package sqlquery.glues;
 
-import elements.Glue;
+import elements.ports.Glue;
 
 public class SQLQueryGlue extends Glue{
 

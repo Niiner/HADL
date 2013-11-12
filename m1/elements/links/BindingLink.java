@@ -1,6 +1,6 @@
-package links;
+package elements.links;
 
-import elements.Port;
+import elements.ports.Port;
 
 public class BindingLink extends Link{
 	

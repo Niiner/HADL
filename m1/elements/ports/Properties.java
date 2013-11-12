@@ -1,4 +1,4 @@
-package elements;
+package elements.ports;
 
 public class Properties {
 	

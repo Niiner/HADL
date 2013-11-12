@@ -1,6 +1,6 @@
 package services;
 
-import elements.Service;
+import elements.ports.Service;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

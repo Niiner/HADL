@@ -3,7 +3,7 @@ package sqlquery.sqlquery;
 import sqlquery.roles.Callee;
 import sqlquery.roles.Caller;
 import containers.PrimitivConnector;
-import elements.Role;
+import elements.ports.Role;
 
 public class SQLQuery extends PrimitivConnector{
 

@@ -1,5 +1,6 @@
 package links;
 
+import elements.links.AttachmentLink;
 import ports.ReceiveRequestP;
 import roles.Called;
 

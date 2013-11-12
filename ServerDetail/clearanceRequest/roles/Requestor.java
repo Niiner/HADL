@@ -1,6 +1,6 @@
 package clearanceRequest.roles;
 
-import elements.Role;
+import elements.ports.Role;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

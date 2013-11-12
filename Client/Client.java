@@ -4,17 +4,18 @@ import properties.SourceCode;
 import properties.Visualization;
 import services.ReceiveRequestS;
 import containers.Component;
-import elements.Port;
-
+import elements.ports.Port;
 
 public class Client extends Component{
 	
 	public Client(String name){
 		super(name);
+		
+		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));
-		this.ports.add(new ReceiveRequestP("SendRequestP"));
-		this.services.add(new ReceiveRequestS("SendRequestS"));
+		this.addPort(new ReceiveRequestP("SendRequestP"));
+		this.addService(new ReceiveRequestS("SendRequestS"));
 	}
 	
 	public SendRequestP getSendRequestP(){

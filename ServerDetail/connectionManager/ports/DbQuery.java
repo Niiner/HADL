@@ -1,6 +1,6 @@
 package connectionManager.ports;
 
-import elements.SynchronPort;
+import elements.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

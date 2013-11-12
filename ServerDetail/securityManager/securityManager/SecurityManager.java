@@ -2,7 +2,7 @@ package securityManager.securityManager;
 import securityManager.ports.CredentialQuery;
 import securityManager.ports.SecurityAuthorization;
 import containers.Component;
-import elements.Port;
+import elements.ports.Port;
 
 
 public class SecurityManager extends Component{

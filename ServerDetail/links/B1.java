@@ -2,6 +2,7 @@ package links;
 
 import ports.ReceiveRequestP;
 import connectionManager.ports.ExternalSocket;
+import elements.links.BindingLink;
 
 public class B1 extends BindingLink{
 	

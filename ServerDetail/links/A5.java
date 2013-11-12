@@ -2,6 +2,7 @@ package links;
 
 import securityquery.roles.Requestor;
 import database.ports.SecurityManagement;
+import elements.links.AttachmentLink;
 
 /**
  * This class provides an implementation for an attachment link A5

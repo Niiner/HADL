@@ -10,7 +10,7 @@ import java.sql.Statement;
 import securityManager.ports.SecurityAuthorization;
 import database.ports.Query;
 import database.ports.SecurityManagement;
-import elements.Port;
+import elements.ports.Port;
 
 public class Database extends Component{
 

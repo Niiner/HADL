@@ -2,6 +2,7 @@ package links;
 
 import clearanceRequest.roles.Requestor;
 import connectionManager.ports.SecurityCheck;
+import elements.links.AttachmentLink;
 
 /**
  * This class provides an implementation for an attachment link A8

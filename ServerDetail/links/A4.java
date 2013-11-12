@@ -2,6 +2,7 @@ package links;
 
 import sqlquery.roles.Callee;
 import database.ports.Query;
+import elements.links.AttachmentLink;
 
 /** 
  * This class provides an implementation for an attachment link A4

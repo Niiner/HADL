@@ -1,6 +1,6 @@
 package glues;
 
-import elements.Glue;
+import elements.ports.Glue;
 
 public class Glue1 extends Glue{
 	

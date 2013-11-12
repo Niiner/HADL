@@ -3,7 +3,7 @@ import connectionManager.ports.DbQuery;
 import connectionManager.ports.ExternalSocket;
 import connectionManager.ports.SecurityCheck;
 import containers.Component;
-import elements.Port;
+import elements.ports.Port;
 
 
 public class ConnectionManager extends Component{
