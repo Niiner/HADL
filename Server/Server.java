@@ -4,6 +4,7 @@ import ports.SendRequestP;
 import ports.SendRequestP2;
 import services.ReceiveRequestS;
 import containers.Component;
+import containers.Configuration;
 import elements.ports.Port;
 
 
@@ -12,8 +13,8 @@ public class Server extends Component{
 	private ServerDetail serverDetail = new ServerDetail("ServerDetail");
 	private B1 b1;
 	
-	public Server(String name){
-		super(name);
+	public Server(Configuration config, String name){
+		super(config, name);
 		this.ports.add(new ReceiveRequestP("ReceiveRequestP"));
 		this.ports.add(new SendRequestP2("ReceiveRequestP"));
 		this.services.add(new ReceiveRequestS("ReceiveRequestS"));

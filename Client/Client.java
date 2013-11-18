@@ -4,12 +4,13 @@ import properties.SourceCode;
 import properties.Visualization;
 import services.ReceiveRequestS;
 import containers.Component;
+import containers.Configuration;
 import elements.ports.Port;
 
 public class Client extends Component{
 	
-	public Client(String name){
-		super(name);
+	public Client(Configuration config, String name){
+		super(config, name);
 		
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
@@ -27,4 +28,9 @@ public class Client extends Component{
 		}
 		return p;
 	}
+
+	public void sendRequest(String msg){
+		
+	}
+	
 }

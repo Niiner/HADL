@@ -1,13 +1,12 @@
 package database.database;
 
-import containers.Component;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import securityManager.ports.SecurityAuthorization;
+import containers.Component;
+import containers.Configuration;
 import database.ports.Query;
 import database.ports.SecurityManagement;
 import elements.ports.Port;
@@ -21,8 +20,8 @@ public class Database extends Component{
 	 * Constructor
 	 * @param name Database's name
 	 */
-	private Database(String name){
-		super(name);
+	private Database(Configuration config, String name){
+		super(config, name);
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); //loads the driver

@@ -2,13 +2,14 @@ package securityManager.securityManager;
 import securityManager.ports.CredentialQuery;
 import securityManager.ports.SecurityAuthorization;
 import containers.Component;
+import containers.Configuration;
 import elements.ports.Port;
 
 
 public class SecurityManager extends Component{
 	
-	public SecurityManager(String name){
-		super(name);
+	public SecurityManager(Configuration config, String name){
+		super(config, name);
 		this.ports.add(new CredentialQuery("CredentialQuery"));
 		this.ports.add(new SecurityAuthorization("SecurityAuthorization"));
 	}

@@ -16,7 +16,7 @@ public class Component implements IComponentType {
 	protected List<Port> ports = new ArrayList<Port>();
 	protected List<Service> services = new ArrayList<Service>();
 	
-	public Component(String name/*, List<Port> portList*/){
+	public Component(Configuration config, String name/*, List<Port> portList*/){
 		
 		boolean oneProvided;
 		
@@ -26,7 +26,7 @@ public class Component implements IComponentType {
 			}
 		}*/
 		
-		// Créer sa propre exception : instancier si au moins un port provided 
+		// Crï¿½er sa propre exception : instancier si au moins un port provided 
 		// this.name = name;
 	
 	}
@@ -44,10 +44,10 @@ public class Component implements IComponentType {
 	 * @param port The {@link Service} to add
 	 */
 	public void addService(Service service){
-		try{
+//		try{
 			this.services.add(service);
-		}
-		catch(Wr)
+//		}
+//		catch(Wr)
 		
 	}
 

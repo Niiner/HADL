@@ -3,13 +3,14 @@ import connectionManager.ports.DbQuery;
 import connectionManager.ports.ExternalSocket;
 import connectionManager.ports.SecurityCheck;
 import containers.Component;
+import containers.Configuration;
 import elements.ports.Port;
 
 
 public class ConnectionManager extends Component{
 	
-	public ConnectionManager(String name){
-		super(name);
+	public ConnectionManager(Configuration config, String name){
+		super(config, name);
 		this.ports.add(new ExternalSocket("ExternalSocket"));
 		this.ports.add(new SecurityCheck("SecurityCheck"));
 		this.ports.add(new DbQuery("DbQuery"));

@@ -10,7 +10,7 @@ public class AttachmentLink extends Link {
 	
 	public AttachmentLink(String name, Port fromPortComp, Role toRoleConn) {
 		super(name);
-		// TODO: Ajouter les vérifications pour respecter les contraintes OCL
+		// TODO: Ajouter les verifications pour respecter les contraintes OCL
 		this.fromPortComp = fromPortComp;
 		this.toRoleConn = toRoleConn;
 	}

@@ -33,9 +33,9 @@ public class ServerDetail extends Configuration {
 	
 	public ServerDetail(String name) {
 		super(name);
-		connectionManager = new ConnectionManager("connectionManager");
+		connectionManager = new ConnectionManager(this, "connectionManager");
 		database = Database.getInstance();
-		securityManager = new SecurityManager("securityManager");
+		securityManager = new SecurityManager(this, "securityManager");
 		
 		sqlQuery = new SQLQuery("SQLQuery");
 		securityQuery = new SecurityQuery("SecurityQuery");
