@@ -6,6 +6,7 @@ import services.ReceiveRequestS;
 import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
+import elements.ports.Service;
 
 
 public class Server extends Component{
@@ -15,9 +16,13 @@ public class Server extends Component{
 	
 	public Server(Configuration config, String name){
 		super(config, name);
-		this.ports.add(new ReceiveRequestP("ReceiveRequestP"));
-		this.ports.add(new SendRequestP2("ReceiveRequestP"));
-		this.services.add(new ReceiveRequestS("ReceiveRequestS"));
+		Port receiveRequestP = new ReceiveRequestP("ReceiveRequestP");
+		Port sendRequestP2 = new SendRequestP2("ReceiveRequestP"); 
+		Service receiveRequestS = new ReceiveRequestS("ReceiveRequestS");
+		this.ports.add(receiveRequestP);
+		this.ports.add(sendRequestP2);
+		this.services.add(receiveRequestS);
+		receiveRequestS.addPort(receiveRequestP);
 		this.b1 = new B1("B1", this.getReceiveRequestP() , serverDetail.getConnectionManager().getExternalSocket());
 	}
 	
