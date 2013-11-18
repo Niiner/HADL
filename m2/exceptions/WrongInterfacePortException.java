@@ -7,39 +7,39 @@ import enumerations.InterfaceType;
  * @author Niiner-PC
  *
  */
-public class WrongPortException extends Exception{
+public class WrongInterfacePortException extends Exception{
 
 	private static final long serialVersionUID = 1L;
 	
 	/** 
-	* Create a new instance of {@link WrongPortException}
+	* Create a new instance of {@link WrongInterfacePortException}
 	*/
-    public WrongPortException() {
+    public WrongInterfacePortException() {
         super();
     }
     
 	/** 
-	* Create a new instance of {@link WrongPortException}
+	* Create a new instance of {@link WrongInterfacePortException}
 	* @param message The message which details the {@link Exception}
 	*/
-    public WrongPortException(final String message) {
+    public WrongInterfacePortException(final String message) {
         super(message);
     }
     
 	/** 
-	* Create a new instance of {@link WrongPortException}
+	* Create a new instance of {@link WrongInterfacePortException}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
 	*/
-    public WrongPortException(final Throwable cause) {
+    public WrongInterfacePortException(final Throwable cause) {
         super(cause);
     }
     
 	/** 
-	* Create a new instance of {@link WrongPortException}
+	* Create a new instance of {@link WrongInterfacePortException}
 	* @param message The message which details the {@link Exception}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
 	*/
-    public WrongPortException(final String message, final Throwable cause) {
+    public WrongInterfacePortException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }

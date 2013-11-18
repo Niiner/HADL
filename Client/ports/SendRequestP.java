@@ -1,6 +1,5 @@
 package ports;
 
-import elements.ports.Port;
 import elements.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;

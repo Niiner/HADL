@@ -5,39 +5,39 @@ package exceptions;
  * @author Niiner-PC
  *
  */
-public class NoSuchExistingServiceException extends Exception {
+public class NoSuchServiceException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
 	/** 
-	* Create a new instance of {@link NoSuchExistingServiceException}
+	* Create a new instance of {@link NoSuchServiceException}
 	*/  
-    public NoSuchExistingServiceException() {
+    public NoSuchServiceException() {
         super();
     }
     
 	/** 
-	* Create a new instance of {@link NoSuchExistingServiceException}
+	* Create a new instance of {@link NoSuchServiceException}
 	* @param message The message which details the {@link Exception}
 	*/
-    public NoSuchExistingServiceException(final String message) {
+    public NoSuchServiceException(final String message) {
         super(message);
     }
     
 	/** 
-	* Create a new instance of {@link NoSuchExistingServiceException}
+	* Create a new instance of {@link NoSuchServiceException}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
 	*/
-    public NoSuchExistingServiceException(final Throwable cause) {
+    public NoSuchServiceException(final Throwable cause) {
         super(cause);
     }
     
 	/** 
-	* Create a new instance of {@link NoSuchExistingServiceException}
+	* Create a new instance of {@link NoSuchServiceException}
 	* @param message The message which details the {@link Exception}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
 	*/
-    public NoSuchExistingServiceException(final String message, final Throwable cause) {
+    public NoSuchServiceException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }

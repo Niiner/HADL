@@ -8,18 +8,24 @@ import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
 import elements.ports.Service;
+import exceptions.NoSuchPortException;
+import exceptions.NoSuchServiceException;
+import exceptions.WrongInterfacePortException;
+import exceptions.WrongInterfaceServiceException;
 
 public class Client extends Component{
 	
-	public Client(Configuration config, String name){
+	public Client(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException{
 		super(config, name);
+		
 		Port receiveRequestP = new ReceiveRequestP("SendRequestP");
 		Service receiveRequestS = new ReceiveRequestS("SendRequestS");
+		
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));
-		this.addPort(receiveRequestP);
-		this.addService(receiveRequestS);
+		this.addProvidedPort(receiveRequestP);
+		this.addRequiredService(receiveRequestS);
 		receiveRequestS.addPort(receiveRequestP);
 	}
 	
@@ -35,7 +41,7 @@ public class Client extends Component{
 
 	public void sendRequest(String msg){
 		SendRequestS useService = null;
-		for (Service s : servicesProvided){
+		for (Service s : this.getProvidedServices()){
 			if (s instanceof SendRequestS){
 				useService = (SendRequestS) s;
 			}
