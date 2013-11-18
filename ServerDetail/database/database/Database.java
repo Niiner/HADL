@@ -60,13 +60,21 @@ public class Database extends Component{
 	}
 
 	/**
+	 * Pattern Singleton with Configuration
+	 * @return The Database
+	 */
+	public static synchronized Database getInstance(Configuration config){
+		if(instance == null){
+			instance = new Database(config, "Database");
+		}
+		return instance;
+	}
+	
+	/**
 	 * Pattern Singleton
 	 * @return The Database
 	 */
 	public static synchronized Database getInstance(){
-		if(instance == null){
-			instance = new Database("Database");
-		}
 		return instance;
 	}
 
@@ -74,9 +82,9 @@ public class Database extends Component{
 	 * Main method : launch database
 	 * @param args
 	 */
-	public static void main(String args[]){
-		Database.getInstance();
-	}
+//	public static void main(String args[]){
+//		Database.getInstance();
+//	}
 
 
 	/**

@@ -8,7 +8,6 @@
 	<classpathentry kind="src" path="ServerDetail"/>
 	<classpathentry kind="src" path="m0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/MySQL Connector J/mysql-connector-java-5.1.26-bin.jar"/>
 	<classpathentry kind="lib" path="/Users/Nomyx/Public/Partage_U/2013-2014_M2/Components_and_Software_Architectures/TP/HADL/lib/mysql-connector-java-5.1.26-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
