@@ -26,9 +26,6 @@ public class AttachmentLink extends Link {
 	public AttachmentLink(String name, Port fromPortComp, Role toRoleConn) throws NewAttachmentNotAllowed {
 		super(name);
 		
-		System.out.println(fromPortComp);
-		System.out.println(toRoleConn);
-		
 		if((fromPortComp.isProvided() && toRoleConn.isRequired()) 
 				|| (fromPortComp.isRequired() && toRoleConn.isProvided())){
 			this.fromPortComp = fromPortComp;

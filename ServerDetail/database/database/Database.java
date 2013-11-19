@@ -1,7 +1,6 @@
 package database.database;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,6 +9,8 @@ import containers.Configuration;
 import database.ports.Query;
 import database.ports.SecurityManagement;
 import elements.ports.Port;
+import exceptions.NoSuchPortException;
+import exceptions.WrongInterfacePortException;
 
 public class Database extends Component{
 
@@ -19,9 +20,13 @@ public class Database extends Component{
 	/**
 	 * Constructor
 	 * @param name Database's name
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	private Database(Configuration config, String name){
+	private Database(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException{
 		super(config, name);
+		this.addProvidedPort(new SecurityManagement("SecurityManagement"));
+		this.addProvidedPort(new Query("Query"));
 
 //		try {
 //			Class.forName("com.mysql.jdbc.Driver"); //loads the driver
@@ -62,8 +67,10 @@ public class Database extends Component{
 	/**
 	 * Pattern Singleton with Configuration
 	 * @return The Database
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	public static synchronized Database getInstance(Configuration config){
+	public static synchronized Database getInstance(Configuration config) throws NoSuchPortException, WrongInterfacePortException{
 		if(instance == null){
 			instance = new Database(config, "Database");
 		}

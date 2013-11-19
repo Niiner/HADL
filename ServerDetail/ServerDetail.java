@@ -49,10 +49,10 @@ public class ServerDetail extends Configuration {
 		securityQuery = new SecurityQuery("SecurityQuery");
 		clearanceRequest = new ClearanceRequest("clearanceRequest");
 		
-		 // a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());  DbQuery OK / Caller KO
-		 // a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());  KO / KO
-		 // a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor()); KO / Caller KO
-		 // a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());  OK / KO
+		 a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());
+		 a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());
+		 a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor());
+		 a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
 		 a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
 		 a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
 	}

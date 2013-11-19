@@ -6,9 +6,8 @@ import enumerations.VisibilityType;
 
 public class Callee extends Role{
 
-	public Callee(String name, InterfaceType interfaceT,
-			VisibilityType visibilityT) {
-		super(name, interfaceT, visibilityT);
+	public Callee(String name) {
+		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 
 }

@@ -6,10 +6,8 @@ import enumerations.VisibilityType;
 
 public class SecurityManagement extends SynchronPort {
 
-	public SecurityManagement(String name, InterfaceType interfaceT,
-			VisibilityType visibilityT) {
-		super(name, interfaceT, visibilityT);
-		// TODO Auto-generated constructor stub
+	public SecurityManagement(String name) {
+		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
 }
