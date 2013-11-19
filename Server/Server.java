@@ -7,6 +7,8 @@ import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
 import elements.ports.Service;
+import exceptions.NewAttachmentNotAllowed;
+import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;
 import exceptions.NoSuchServiceException;
@@ -37,8 +39,13 @@ public class Server extends Component{
 	 * @throws WrongInterfaceServiceException
 	 * @throws NoSuchRoleException
 	 * @throws WrongInterfaceRoleException
+	 * @throws NewAttachmentNotAllowed 
+	 * @throws NewBindingNotAllowed 
 	 */
-	public Server(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException{
+	public Server(Configuration config, String name) 
+			throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, 
+			WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException, 
+			NewAttachmentNotAllowed, NewBindingNotAllowed{
 		super(config, name);
 		
 		// Instanciation 

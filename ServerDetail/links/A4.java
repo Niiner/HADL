@@ -3,6 +3,7 @@ package links;
 import sqlquery.roles.Callee;
 import database.ports.Query;
 import elements.links.AttachmentLink;
+import exceptions.NewAttachmentNotAllowed;
 
 /** 
  * This class provides an implementation for an attachment link A4
@@ -18,8 +19,9 @@ public class A4 extends AttachmentLink{
 	 * @param name The name of the Attachment link
 	 * @param fromPortComp The port component
 	 * @param toRoleConn The role connector
+	 * @throws NewAttachmentNotAllowed 
 	 */
-	public A4(String name, Query fromPortComp, Callee toRoleConn) {
+	public A4(String name, Query fromPortComp, Callee toRoleConn) throws NewAttachmentNotAllowed {
 		super(name, fromPortComp, toRoleConn);
 		// TODO Auto-generated constructor stub
 	}

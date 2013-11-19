@@ -3,6 +3,7 @@ package links;
 import securityManager.ports.SecurityAuthorization;
 import clearanceRequest.roles.Grantor;
 import elements.links.AttachmentLink;
+import exceptions.NewAttachmentNotAllowed;
 
 /**
  * This class provides an implementation for an attachment link A7
@@ -18,8 +19,9 @@ public class A7 extends AttachmentLink{
 	 * @param name The name of the Attachment link
 	 * @param fromPortComp The port component
 	 * @param toRoleConn The role connector
+	 * @throws NewAttachmentNotAllowed 
 	 */
-	public A7(String name, SecurityAuthorization fromPortComp, Grantor toRoleConn){
+	public A7(String name, SecurityAuthorization fromPortComp, Grantor toRoleConn) throws NewAttachmentNotAllowed{
 		super(name, fromPortComp, toRoleConn);
 	}
 }

@@ -4,7 +4,6 @@ import links.A5;
 import links.A6;
 import links.A7;
 import links.A8;
-import links.B1;
 import securityManager.securityManager.SecurityManager;
 import securityquery.securityquery.SecurityQuery;
 import sqlquery.sqlquery.SQLQuery;
@@ -12,6 +11,7 @@ import clearanceRequest.clearanceRequest.ClearanceRequest;
 import connectionManager.connectionManager.ConnectionManager;
 import containers.Configuration;
 import database.database.Database;
+import exceptions.NewAttachmentNotAllowed;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfacePortException;
@@ -35,7 +35,11 @@ public class ServerDetail extends Configuration {
 	private A7 a7;
 	private A8 a8;
 	
-	public ServerDetail(String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchRoleException, WrongInterfaceRoleException {
+	public ServerDetail(String name) 
+			throws NoSuchPortException, WrongInterfacePortException, 
+			NoSuchRoleException, WrongInterfaceRoleException, 
+			NewAttachmentNotAllowed {
+		
 		super(name);
 		connectionManager = new ConnectionManager(this, "connectionManager");
 		database = Database.getInstance(this);
@@ -45,12 +49,12 @@ public class ServerDetail extends Configuration {
 		securityQuery = new SecurityQuery("SecurityQuery");
 		clearanceRequest = new ClearanceRequest("clearanceRequest");
 		
-		a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());
-		a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());
-		a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor());
-		a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
-		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
-		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
+		 // a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());  DbQuery OK / Caller KO
+		 // a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());  KO / KO
+		 // a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor()); KO / Caller KO
+		 // a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());  OK / KO
+		 a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
+		 a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
 	}
 
 	public ConnectionManager getConnectionManager() {
