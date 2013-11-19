@@ -23,8 +23,8 @@ public class SystemClientServer extends Configuration {
 		rpc = new RPC("RPCConnector");
 		a1 = new A1("A1", c1.getSendRequestP(), rpc.getCaller());
 		a2 = new A2("A2", s.getReceiveRequestP(), rpc.getCalled());
-		this.links.add(a1);
-		this.links.add(a2);
+		this.addLink(a1);
+		this.addLink(a2);
 	}
 
 	public Client getC1() {
