@@ -1,6 +1,8 @@
 import links.A1;
 import links.A2;
 import containers.Configuration;
+import exceptions.NewAttachmentNotAllowed;
+import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;
 import exceptions.NoSuchServiceException;
@@ -16,7 +18,10 @@ public class SystemClientServer extends Configuration {
 	private A1 a1;
 	private A2 a2;
 	
-	public SystemClientServer(String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException{
+	public SystemClientServer(String name) 
+			throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, 
+			WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException, 
+			NewAttachmentNotAllowed, NewBindingNotAllowed{
 		super(name);
 		c1 = new Client(this, "FlorianPC");
 		s = new Server(this, "LaisseLibreCoursATonImagination");

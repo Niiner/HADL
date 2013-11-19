@@ -1,13 +1,13 @@
 import roles.Called;
 import roles.Caller;
-import containers.PrimitivConnector;
+import containers.PrimitiveConnector;
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
 
 
-public class RPC extends PrimitivConnector{
+public class RPC extends PrimitiveConnector{
 	
 	public RPC(String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(name);

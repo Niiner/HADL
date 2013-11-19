@@ -1,3 +1,5 @@
+import exceptions.NewAttachmentNotAllowed;
+import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;
 import exceptions.NoSuchServiceException;
@@ -28,6 +30,12 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (WrongInterfaceRoleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NewAttachmentNotAllowed e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NewBindingNotAllowed e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

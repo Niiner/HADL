@@ -1,5 +1,7 @@
 package exceptions;
 
+import sun.font.CreatedFontTracker;
+
 /**
  * Allow to raise an exception if a called {@link Port} doesn't exist
  * @author Niiner-PC
@@ -26,7 +28,7 @@ public class NoSuchPortException extends Exception{
     
 	/** 
 	* Create a new instance of {@link NoSuchPortException}
-	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
+	* @param cause The {@link Exception} which is the origin of this {@link Exception}
 	*/
     public NoSuchPortException(final Throwable cause) {
         super(cause);

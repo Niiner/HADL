@@ -2,10 +2,10 @@ package securityquery.securityquery;
 
 import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
-import containers.PrimitivConnector;
+import containers.PrimitiveConnector;
 import elements.ports.Role;
 
-public class SecurityQuery extends PrimitivConnector{
+public class SecurityQuery extends PrimitiveConnector{
 
 	public SecurityQuery(String name) {
 		super(name);

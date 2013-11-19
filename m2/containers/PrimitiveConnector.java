@@ -11,13 +11,13 @@ import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
 
-
 /**
  * This class provide an implementation for a PrimitivConnector
+ * A PrimitiveConnector is composed by Roles and Glues, it can also be composed by properties
  * @author Niiner-PC
  *
  */
-public class PrimitivConnector implements IConnectorType {
+public class PrimitiveConnector implements IConnectorType {
 	
 	protected String name;
 	
@@ -30,19 +30,19 @@ public class PrimitivConnector implements IConnectorType {
 	 * Constructor
 	 * @param name
 	 */
-	public PrimitivConnector(String name){
+	public PrimitiveConnector(String name){
 		this.name = name;
 	}
 
 	/**
-	 * Adding a provided {@link Role} into the roles' list of the {@link PrimitivConnector}
+	 * Adding a provided {@link Role} into the roles' list of the {@link PrimitiveConnector}
 	 * @param role The {@link Role} to add
 	 * @throws NoSuchRoleException 
 	 * @throws WrongInterfaceRoleException 
 	 */
 	public void addProvidedRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas été instancié !");
+			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ï¿½tï¿½ instanciï¿½ !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Provided){
@@ -54,14 +54,14 @@ public class PrimitivConnector implements IConnectorType {
 	}
 
 	/**
-	 * Adding a required {@link Role} into the required roles' list of the {@link PrimitivConnector}
+	 * Adding a required {@link Role} into the required roles' list of the {@link PrimitiveConnector}
 	 * @param role The {@link Role} to add
 	 * @throws NoSuchServiceException 
 	 * @throws WrongInterfaceServiceException 
 	 */
 	public void addRequiredRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas été instancié !");
+			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ï¿½tï¿½ instanciï¿½ !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Required){

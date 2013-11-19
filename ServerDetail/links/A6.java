@@ -1,6 +1,7 @@
 package links;
 
 import elements.links.AttachmentLink;
+import exceptions.NewAttachmentNotAllowed;
 import securityManager.ports.CredentialQuery;
 import securityquery.roles.SecurityManagerR;
 
@@ -18,8 +19,9 @@ public class A6 extends AttachmentLink{
 	 * @param name The name of the Attachment link
 	 * @param fromPortComp The port component
 	 * @param toRoleConn The role connector
+	 * @throws NewAttachmentNotAllowed 
 	 */
-	public A6(String name, CredentialQuery fromPortComp, SecurityManagerR toRoleConn) {
+	public A6(String name, CredentialQuery fromPortComp, SecurityManagerR toRoleConn) throws NewAttachmentNotAllowed {
 		super(name, fromPortComp, toRoleConn);
 		// TODO Auto-generated constructor stub
 	}
