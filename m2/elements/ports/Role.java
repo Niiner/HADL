@@ -9,4 +9,7 @@ public abstract class Role extends PhysicalInterface{
 		super(name, interfaceT, visibilityT);
 	}
 
+	public void receiveData(Object msg){
+		System.out.println("On arrive dans le role");
+	}
 }

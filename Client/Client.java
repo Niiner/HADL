@@ -1,3 +1,6 @@
+import java.util.Observable;
+import java.util.Observer;
+
 import ports.ReceiveRequestP;
 import ports.SendRequestP;
 import properties.SourceCode;
@@ -9,18 +12,19 @@ import containers.Configuration;
 import elements.ports.Port;
 import elements.ports.Service;
 
-public class Client extends Component{
+public class Client extends Component implements Observer{
 	
 	public Client(Configuration config, String name){
 		super(config, name);
-		Port receiveRequestP = new ReceiveRequestP("SendRequestP");
-		Service receiveRequestS = new ReceiveRequestS("SendRequestS");
+		Port sendRequestP = new SendRequestP("SendRequestP");
+		sendRequestP.addObserver(this);
+		Service sendRequestS = new SendRequestS("SendRequestS");
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));
-		this.addPort(receiveRequestP);
-		this.addService(receiveRequestS);
-		receiveRequestS.addPort(receiveRequestP);
+		this.addPort(sendRequestP);
+		this.addService(sendRequestS);
+		sendRequestS.addPort(sendRequestP);
 	}
 	
 	public SendRequestP getSendRequestP(){
@@ -32,15 +36,36 @@ public class Client extends Component{
 		}
 		return p;
 	}
-
-	public void sendRequest(String msg){
-		SendRequestS useService = null;
-		for (Service s : servicesProvided){
-			if (s instanceof SendRequestS){
-				useService = (SendRequestS) s;
+	
+	public SendRequestS getSendRequestS(){
+		SendRequestS s = null;
+		for (Service service : services/*servicesProvided*/){
+			if (service instanceof SendRequestS){
+				s = (SendRequestS) service;
 			}
 		}
-		useService.receiveRequest(msg);
+		return s;
 	}
+
+	@Override
+	public void update(Observable observable, Object object) {
+		System.out.println("Client notify");
+		if (observable instanceof SendRequestP){
+			System.out.println("SendRequestP notify");
+			this.configuration.transfertData(observable, object);
+		}
+		// TODO Auto-generated method stub
+		
+	}
+	
+//	public void sendRequest(String msg){
+//		SendRequestS useService = null;
+//		for (Service s : servicesProvided){
+//			if (s instanceof SendRequestS){
+//				useService = (SendRequestS) s;
+//			}
+//		}
+//		useService.receiveRequest(msg);
+//	}
 	
 }

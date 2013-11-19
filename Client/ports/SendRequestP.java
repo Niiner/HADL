@@ -1,11 +1,10 @@
 package ports;
 
-import elements.ports.Port;
 import elements.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
-public class SendRequestP extends SynchronPort{
+public class SendRequestP extends SynchronPort {
 	
 	public SendRequestP(String name){
 		// TODO: Demander comment sont determinees les visibilites des composants ?
@@ -13,10 +12,9 @@ public class SendRequestP extends SynchronPort{
 	}
 	
 	public void receiveRequest(String msg){
-		this.sendRequest(msg);
+		System.out.println("Entrer dans le port");
+		setChanged();
+		notifyObservers();
 	}
 	
-	public void sendRequest(String msg){
-		// TODO Quoi ki fait lui ???
-	}
 }

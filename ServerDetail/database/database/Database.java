@@ -23,23 +23,23 @@ public class Database extends Component{
 	private Database(Configuration config, String name){
 		super(config, name);
 
-		try {
-			Class.forName("com.mysql.jdbc.Driver"); //loads the driver
-			this.setConnection(DriverManager.getConnection("jdbc:mysql://localhost:3306/hadl", "root", "root"));
-
-			// Create table for the database
-			createTablePerson();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if ( connection != null )
-				try {
-					connection.close();
-				} catch ( SQLException ignore ) {
-					/* If an error occurs during application fermeture, we just need to ignore it */
-				}
-		}
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver"); //loads the driver
+//			this.setConnection(DriverManager.getConnection("jdbc:mysql://localhost:3306/hadl", "root", "root"));
+//
+//			// Create table for the database
+//			createTablePerson();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			if ( connection != null )
+//				try {
+//					connection.close();
+//				} catch ( SQLException ignore ) {
+//					/* If an error occurs during application fermeture, we just need to ignore it */
+//				}
+//		}
 	}
 
 	/**

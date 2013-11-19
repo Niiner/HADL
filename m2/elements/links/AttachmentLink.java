@@ -15,4 +15,20 @@ public class AttachmentLink extends Link {
 		this.toRoleConn = toRoleConn;
 	}
 
+	public Port getFromPortComp() {
+		return fromPortComp;
+	}
+
+	public void setFromPortComp(Port fromPortComp) {
+		this.fromPortComp = fromPortComp;
+	}
+
+	public Role getToRoleConn() {
+		return toRoleConn;
+	}
+
+	public void setToRoleConn(Role toRoleConn) {
+		this.toRoleConn = toRoleConn;
+	}
+
 }

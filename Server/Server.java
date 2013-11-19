@@ -29,7 +29,7 @@ public class Server extends Component{
 	public ReceiveRequestP getReceiveRequestP(){
 		ReceiveRequestP p = null;
 		for (Port port : ports){
-			if (port instanceof SendRequestP){
+			if (port instanceof ReceiveRequestP){
 				p = (ReceiveRequestP) port;
 			}
 		}

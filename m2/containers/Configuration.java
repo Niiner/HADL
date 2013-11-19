@@ -2,7 +2,9 @@ package containers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
+import elements.links.AttachmentLink;
 import elements.links.Link;
 import elements.ports.Port;
 import elements.ports.Properties;
@@ -26,4 +28,15 @@ public class Configuration implements IComponentType, IConnectorType {
 		this.name = name;
 	}
 
+	public void addLink(Link link){
+		this.links.add(link);
+	}
+	
+	public void transfertData(Observable observable, Object object){
+		for (Link link : links){
+			if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)){
+				((AttachmentLink) link).getToRoleConn().receiveData(object);
+			}
+		}
+	}
 }

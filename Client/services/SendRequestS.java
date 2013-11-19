@@ -12,11 +12,8 @@ public class SendRequestS extends Service {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 	
-	public void receiveRequest(String msg) {
-		this.sendRequest(msg);
-	}
-	
 	public void sendRequest(String msg){
+		System.out.println("Appel au service");
 		SendRequestP usedPort = null;
 		for (Port port: this.getUsedPorts()){
 			if (port instanceof SendRequestP){

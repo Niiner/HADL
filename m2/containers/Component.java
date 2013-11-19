@@ -11,13 +11,14 @@ import elements.ports.Service;
 public class Component implements IComponentType {
 	
 	protected String name;
+	protected Configuration configuration;
 	
 	protected List<Properties> properties = new ArrayList<Properties>();	
 	protected List<Port> ports = new ArrayList<Port>();
 	protected List<Service> services = new ArrayList<Service>();
 	
 	public Component(Configuration config, String name/*, List<Port> portList*/){
-		
+		this.configuration = config;
 		boolean oneProvided;
 		
 		/*for(Port port : portList){
@@ -59,4 +60,13 @@ public class Component implements IComponentType {
 		this.ports = ports;
 	}
 
+	public List<Service> getServices() {
+		return services;
+	}
+
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+	
+	
 }

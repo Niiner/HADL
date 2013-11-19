@@ -1,9 +1,11 @@
 package elements.ports;
 
+import java.util.Observable;
+
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
-public abstract class PhysicalInterface {
+public abstract class PhysicalInterface extends Observable {
 	
 	protected VisibilityType visibilityType;
 	protected InterfaceType interfaceType;
