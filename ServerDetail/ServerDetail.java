@@ -12,6 +12,10 @@ import clearanceRequest.clearanceRequest.ClearanceRequest;
 import connectionManager.connectionManager.ConnectionManager;
 import containers.Configuration;
 import database.database.Database;
+import exceptions.NoSuchPortException;
+import exceptions.NoSuchRoleException;
+import exceptions.WrongInterfacePortException;
+import exceptions.WrongInterfaceRoleException;
 
 
 public class ServerDetail extends Configuration {
@@ -31,7 +35,7 @@ public class ServerDetail extends Configuration {
 	private A7 a7;
 	private A8 a8;
 	
-	public ServerDetail(String name) {
+	public ServerDetail(String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchRoleException, WrongInterfaceRoleException {
 		super(name);
 		connectionManager = new ConnectionManager(this, "connectionManager");
 		database = Database.getInstance(this);

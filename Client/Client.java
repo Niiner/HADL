@@ -1,20 +1,22 @@
 import java.util.Observable;
 import java.util.Observer;
 
-import ports.ReceiveRequestP;
 import ports.SendRequestP;
 import properties.SourceCode;
 import properties.Visualization;
-import services.ReceiveRequestS;
 import services.SendRequestS;
 import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
 import elements.ports.Service;
+import exceptions.NoSuchPortException;
+import exceptions.NoSuchServiceException;
+import exceptions.WrongInterfacePortException;
+import exceptions.WrongInterfaceServiceException;
 
 public class Client extends Component implements Observer{
 	
-	public Client(Configuration config, String name){
+	public Client(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException{
 		super(config, name);
 		Port sendRequestP = new SendRequestP("SendRequestP");
 		sendRequestP.addObserver(this);
@@ -22,14 +24,14 @@ public class Client extends Component implements Observer{
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));
-		this.addPort(sendRequestP);
-		this.addService(sendRequestS);
+		this.addProvidedPort(sendRequestP);
+		this.addProvidedService(sendRequestS);
 		sendRequestS.addPort(sendRequestP);
 	}
 	
 	public SendRequestP getSendRequestP(){
 		SendRequestP p = null;
-		for (Port port : ports){
+		for (Port port : providedPorts){
 			if (port instanceof SendRequestP){
 				p = (SendRequestP) port;
 			}
@@ -39,7 +41,7 @@ public class Client extends Component implements Observer{
 	
 	public SendRequestS getSendRequestS(){
 		SendRequestS s = null;
-		for (Service service : services/*servicesProvided*/){
+		for (Service service : providedServices){
 			if (service instanceof SendRequestS){
 				s = (SendRequestS) service;
 			}
@@ -57,15 +59,4 @@ public class Client extends Component implements Observer{
 		// TODO Auto-generated method stub
 		
 	}
-	
-//	public void sendRequest(String msg){
-//		SendRequestS useService = null;
-//		for (Service s : servicesProvided){
-//			if (s instanceof SendRequestS){
-//				useService = (SendRequestS) s;
-//			}
-//		}
-//		useService.receiveRequest(msg);
-//	}
-	
 }

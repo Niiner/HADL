@@ -1,11 +1,12 @@
-import java.util.Observable;
-
-import containers.Configuration;
-import elements.links.AttachmentLink;
-import elements.links.Link;
-import elements.ports.Port;
 import links.A1;
 import links.A2;
+import containers.Configuration;
+import exceptions.NoSuchPortException;
+import exceptions.NoSuchRoleException;
+import exceptions.NoSuchServiceException;
+import exceptions.WrongInterfacePortException;
+import exceptions.WrongInterfaceRoleException;
+import exceptions.WrongInterfaceServiceException;
 
 public class SystemClientServer extends Configuration {
 	
@@ -15,7 +16,7 @@ public class SystemClientServer extends Configuration {
 	private A1 a1;
 	private A2 a2;
 	
-	public SystemClientServer(String name){
+	public SystemClientServer(String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException{
 		super(name);
 		c1 = new Client(this, "FlorianPC");
 		s = new Server(this, "LaisseLibreCoursATonImagination");

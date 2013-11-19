@@ -5,20 +5,22 @@ import connectionManager.ports.SecurityCheck;
 import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
+import exceptions.NoSuchPortException;
+import exceptions.WrongInterfacePortException;
 
 
 public class ConnectionManager extends Component{
 	
-	public ConnectionManager(Configuration config, String name){
+	public ConnectionManager(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException{
 		super(config, name);
-		this.ports.add(new ExternalSocket("ExternalSocket"));
-		this.ports.add(new SecurityCheck("SecurityCheck"));
-		this.ports.add(new DbQuery("DbQuery"));
+		this.addProvidedPort(new ExternalSocket("ExternalSocket"));
+		this.addRequiredPort(new SecurityCheck("SecurityCheck"));
+		this.addRequiredPort(new DbQuery("DbQuery"));
 	}
 	
 	public DbQuery getDbQuery(){
 		DbQuery p = null;
-		for (Port port : ports){
+		for (Port port : requiredPorts){
 			if (port instanceof DbQuery){
 				p = (DbQuery) port;
 			}
@@ -28,7 +30,7 @@ public class ConnectionManager extends Component{
 	
 	public SecurityCheck getSecurityCheck(){
 		SecurityCheck p = null;
-		for (Port port : ports){
+		for (Port port : requiredPorts){
 			if (port instanceof SecurityCheck){
 				p = (SecurityCheck) port;
 			}
@@ -38,7 +40,7 @@ public class ConnectionManager extends Component{
 	
 	public ExternalSocket getExternalSocket(){
 		ExternalSocket p = null;
-		for (Port port : ports){
+		for (Port port : providedPorts){
 			if (port instanceof ExternalSocket){
 				p = (ExternalSocket) port;
 			}

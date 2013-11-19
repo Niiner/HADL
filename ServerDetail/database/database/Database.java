@@ -105,7 +105,7 @@ public class Database extends Component{
 	
 	public SecurityManagement getSecurityManagement(){
 		SecurityManagement p = null;
-		for (Port port : ports){
+		for (Port port : providedPorts){
 			if (port instanceof SecurityManagement){
 				p = (SecurityManagement) port;
 			}
@@ -115,7 +115,7 @@ public class Database extends Component{
 	
 	public Query getQuery(){
 		Query p = null;
-		for (Port port : ports){
+		for (Port port : providedPorts){
 			if (port instanceof Query){
 				p = (Query) port;
 			}

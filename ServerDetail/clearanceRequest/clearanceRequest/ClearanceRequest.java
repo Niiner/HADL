@@ -4,20 +4,22 @@ import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.PrimitivConnector;
 import elements.ports.Role;
+import exceptions.NoSuchRoleException;
+import exceptions.WrongInterfaceRoleException;
 
 
 public class ClearanceRequest extends PrimitivConnector{
 	
-	public ClearanceRequest(String name){
+	public ClearanceRequest(String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(name);
-		this.roles.add(new Grantor("Grantor"));
-		this.roles.add(new Requestor("Requestor"));
+		this.addRequiredRole(new Grantor("Grantor"));
+		this.addProvidedRole(new Requestor("Requestor"));
 		this.glues.add(new Glue4("Glue4"));
 	}
 	
 	public Grantor getGrantor(){
 		Grantor r = null;
-		for (Role role : roles){
+		for (Role role : requiredRole){
 			if (role instanceof Grantor){
 				r = (Grantor) role;
 			}
@@ -27,7 +29,7 @@ public class ClearanceRequest extends PrimitivConnector{
 	
 	public Requestor getRequestor(){
 		Requestor r = null;
-		for (Role role : roles){
+		for (Role role : providedRole){
 			if (role instanceof Requestor){
 				r = (Requestor) role;
 			}

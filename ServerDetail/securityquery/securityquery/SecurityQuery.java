@@ -14,7 +14,7 @@ public class SecurityQuery extends PrimitivConnector{
 	
 	public SecurityManagerR getSecurityManagerR(){
 		SecurityManagerR p = null;
-		for (Role role : roles){
+		for (Role role : providedRole){
 			if (role instanceof SecurityManagerR){
 				p = (SecurityManagerR) role;
 			}
@@ -24,7 +24,7 @@ public class SecurityQuery extends PrimitivConnector{
 
 	public Requestor getRequestor(){
 		Requestor p = null;
-		for (Role role : roles){
+		for (Role role : requiredRole){
 			if (role instanceof Requestor){
 				p = (Requestor) role;
 			}

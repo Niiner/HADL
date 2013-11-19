@@ -2,21 +2,23 @@ import roles.Called;
 import roles.Caller;
 import containers.PrimitivConnector;
 import elements.ports.Role;
+import exceptions.NoSuchRoleException;
+import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
 
 
 public class RPC extends PrimitivConnector{
 	
-	public RPC(String name){
+	public RPC(String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(name);
-		this.roles.add(new Called("Called"));
-		this.roles.add(new Caller("Caller"));
+		this.addProvidedRole(new Called("Called"));
+		this.addRequiredRole(new Caller("Caller"));
 		this.glues.add(new Glue1("Glue1"));
 	}
 	
 	public Caller getCaller(){
 		Caller r = null;
-		for (Role role : roles){
+		for (Role role : requiredRole){
 			if (role instanceof Caller){
 				r = (Caller) role;
 			}
@@ -26,7 +28,7 @@ public class RPC extends PrimitivConnector{
 	
 	public Called getCalled(){
 		Called r = null;
-		for (Role role : roles){
+		for (Role role : providedRole){
 			if (role instanceof Called){
 				r = (Called) role;
 			}

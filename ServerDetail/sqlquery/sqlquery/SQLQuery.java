@@ -17,7 +17,7 @@ public class SQLQuery extends PrimitivConnector{
 	
 	public Caller getCaller(){
 		Caller p = null;
-		for (Role role : roles){
+		for (Role role : providedRole){
 			if (role instanceof Caller){
 				p = (Caller) role;
 			}
@@ -27,7 +27,7 @@ public class SQLQuery extends PrimitivConnector{
 
 	public Callee getCallee(){
 		Callee p = null;
-		for (Role role : roles){
+		for (Role role : requiredRole){
 			if (role instanceof Callee){
 				p = (Callee) role;
 			}

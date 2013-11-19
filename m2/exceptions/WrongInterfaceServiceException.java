@@ -7,39 +7,39 @@ import enumerations.InterfaceType;
  * @author Niiner-PC
  *
  */
-public class WrongServiceException extends Exception{
+public class WrongInterfaceServiceException extends Exception{
 
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Create a new instance of {@link WrongServiceException}
+	 * Create a new instance of {@link WrongInterfaceServiceException}
 	 */
-    public WrongServiceException() {
+    public WrongInterfaceServiceException() {
         super();
     }
     
 	/** 
-	* Create a new instance of {@link WrongServiceException}
+	* Create a new instance of {@link WrongInterfaceServiceException}
 	* @param message The message which details the {@link Exception}
 	*/  
-    public WrongServiceException(String message) {
+    public WrongInterfaceServiceException(String message) {
         super(message);
     }
     
 	/** 
-	* Create a new instance of {@link WrongServiceException}
+	* Create a new instance of {@link WrongInterfaceServiceException}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception} 
 	*/  
-    public WrongServiceException(Throwable cause) {
+    public WrongInterfaceServiceException(Throwable cause) {
         super(cause);
     }
     
 	/** 
-	* Create a new instance of {@link WrongServiceException}
+	* Create a new instance of {@link WrongInterfaceServiceException}
 	* @param message The message which details the {@link Exception}
 	* @param cause The {@link Exception} which is the origin of this {@link Exception}  
 	*/
-    public WrongServiceException(String message, Throwable cause) {
+    public WrongInterfaceServiceException(String message, Throwable cause) {
         super(message, cause);
     }
 }
