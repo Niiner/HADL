@@ -18,6 +18,13 @@ import exceptions.WrongInterfacePortException;
 import exceptions.WrongInterfaceRoleException;
 import exceptions.WrongInterfaceServiceException;
 
+/**
+ * This class provides an implementation for a Configuration.
+ * A configuration is composed by Ports/Roles and Services which can be required or provided.
+ * It is also composed by Components and Connectors
+ * @author E096393A
+ *
+ */
 public class Configuration implements IComponentType, IConnectorType {
 	
 	protected List<IComponentType> childComponent = new ArrayList<IComponentType>();
@@ -50,14 +57,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addProvidedPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
 		if(port==null){
-			throw new NoSuchPortException("Ce port n'existe pas ou n'a pas �t� instanci�!");
+			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié!");
 		}
 		
 		if(port.getInterfaceType() == InterfaceType.Provided){
 			this.providedPorts.add(port);
 		}
 		else{
-			throw new WrongInterfacePortException("Ce port dispose du mauvais type d'interface !");
+			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Provided !");
 		}
 		
 	}
@@ -70,14 +77,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addRequiredPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
 		if(port==null){
-			throw new NoSuchPortException("Ce port n'existe pas ou n'a pas �t� instanci�!");
+			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié!");
 		}
 		
 		if(port.getInterfaceType() == InterfaceType.Required){
 			this.requiredPorts.add(port);
 		}
 		else{
-			throw new WrongInterfacePortException("Ce port dispose du mauvais type d'interface !");
+			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Required !");
 		}		
 	}
 	
@@ -89,14 +96,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addProvidedService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
 		if(service==null){
-			throw new NoSuchServiceException("Ce service n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(service.getInterfaceType() == InterfaceType.Provided){
 			this.providedServices.add(service);
 		}
 		else{
-			throw new WrongInterfaceServiceException("Ce service dispose du mauvais type d'interface !");
+			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Provided !");
 		}		
 	}
 
@@ -108,14 +115,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addRequiredService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
 		if(service==null){
-			throw new NoSuchServiceException("Ce service n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(service.getInterfaceType() == InterfaceType.Required){
 			this.requiredServices.add(service);
 		}
 		else{
-			throw new WrongInterfaceServiceException("Ce service dispose du mauvais type d'interface !");
+			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Required !");
 		}			
 	}
 	
@@ -127,14 +134,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addProvidedRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchRoleException("Le rôle " + role.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Provided){
 			this.providedRole.add(role);
 		}
 		else{
-			throw new WrongInterfaceRoleException("Ce role dispose du mauvais type d'interface !");
+			throw new WrongInterfaceRoleException("Le rôle " + role.getName() + " doit disposer d'une interface de type Provided !");
 		}		
 	}
 
@@ -146,14 +153,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	 */
 	public void addRequiredRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchRoleException("Le rôle " + role.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Required){
 			this.requiredRole.add(role);
 		}
 		else{
-			throw new WrongInterfaceRoleException("Ce role dispose du mauvais type d'interface !");
+			throw new WrongInterfaceRoleException("Le rôle " + role.getName() + " doit disposer d'une interface de type Required !");
 		}		
 	}
 

@@ -14,6 +14,7 @@ import exceptions.WrongInterfaceServiceException;
 
 /**
  * This class provides an implementation for a Component
+ * A component is composed by Ports and Services which can be required or provided, it can also comports properties
  * @author Niiner-PC
  *
  */
@@ -57,16 +58,15 @@ public class Component implements IComponentType {
 	 */
 	public void addProvidedPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
 		if(port==null){
-			throw new NoSuchPortException("Ce port n'existe pas ou n'a pas été instancié!");
+			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(port.getInterfaceType() == InterfaceType.Provided){
 			this.providedPorts.add(port);
 		}
 		else{
-			throw new WrongInterfacePortException("Ce port dispose du mauvais type d'interface !");
-		}
-		
+			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Provided !");
+		}		
 	}
 	
 	/**
@@ -77,14 +77,14 @@ public class Component implements IComponentType {
 	 */
 	public void addRequiredPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
 		if(port==null){
-			throw new NoSuchPortException("Ce port n'existe pas ou n'a pas été instancié!");
+			throw new NoSuchPortException("Le port " + port.getName() + "n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(port.getInterfaceType() == InterfaceType.Required){
 			this.requiredPorts.add(port);
 		}
 		else{
-			throw new WrongInterfacePortException("Ce port dispose du mauvais type d'interface !");
+			throw new WrongInterfacePortException("Ce port " + port.getName() + " doit disposer d'une interface de type Required !");
 		}		
 	}
 	
@@ -96,14 +96,14 @@ public class Component implements IComponentType {
 	 */
 	public void addProvidedService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
 		if(service==null){
-			throw new NoSuchServiceException("Ce service n'existe pas ou n'a pas été instancié !");
+			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(service.getInterfaceType() == InterfaceType.Provided){
 			this.providedServices.add(service);
 		}
 		else{
-			throw new WrongInterfaceServiceException("Ce service dispose du mauvais type d'interface !");
+			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Provided !");
 		}		
 	}
 
@@ -115,14 +115,14 @@ public class Component implements IComponentType {
 	 */
 	public void addRequiredService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
 		if(service==null){
-			throw new NoSuchServiceException("Ce service n'existe pas ou n'a pas été instancié !");
+			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
 		
 		if(service.getInterfaceType() == InterfaceType.Required){
 			this.requiredServices.add(service);
 		}
 		else{
-			throw new WrongInterfaceServiceException("Ce service dispose du mauvais type d'interface !");
+			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Required !");
 		}			
 	}
 

@@ -2,13 +2,13 @@ package clearanceRequest.clearanceRequest;
 import clearanceRequest.glues.Glue4;
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
-import containers.PrimitivConnector;
+import containers.PrimitiveConnector;
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
 
-public class ClearanceRequest extends PrimitivConnector{
+public class ClearanceRequest extends PrimitiveConnector{
 	
 	public ClearanceRequest(String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(name);
