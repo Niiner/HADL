@@ -1,8 +1,6 @@
 package elements.links;
 
 import elements.ports.Port;
-import elements.ports.Role;
-import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
 
 /**
@@ -34,4 +32,33 @@ public class BindingLink extends Link{
 					" et un Port Fourni");
 		}
 	}
+
+	/**
+	 * @return the fromPortConfig
+	 */
+	public Port getFromPortConfig() {
+		return fromPortConfig;
+	}
+
+	/**
+	 * @param fromPortConfig the fromPortConfig to set
+	 */
+	public void setFromPortConfig(Port fromPortConfig) {
+		this.fromPortConfig = fromPortConfig;
+	}
+
+	/**
+	 * @return the toPortComp
+	 */
+	public Port getToPortComp() {
+		return toPortComp;
+	}
+
+	/**
+	 * @param toPortComp the toPortComp to set
+	 */
+	public void setToPortComp(Port toPortComp) {
+		this.toPortComp = toPortComp;
+	}
+	
 }

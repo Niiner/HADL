@@ -9,4 +9,7 @@ public abstract class Port extends PhysicalInterface {
 		super(name, interfaceT, visibilityT);
 	}
 
+	public void receiveData(Object msg){
+		System.out.println("On arrive dans le port " + this.name);
+	}
 }

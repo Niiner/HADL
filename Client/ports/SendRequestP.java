@@ -12,7 +12,7 @@ public class SendRequestP extends SynchronPort {
 	}
 	
 	public void receiveRequest(String msg){
-		System.out.println("Entrer dans le port");
+		System.out.println("Entrer dans le port " + this.name);
 		setChanged();
 		notifyObservers();
 	}

@@ -318,14 +318,6 @@ public class Configuration implements IComponentType, IConnectorType {
 		this.links = links;
 	}
 	
-	public void transfertData(Observable observable, Object object){
-		for (Link link : links){
-			if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)){
-				((AttachmentLink) link).getToRoleConn().receiveData(object);
-			}
-		}
-	}
-	
 	public void addLink(Link link){
 		this.links.add(link);
 	}

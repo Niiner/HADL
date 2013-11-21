@@ -2,9 +2,9 @@ package sqlquery.glues;
 
 import elements.ports.Glue;
 
-public class SQLQueryGlue extends Glue{
+public class Glue2 extends Glue{
 
-	public SQLQueryGlue(String name) {
+	public Glue2(String name) {
 		super(name);
 	}
 

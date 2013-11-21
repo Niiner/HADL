@@ -20,6 +20,7 @@ import exceptions.WrongInterfaceRoleException;
 public class PrimitiveConnector implements IConnectorType {
 	
 	protected String name;
+	protected Configuration configuration;
 	
 	protected List<Properties> properties = new ArrayList<Properties>();	
 	protected List<Role> providedRole = new ArrayList<Role>();
@@ -30,7 +31,8 @@ public class PrimitiveConnector implements IConnectorType {
 	 * Constructor
 	 * @param name
 	 */
-	public PrimitiveConnector(String name){
+	public PrimitiveConnector(Configuration config, String name){
+		this.configuration = config;
 		this.name = name;
 	}
 
@@ -42,7 +44,7 @@ public class PrimitiveConnector implements IConnectorType {
 	 */
 	public void addProvidedRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Provided){
@@ -61,7 +63,7 @@ public class PrimitiveConnector implements IConnectorType {
 	 */
 	public void addRequiredRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
 		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas �t� instanci� !");
+			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
 		}
 		
 		if(role.getInterfaceType() == InterfaceType.Required){

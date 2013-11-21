@@ -23,38 +23,38 @@ public class ServerDetail extends Configuration {
 	private ConnectionManager connectionManager;
 	private Database database;
 	private SecurityManager securityManager;
-	
+
 	private SQLQuery sqlQuery;
 	private SecurityQuery securityQuery;
 	private ClearanceRequest clearanceRequest;
-	
+
 	private A3 a3;
 	private A4 a4;
 	private A5 a5;
 	private A6 a6;
 	private A7 a7;
 	private A8 a8;
-	
+
 	public ServerDetail(String name) 
 			throws NoSuchPortException, WrongInterfacePortException, 
 			NoSuchRoleException, WrongInterfaceRoleException, 
 			NewAttachmentNotAllowed {
-		
+
 		super(name);
 		connectionManager = new ConnectionManager(this, "connectionManager");
 		database = Database.getInstance(this);
 		securityManager = new SecurityManager(this, "securityManager");
-		
-		sqlQuery = new SQLQuery("SQLQuery");
-		securityQuery = new SecurityQuery("SecurityQuery");
-		clearanceRequest = new ClearanceRequest("clearanceRequest");
-		
-		 a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());
-		 a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());
-		 a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor());
-		 a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
-		 a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
-		 a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
+
+		sqlQuery = new SQLQuery(this, "SQLQuery");
+		securityQuery = new SecurityQuery(this, "SecurityQuery");
+		clearanceRequest = new ClearanceRequest(this, "clearanceRequest");
+
+		a3 = new A3("A3", connectionManager.getDbQuery(), sqlQuery.getCaller());
+		a4 = new A4("A4", database.getQuery(), sqlQuery.getCallee());
+		a5 = new A5("A5", database.getSecurityManagement(), securityQuery.getRequestor());
+		a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
+		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
+		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
 	}
 
 	public ConnectionManager getConnectionManager() {
@@ -64,6 +64,6 @@ public class ServerDetail extends Configuration {
 	public void setConnectionManager(ConnectionManager connectionManager) {
 		this.connectionManager = connectionManager;
 	}
-	
-	
+
+
 }

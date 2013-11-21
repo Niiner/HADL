@@ -1,7 +1,9 @@
 package sqlquery.sqlquery;
 
+import sqlquery.glues.Glue2;
 import sqlquery.roles.Callee;
 import sqlquery.roles.Caller;
+import containers.Configuration;
 import containers.PrimitiveConnector;
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
@@ -9,18 +11,34 @@ import exceptions.WrongInterfaceRoleException;
 
 public class SQLQuery extends PrimitiveConnector{
 
+	private Caller caller;
+	private Callee callee;
+	private Glue2 glue2;
+
 	/**
 	 * Constructor
 	 * @param name Name of the SQLQuery object
 	 * @throws WrongInterfaceRoleException 
 	 * @throws NoSuchRoleException 
 	 */
-	public SQLQuery(String name) throws NoSuchRoleException, WrongInterfaceRoleException {
-		super(name);
-		this.addRequiredRole(new Callee("Callee"));
-		this.addProvidedRole(new Caller("Caller"));
+	public SQLQuery(Configuration config, String name) throws NoSuchRoleException, WrongInterfaceRoleException {
+		super(config, name);
+		// Instantiate Role and Glue
+		caller = new Caller("Caller");
+		callee = new Callee("Callee");
+		glue2 = new Glue2("Glue2");
+		// Add Role to the Glue and vice versa
+		glue2.addRole(callee);
+		glue2.addRole(caller);
+		// Add Role and Glue to RPC
+		this.addProvidedRole(caller);
+		this.addRequiredRole(callee);
+		this.glues.add(glue2);
 	}
-	
+
+	/**
+	 * @return the role {@link Caller} of {@link SQLQuery}
+	 */
 	public Caller getCaller(){
 		Caller p = null;
 		for (Role role : providedRole){
@@ -31,6 +49,9 @@ public class SQLQuery extends PrimitiveConnector{
 		return p;
 	}
 
+	/**
+	 * @return the role {@link Callee} of {@link SQLQuery}
+	 */
 	public Callee getCallee(){
 		Callee p = null;
 		for (Role role : requiredRole){

@@ -1,7 +1,9 @@
 package securityquery.securityquery;
 
+import securityquery.glues.Glue3;
 import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
+import containers.Configuration;
 import containers.PrimitiveConnector;
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
@@ -9,12 +11,28 @@ import exceptions.WrongInterfaceRoleException;
 
 public class SecurityQuery extends PrimitiveConnector{
 
-	public SecurityQuery(String name) throws NoSuchRoleException, WrongInterfaceRoleException {
-		super(name);
-		this.addProvidedRole(new SecurityManagerR("SecurityManagerR"));
-		this.addRequiredRole(new Requestor("Requestor"));
+	private SecurityManagerR securityManagerR;
+	private Requestor requestor;
+	private Glue3 glue3;
+
+	public SecurityQuery(Configuration config, String name) throws NoSuchRoleException, WrongInterfaceRoleException {
+		super(config, name);
+		// Instantiate Role and Glue
+		securityManagerR = new SecurityManagerR("SecurityManagerR");
+		requestor = new Requestor("Requestor");
+		glue3 = new Glue3("Glue3");
+		// Add Role to the Glue and vice versa
+		glue3.addRole(securityManagerR);
+		glue3.addRole(requestor);
+		// Add Role and Glue to RPC
+		this.addProvidedRole(securityManagerR);
+		this.addRequiredRole(requestor);
+		this.glues.add(glue3);
 	}
-	
+
+	/**
+	 * @returns the role {@link SecurityManagerR} of {@link SecurityQuery}
+	 */
 	public SecurityManagerR getSecurityManagerR(){
 		SecurityManagerR p = null;
 		for (Role role : providedRole){
@@ -25,6 +43,9 @@ public class SecurityQuery extends PrimitiveConnector{
 		return p;
 	}
 
+	/**
+	 * @return the role {@link Requestor} of {@link SecurityQuery}
+	 */
 	public Requestor getRequestor(){
 		Requestor p = null;
 		for (Role role : requiredRole){
@@ -34,5 +55,5 @@ public class SecurityQuery extends PrimitiveConnector{
 		}
 		return p;
 	}
-	
+
 }

@@ -2,7 +2,6 @@ package elements.links;
 
 import elements.ports.Port;
 import elements.ports.Role;
-import enumerations.InterfaceType;
 import exceptions.NewAttachmentNotAllowed;
 
 /**

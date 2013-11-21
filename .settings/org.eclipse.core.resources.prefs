@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//m2/containers/Component.java=UTF-8
 encoding//m2/containers/Configuration.java=UTF-8
+encoding//m2/containers/PrimitiveConnector.java=UTF-8
 encoding//m2/elements/links/AttachmentLink.java=UTF-8
+encoding//m2/elements/links/BindingLink.java=UTF-8
 encoding/README.md=UTF-8

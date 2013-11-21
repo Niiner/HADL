@@ -1,6 +1,10 @@
+import java.util.Observable;
+
 import links.A1;
 import links.A2;
 import containers.Configuration;
+import elements.links.AttachmentLink;
+import elements.links.Link;
 import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
@@ -25,7 +29,7 @@ public class SystemClientServer extends Configuration {
 		super(name);
 		c1 = new Client(this, "FlorianPC");
 		s = new Server(this, "LaisseLibreCoursATonImagination");
-		rpc = new RPC("RPCConnector");
+		rpc = new RPC(this, "RPCConnector");
 		a1 = new A1("A1", c1.getSendRequestP(), rpc.getCaller());
 		a2 = new A2("A2", s.getReceiveRequestP(), rpc.getCalled());
 		this.addLink(a1);
@@ -38,6 +42,17 @@ public class SystemClientServer extends Configuration {
 
 	public void setC1(Client c1) {
 		this.c1 = c1;
+	}
+	
+	public void transfertData(Observable observable, Object object){
+		for (Link link : links){
+			if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)){
+				((AttachmentLink) link).getToRoleConn().receiveData(object);
+			}
+			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)) {
+				((AttachmentLink) link).getFromPortComp().receiveData(object);
+			}
+		}
 	}
 
 }
