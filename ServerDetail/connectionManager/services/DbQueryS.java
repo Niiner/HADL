@@ -1,6 +1,6 @@
 package connectionManager.services;
 
-import ports.SendRequestP;
+import connectionManager.ports.DbQuery;
 import elements.ports.Port;
 import elements.ports.Service;
 import enumerations.InterfaceType;
@@ -12,15 +12,15 @@ public class DbQueryS extends Service {
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 	
-//	public void sendRequest(String msg){
-//		System.out.println("Appel au service");
-//		SendRequestP usedPort = null;
-//		for (Port port: this.getUsedPorts()){
-//			if (port instanceof SendRequestP){
-//				usedPort = (SendRequestP) port;
-//			}
-//		}
-//		usedPort.receiveRequest(msg);
-//	}
+	public void sendRequest(Object msg){
+		System.out.println("Appel au service");
+		DbQuery usedPort = null;
+		for (Port port: this.getUsedPorts()){
+			if (port instanceof DbQuery){
+				usedPort = (DbQuery) port;
+			}
+		}
+		usedPort.receiveRequest(msg);
+	}
 
 }

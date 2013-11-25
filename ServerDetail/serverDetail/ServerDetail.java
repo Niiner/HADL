@@ -19,6 +19,7 @@ import connectionManager.connectionManager.ConnectionManager;
 import containers.Component;
 import containers.Configuration;
 import database.database.Database;
+import elements.links.AttachmentLink;
 import elements.links.BindingLink;
 import elements.links.Link;
 import exceptions.NewAttachmentNotAllowed;
@@ -90,6 +91,9 @@ public class ServerDetail extends Configuration {
 		for (Link link : links){
 			if (observable instanceof SendRequestP2 && link instanceof BindingLink && ((BindingLink) link).getFromPortConfig() instanceof ReceiveRequestP){
 				((BindingLink) link).getToPortComp().receiveData(object);
+			}
+			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)) {
+				System.out.println("on passe pas encore");
 			}
 		}
 	}

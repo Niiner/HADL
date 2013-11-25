@@ -35,6 +35,7 @@ public class ConnectionManager extends Component implements Observer{
 		this.dbQueryS.addPort(dbQuery);
 		
 		externalSocket.addObserver(this);
+		dbQuery.addObserver(this);
 	}
 	
 	public DbQuery getDbQuery(){
@@ -66,12 +67,31 @@ public class ConnectionManager extends Component implements Observer{
 		}
 		return p;
 	}
+	
+
+	/**
+	 * @return the dbQueryS
+	 */
+	public DbQueryS getDbQueryS() {
+		return dbQueryS;
+	}
+
+	/**
+	 * @param dbQueryS the dbQueryS to set
+	 */
+	public void setDbQueryS(DbQueryS dbQueryS) {
+		this.dbQueryS = dbQueryS;
+	}
 
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("ConnectionManager notify");
-		if (observable instanceof SendRequestP){
-			((ServerDetail) this.configuration).transfertData(observable, object);
+		if (observable instanceof ExternalSocket){
+			this.getDbQueryS().sendRequest(object);
 		}
+		else if (observable instanceof DbQuery){
+			System.out.println("fini");
+		}
+//		((ServerDetail) this.configuration).transfertData(observable, object);
 	}
 }
