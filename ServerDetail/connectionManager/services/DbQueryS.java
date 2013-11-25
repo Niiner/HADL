@@ -13,7 +13,7 @@ public class DbQueryS extends Service {
 	}
 	
 	public void sendRequest(Object msg){
-		System.out.println("Appel au service");
+		System.out.println("[ CALLING SERVICE ]");
 		DbQuery usedPort = null;
 		for (Port port: this.getUsedPorts()){
 			if (port instanceof DbQuery){

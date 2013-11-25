@@ -104,7 +104,7 @@ public class Server extends Component implements Observer{
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("Server notify");
+		System.out.println("[ ----- Server notify ----- ]");
 		if (observable instanceof ReceiveRequestP){
 			// Call the provided service in server
 			this.getSendRequestS2().sendRequest(object);

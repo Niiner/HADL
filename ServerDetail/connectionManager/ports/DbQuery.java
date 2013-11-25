@@ -12,7 +12,7 @@ public class DbQuery extends SynchronPort{
 	}
 	
 	public void receiveRequest(Object msg){
-		System.out.println("Entrer dans le port " + this.name);
+		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
 		notifyObservers();
 	}

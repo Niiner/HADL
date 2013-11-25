@@ -68,7 +68,7 @@ public class Client extends Component implements Observer{
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("Client notify");
+		System.out.println("[ ----- Client notify ----- ]");
 		if (observable instanceof SendRequestP){
 			((SystemClientServer) this.configuration).transfertData(observable, object);
 		}

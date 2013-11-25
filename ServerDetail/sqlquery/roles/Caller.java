@@ -13,7 +13,7 @@ public class Caller extends Role{
 	}
 	
 	public void receiveData(Object msg){
-		System.out.println("On arrive dans le role caller");
+		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()){
 			if (glue instanceof Glue2){
 				((Glue2) glue).receiveRequest(msg);

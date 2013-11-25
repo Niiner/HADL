@@ -14,7 +14,7 @@ public class Query extends SynchronPort {
 	}
 
 	public void receiveData(Object msg){
-		System.out.println("Entrer dans le port " + this.name);
+		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
 		notifyObservers();
 	}

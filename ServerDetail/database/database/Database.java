@@ -40,16 +40,22 @@ public class Database extends Component implements Observer{
 	private Database(Configuration config, String name)
 			throws NoSuchPortException, WrongInterfacePortException {
 		super(config, name);
+
+		// Instanciation
 		securityManagement = new SecurityManagement("SecurityManagement");
 		securityManagementS = new SecurityManagementS("SecurityManagementS");
-		query = new Query("Query");
+		query = new Query("Query");		
+
+		// Add ports and services
 		this.addProvidedPort(securityManagement);
 		this.addProvidedPort(query);
 		this.securityManagementS.addPort(securityManagement);
 		
+		// Add Observers
 		query.addObserver(this);
 		securityManagement.addObserver(this);
 
+		// Connection to Database
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); // loads the driver
 			this.setConnection(DriverManager.getConnection(
@@ -209,7 +215,7 @@ public class Database extends Component implements Observer{
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("Database notify");
+		System.out.println("[ ----- Database notify ----- ]");
 		if (observable instanceof Query){
 			this.getSecurityManagementS().sendRequest(object);
 		}

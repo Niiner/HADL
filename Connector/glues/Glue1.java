@@ -11,7 +11,7 @@ public class Glue1 extends Glue{
 	}
 	
 	public void receiveRequest(Object msg){
-		System.out.println("Entrer dans la glue " + this.name);
+		System.out.println("[ENTRY] in glue " + this.name);
 		for (Role role : this.getRoles()){
 			if (role instanceof Called){
 				((Called) role).receiveRequest(msg);

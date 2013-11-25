@@ -1,4 +1,9 @@
 package clearanceRequest.clearanceRequest;
+import java.util.Observable;
+import java.util.Observer;
+
+import serverDetail.ServerDetail;
+import sqlquery.roles.Callee;
 import clearanceRequest.glues.Glue4;
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
@@ -9,7 +14,7 @@ import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
 
-public class ClearanceRequest extends PrimitiveConnector{
+public class ClearanceRequest extends PrimitiveConnector implements Observer{
 
 	private Grantor grantor;
 	private Requestor requestor;
@@ -17,13 +22,19 @@ public class ClearanceRequest extends PrimitiveConnector{
 
 	public ClearanceRequest(Configuration config, String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(config, name);
+		
 		// Instantiate Role and Glue
 		grantor = new Grantor("Grantor");
 		requestor = new Requestor("Requestor");
 		glue4 = new Glue4("Glue4");
+		
 		// Add Role to the Glue and vice versa
 		glue4.addRole(grantor);
 		glue4.addRole(requestor);
+		
+		// Observer 
+		requestor.addObserver(this);
+		
 		// Add Role and Glue to RPC
 		this.addRequiredRole(grantor);
 		this.addProvidedRole(requestor);
@@ -54,5 +65,13 @@ public class ClearanceRequest extends PrimitiveConnector{
 			}
 		}
 		return r;
+	}
+
+	@Override
+	public void update(Observable observable, Object object) {
+		System.out.println("[ ----- ClearanceRequest notify ----- ]");
+		if (observable instanceof Requestor){
+			((ServerDetail) this.configuration).transfertData(observable, object);
+		}
 	}
 }

@@ -13,7 +13,7 @@ public class SendRequestS extends Service {
 	}
 	
 	public void sendRequest(String msg){
-		System.out.println("Appel au service");
+		System.out.println("[ Calling service from Client to send the request ]");
 		SendRequestP usedPort = null;
 		for (Port port: this.getUsedPorts()){
 			if (port instanceof SendRequestP){

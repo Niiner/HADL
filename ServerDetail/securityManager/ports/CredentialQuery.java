@@ -11,6 +11,9 @@ public class CredentialQuery extends SynchronPort{
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 	
-	
-
+	public void receiveData(Object msg){
+		System.out.println("[ENTRY] in port " + this.name);
+		setChanged();
+		notifyObservers();
+	}
 }

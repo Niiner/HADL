@@ -84,7 +84,7 @@ public class ConnectionManager extends Component implements Observer{
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("ConnectionManager notify");
+		System.out.println("[ ----- ConnectionManager notify ----- ]");
 		if (observable instanceof ExternalSocket){
 			this.getDbQueryS().sendRequest(object);
 		}

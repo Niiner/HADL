@@ -10,4 +10,10 @@ public class SecurityManagerR extends Role{
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	public void receiveRequest(Object msg){
+		System.out.println("[ENTRY] in role " + this.name);
+		setChanged();
+		notifyObservers();
+	}
+
 }

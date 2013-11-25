@@ -13,7 +13,7 @@ public class SecurityManagementS extends Service {
 	}
 	
 	public void sendRequest(Object msg){
-		System.out.println("Appel au service fourni du server pour renvoyer la requete");
+		System.out.println("[ Calling service from Securitymanagement to send the request]");
 		SecurityManagement usedPort = null;
 		for (Port port: this.getUsedPorts()){
 			if (port instanceof SecurityManagement){

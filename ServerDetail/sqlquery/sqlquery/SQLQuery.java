@@ -27,15 +27,19 @@ public class SQLQuery extends PrimitiveConnector implements Observer{
 	 */
 	public SQLQuery(Configuration config, String name) throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);
+		
 		// Instantiate Role and Glue
 		caller = new Caller("Caller");
 		callee = new Callee("Callee");
 		glue2 = new Glue2("Glue2");
+		
 		// Add Role to the Glue and vice versa
 		glue2.addRole(callee);
 		glue2.addRole(caller);
+		
 		// SQLQUery listen the Callee
 		callee.addObserver(this);
+		
 		// Add Role and Glue to RPC
 		this.addProvidedRole(caller);
 		this.addRequiredRole(callee);
@@ -70,7 +74,7 @@ public class SQLQuery extends PrimitiveConnector implements Observer{
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("SQLQuery notify");
+		System.out.println("[ ----- SqlQuery notify ----- ]");
 		if (observable instanceof Callee){
 			((ServerDetail) this.configuration).transfertData(observable, object);
 		}

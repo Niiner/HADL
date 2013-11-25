@@ -11,7 +11,7 @@ public class Called extends Role{
 	}
 	
 	public void receiveRequest(Object msg){
-		System.out.println("Entrer dans le role " + this.name);
+		System.out.println("[ENTRY] in role " + this.name);
 		setChanged();
 		notifyObservers();
 	}
