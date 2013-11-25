@@ -1,4 +1,5 @@
 package connector;
+
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;

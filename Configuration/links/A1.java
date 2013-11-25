@@ -1,9 +1,9 @@
 package links;
 
-import elements.links.AttachmentLink;
-import exceptions.NewAttachmentNotAllowed;
 import ports.SendRequestP;
 import roles.Caller;
+import elements.links.AttachmentLink;
+import exceptions.NewAttachmentNotAllowed;
 
 public class A1 extends AttachmentLink{
 	

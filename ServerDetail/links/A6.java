@@ -1,9 +1,9 @@
 package links;
 
-import elements.links.AttachmentLink;
-import exceptions.NewAttachmentNotAllowed;
 import securityManager.ports.CredentialQuery;
 import securityquery.roles.SecurityManagerR;
+import elements.links.AttachmentLink;
+import exceptions.NewAttachmentNotAllowed;
 
 /**
  * This class provides an implementation for an attachment link A6

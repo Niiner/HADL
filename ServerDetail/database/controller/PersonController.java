@@ -65,7 +65,7 @@ public class PersonController {
 	 * @throws NoSuchPortException 
 	 */
 	public List<Person> getAll() throws SQLException, NoSuchPortException, WrongInterfacePortException{
-		List<Person> persons = new ArrayList();
+		List<Person> persons = new ArrayList<Person>();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
 		String sqlquery = "SELECT * FROM Person;";
@@ -87,7 +87,7 @@ public class PersonController {
 	 * @throws NoSuchPortException 
 	 */
 	public List<Person> getPersonById(int id) throws SQLException, NoSuchPortException, WrongInterfacePortException {
-		List<Person> persons = new ArrayList();
+		List<Person> persons = new ArrayList<Person>();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
 		String sqlquery = "SELECT * FROM Person "

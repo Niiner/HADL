@@ -121,7 +121,7 @@ public class Database extends Component implements Observer{
 	 * @throws WrongInterfacePortException
 	 */
 	public List<Person> receiveRequest(String message) throws SQLException, NoSuchPortException, WrongInterfacePortException{
-			List<Person> persons = new ArrayList();
+			List<Person> persons = new ArrayList<Person>();
 
 			Statement s = Database.getInstance().getConnection().createStatement();
 			String sqlquery = message;
@@ -152,7 +152,6 @@ public class Database extends Component implements Observer{
 	public static void main(String args[]) throws NoSuchPortException,
 			WrongInterfacePortException {
 		Database.getInstance();
-		System.out.println("Je lance la DB coco !");
 	}
 
 	/**

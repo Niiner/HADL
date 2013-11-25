@@ -10,7 +10,7 @@ import exceptions.WrongInterfacePortException;
 
 public class SecurityManager extends Component{
 	
-	 // Implémente-t'on cette daube ?
+	 // Implï¿½mente-t'on cette daube ?
 	 // private java.lang.SecurityManager sm = new java.lang.SecurityManager();
 	
 	public SecurityManager(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException{
