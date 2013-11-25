@@ -26,7 +26,7 @@ public class SystemClientServer extends Configuration {
 			throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, 
 			WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException, 
 			NewAttachmentNotAllowed, NewBindingNotAllowed{
-		super(name);
+		super(null, name);
 		c1 = new Client(this, "FlorianPC");
 		s = new Server(this, "LaisseLibreCoursATonImagination");
 		rpc = new RPC(this, "RPCConnector");

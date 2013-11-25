@@ -10,6 +10,6 @@ public abstract class Port extends PhysicalInterface {
 	}
 
 	public void receiveData(Object msg){
-		System.out.println("On arrive dans le port " + this.name);
+		System.out.println("Actual.toBeOverridden()");
 	}
 }

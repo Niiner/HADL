@@ -1,8 +1,12 @@
+import java.util.Observable;
+import java.util.Observer;
+
 import links.B1;
 import ports.ReceiveRequestP;
 import ports.SendRequestP;
 import ports.SendRequestP2;
 import services.ReceiveRequestS;
+import services.SendRequestS2;
 import containers.Component;
 import containers.Configuration;
 import elements.ports.Port;
@@ -21,13 +25,14 @@ import exceptions.WrongInterfaceServiceException;
  * @author BulFag
  *
  */
-public class Server extends Component{
+public class Server extends Component implements Observer{
 	
 	private ServerDetail serverDetail;
 	private Port receiveRequestP;
 	private Port sendRequestP2; 
 	private Service receiveRequestS;
-	private B1 b1;
+	private Service sendRequestS2;
+//	private B1 b1;
 	
 	/**
 	 * Constructor
@@ -49,19 +54,25 @@ public class Server extends Component{
 		super(config, name);
 		
 		// Instanciation 
-		this.serverDetail = new ServerDetail("ServerDetail");
+		this.serverDetail = new ServerDetail(this, "ServerDetail");
 		this.receiveRequestP = new ReceiveRequestP("ReceiveRequestP");
 		this.sendRequestP2 = new SendRequestP2("ReceiveRequestP"); 
 		this.receiveRequestS = new ReceiveRequestS("ReceiveRequestS");
+		this.sendRequestS2 = new SendRequestS2("SendRequestS2");
+		
+		// Server listen the receiveRequestP
+		receiveRequestP.addObserver(this);
 		
 		// Adding ports and services
 		this.addRequiredPort(receiveRequestP);
 		this.addProvidedPort(sendRequestP2);
 		this.addRequiredService(receiveRequestS);
+		this.addProvidedService(sendRequestS2);
 		this.receiveRequestS.addPort(receiveRequestP);
+		this.sendRequestS2.addPort(sendRequestP2);
 		
 		// Create a new Binding link 
-		this.b1 = new B1("B1", this.getReceiveRequestP() , serverDetail.getConnectionManager().getExternalSocket());
+//		this.b1 = new B1("B1", this.getReceiveRequestP() , serverDetail.getConnectionManager().getExternalSocket());
 	}
 	
 	/**
@@ -76,5 +87,32 @@ public class Server extends Component{
 			}
 		}
 		return p;
+	}
+	
+	/**
+	 * Getter
+	 * @return {@link SendRequestP2} The sendRequest service of the server
+	 */
+	public SendRequestS2 getSendRequestS2(){
+		SendRequestS2 s = null;
+		for (Service service : providedServices){
+			if (service instanceof SendRequestS2){
+				s = (SendRequestS2) service;
+			}
+		}
+		return s;
+	}
+
+	@Override
+	public void update(Observable observable, Object object) {
+		System.out.println("Server notify");
+		if (observable instanceof ReceiveRequestP){
+			// Call the provided service in server
+			this.getSendRequestS2().sendRequest(object);
+		}
+		if (observable instanceof SendRequestP2){
+			// Call the configuration to find the binding link
+			this.serverDetail.transfertData(observable, object);
+		}
 	}
 }

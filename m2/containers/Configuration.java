@@ -2,9 +2,7 @@ package containers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
-import elements.links.AttachmentLink;
 import elements.links.Link;
 import elements.ports.Port;
 import elements.ports.Properties;
@@ -19,149 +17,186 @@ import exceptions.WrongInterfaceRoleException;
 import exceptions.WrongInterfaceServiceException;
 
 /**
- * This class provides an implementation for a Configuration.
- * A configuration is composed by Ports/Roles and Services which can be required or provided.
- * It is also composed by Components and Connectors
+ * This class provides an implementation for a Configuration. A configuration is
+ * composed by Ports/Roles and Services which can be required or provided. It is
+ * also composed by Components and Connectors
+ * 
  * @author E096393A
- *
+ * 
  */
 public class Configuration implements IComponentType, IConnectorType {
-	
+
 	protected List<IComponentType> childComponent = new ArrayList<IComponentType>();
 	protected List<IConnectorType> childConnector = new ArrayList<IConnectorType>();
-	
+
 	protected String name;
-	
-	protected List<Properties> properties = new ArrayList<Properties>();	
+	protected Component parent;
+
+	protected List<Properties> properties = new ArrayList<Properties>();
 	protected List<Port> providedPorts = new ArrayList<Port>();
 	protected List<Port> requiredPorts = new ArrayList<Port>();
 	protected List<Service> providedServices = new ArrayList<Service>();
-	protected List<Service> requiredServices = new ArrayList<Service>();	
+	protected List<Service> requiredServices = new ArrayList<Service>();
 	protected List<Role> providedRole = new ArrayList<Role>();
-	protected List<Role> requiredRole = new ArrayList<Role>();	
+	protected List<Role> requiredRole = new ArrayList<Role>();
 	protected List<Link> links = new ArrayList<Link>();
-	
+
 	/**
 	 * Constructor
-	 * @param name The name of the configuration
+	 * 
+	 * @param name
+	 *            The name of the configuration
 	 */
-	public Configuration(String name){
+	public Configuration(Component parent, String name) {
 		this.name = name;
+		this.parent = parent;
 	}
 
 	/**
-	 * Adding a provided {@link Port} into the provided ports' list of the {@link Configuration}
-	 * @param port The {@link Port} to add
-	 * @throws NoSuchPortException 
-	 * @throws WrongInterfacePortException 
+	 * Adding a provided {@link Port} into the provided ports' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param port
+	 *            The {@link Port} to add
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
 	 */
-	public void addProvidedPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
-		if(port==null){
-			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié!");
+	public void addProvidedPort(Port port) throws NoSuchPortException,
+			WrongInterfacePortException {
+		if (port == null) {
+			throw new NoSuchPortException("Le port " + port.getName()
+					+ " n'existe pas ou n'a pas été instancié!");
 		}
-		
-		if(port.getInterfaceType() == InterfaceType.Provided){
+
+		if (port.getInterfaceType() == InterfaceType.Provided) {
 			this.providedPorts.add(port);
+		} else {
+			throw new WrongInterfacePortException("Le port " + port.getName()
+					+ " doit disposer d'une interface de type Provided !");
 		}
-		else{
-			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Provided !");
-		}
-		
+
 	}
-	
+
 	/**
-	 * Adding a required {@link Port} into the required ports' list of the {@link Configuration}
-	 * @param port The {@link Port} to add
-	 * @throws NoSuchPortException 
-	 * @throws WrongInterfacePortException 
+	 * Adding a required {@link Port} into the required ports' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param port
+	 *            The {@link Port} to add
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
 	 */
-	public void addRequiredPort(Port port) throws NoSuchPortException, WrongInterfacePortException{
-		if(port==null){
-			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié!");
+	public void addRequiredPort(Port port) throws NoSuchPortException,
+			WrongInterfacePortException {
+		if (port == null) {
+			throw new NoSuchPortException("Le port " + port.getName()
+					+ " n'existe pas ou n'a pas été instancié!");
 		}
-		
-		if(port.getInterfaceType() == InterfaceType.Required){
+
+		if (port.getInterfaceType() == InterfaceType.Required) {
 			this.requiredPorts.add(port);
+		} else {
+			throw new WrongInterfacePortException("Le port " + port.getName()
+					+ " doit disposer d'une interface de type Required !");
 		}
-		else{
-			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Required !");
-		}		
 	}
-	
+
 	/**
-	 * Adding a provided {@link Service} into the ports' list of the {@link Configuration}
-	 * @param port The {@link Service} to add
-	 * @throws NoSuchServiceException 
-	 * @throws WrongInterfaceServiceException 
+	 * Adding a provided {@link Service} into the ports' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param port
+	 *            The {@link Service} to add
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
 	 */
-	public void addProvidedService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
-		if(service==null){
-			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
+	public void addProvidedService(Service service)
+			throws NoSuchServiceException, WrongInterfaceServiceException {
+		if (service == null) {
+			throw new NoSuchServiceException("Le service " + service.getName()
+					+ " n'existe pas ou n'a pas été instancié !");
 		}
-		
-		if(service.getInterfaceType() == InterfaceType.Provided){
+
+		if (service.getInterfaceType() == InterfaceType.Provided) {
 			this.providedServices.add(service);
+		} else {
+			throw new WrongInterfaceServiceException("Le service "
+					+ service.getName()
+					+ " doit disposer d'une interface de type Provided !");
 		}
-		else{
-			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Provided !");
-		}		
 	}
 
 	/**
-	 * Adding a required {@link Service} into the required ports' list of the {@link Configuration}
-	 * @param port The {@link Service} to add
-	 * @throws NoSuchServiceException 
-	 * @throws WrongInterfaceServiceException 
+	 * Adding a required {@link Service} into the required ports' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param port
+	 *            The {@link Service} to add
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
 	 */
-	public void addRequiredService(Service service) throws NoSuchServiceException, WrongInterfaceServiceException{
-		if(service==null){
-			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
+	public void addRequiredService(Service service)
+			throws NoSuchServiceException, WrongInterfaceServiceException {
+		if (service == null) {
+			throw new NoSuchServiceException("Le service " + service.getName()
+					+ " n'existe pas ou n'a pas été instancié !");
 		}
-		
-		if(service.getInterfaceType() == InterfaceType.Required){
+
+		if (service.getInterfaceType() == InterfaceType.Required) {
 			this.requiredServices.add(service);
+		} else {
+			throw new WrongInterfaceServiceException("Le service "
+					+ service.getName()
+					+ " doit disposer d'une interface de type Required !");
 		}
-		else{
-			throw new WrongInterfaceServiceException("Le service " + service.getName() + " doit disposer d'une interface de type Required !");
-		}			
-	}
-	
-	/**
-	 * Adding a provided {@link Role} into the roles' list of the {@link Configuration}
-	 * @param role The {@link Role} to add
-	 * @throws NoSuchRoleException 
-	 * @throws WrongInterfaceRoleException 
-	 */
-	public void addProvidedRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
-		if(role==null){
-			throw new NoSuchRoleException("Le rôle " + role.getName() + " n'existe pas ou n'a pas été instancié !");
-		}
-		
-		if(role.getInterfaceType() == InterfaceType.Provided){
-			this.providedRole.add(role);
-		}
-		else{
-			throw new WrongInterfaceRoleException("Le rôle " + role.getName() + " doit disposer d'une interface de type Provided !");
-		}		
 	}
 
 	/**
-	 * Adding a required {@link Role} into the required roles' list of the {@link Configuration}
-	 * @param role The {@link Role} to add
-	 * @throws NoSuchServiceException 
-	 * @throws WrongInterfaceServiceException 
+	 * Adding a provided {@link Role} into the roles' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param role
+	 *            The {@link Role} to add
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
 	 */
-	public void addRequiredRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
-		if(role==null){
-			throw new NoSuchRoleException("Le rôle " + role.getName() + " n'existe pas ou n'a pas été instancié !");
+	public void addProvidedRole(Role role) throws NoSuchRoleException,
+			WrongInterfaceRoleException {
+		if (role == null) {
+			throw new NoSuchRoleException("Le rôle " + role.getName()
+					+ " n'existe pas ou n'a pas été instancié !");
 		}
-		
-		if(role.getInterfaceType() == InterfaceType.Required){
+
+		if (role.getInterfaceType() == InterfaceType.Provided) {
+			this.providedRole.add(role);
+		} else {
+			throw new WrongInterfaceRoleException("Le rôle " + role.getName()
+					+ " doit disposer d'une interface de type Provided !");
+		}
+	}
+
+	/**
+	 * Adding a required {@link Role} into the required roles' list of the
+	 * {@link Configuration}
+	 * 
+	 * @param role
+	 *            The {@link Role} to add
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
+	 */
+	public void addRequiredRole(Role role) throws NoSuchRoleException,
+			WrongInterfaceRoleException {
+		if (role == null) {
+			throw new NoSuchRoleException("Le rôle " + role.getName()
+					+ " n'existe pas ou n'a pas été instancié !");
+		}
+
+		if (role.getInterfaceType() == InterfaceType.Required) {
 			this.requiredRole.add(role);
+		} else {
+			throw new WrongInterfaceRoleException("Le rôle " + role.getName()
+					+ " doit disposer d'une interface de type Required !");
 		}
-		else{
-			throw new WrongInterfaceRoleException("Le rôle " + role.getName() + " doit disposer d'une interface de type Required !");
-		}		
 	}
 
 	/**
@@ -172,7 +207,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param childComponent the childComponent to set
+	 * @param childComponent
+	 *            the childComponent to set
 	 */
 	public void setChildComponent(List<IComponentType> childComponent) {
 		this.childComponent = childComponent;
@@ -186,7 +222,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param childConnector the childConnector to set
+	 * @param childConnector
+	 *            the childConnector to set
 	 */
 	public void setChildConnector(List<IConnectorType> childConnector) {
 		this.childConnector = childConnector;
@@ -200,7 +237,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -214,7 +252,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param properties the properties to set
+	 * @param properties
+	 *            the properties to set
 	 */
 	public void setProperties(List<Properties> properties) {
 		this.properties = properties;
@@ -228,7 +267,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param providedPorts the providedPorts to set
+	 * @param providedPorts
+	 *            the providedPorts to set
 	 */
 	public void setProvidedPorts(List<Port> providedPorts) {
 		this.providedPorts = providedPorts;
@@ -242,7 +282,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param requiredPorts the requiredPorts to set
+	 * @param requiredPorts
+	 *            the requiredPorts to set
 	 */
 	public void setRequiredPorts(List<Port> requiredPorts) {
 		this.requiredPorts = requiredPorts;
@@ -256,7 +297,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param providedServices the providedServices to set
+	 * @param providedServices
+	 *            the providedServices to set
 	 */
 	public void setProvidedServices(List<Service> providedServices) {
 		this.providedServices = providedServices;
@@ -270,7 +312,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param requiredServices the requiredServices to set
+	 * @param requiredServices
+	 *            the requiredServices to set
 	 */
 	public void setRequiredServices(List<Service> requiredServices) {
 		this.requiredServices = requiredServices;
@@ -284,7 +327,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param providedRole the providedRole to set
+	 * @param providedRole
+	 *            the providedRole to set
 	 */
 	public void setProvidedRole(List<Role> providedRole) {
 		this.providedRole = providedRole;
@@ -298,7 +342,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param requiredRole the requiredRole to set
+	 * @param requiredRole
+	 *            the requiredRole to set
 	 */
 	public void setRequiredRole(List<Role> requiredRole) {
 		this.requiredRole = requiredRole;
@@ -312,13 +357,14 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param links the links to set
+	 * @param links
+	 *            the links to set
 	 */
 	public void setLinks(List<Link> links) {
 		this.links = links;
 	}
-	
-	public void addLink(Link link){
+
+	public void addLink(Link link) {
 		this.links.add(link);
 	}
 }

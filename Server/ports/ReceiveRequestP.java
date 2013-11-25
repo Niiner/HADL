@@ -15,4 +15,10 @@ public class ReceiveRequestP extends SynchronPort{
 	public ReceiveRequestP(String name){
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
+	
+	public void receiveData(Object msg){
+		System.out.println("Entrer dans le port " + this.name);
+		setChanged();
+		notifyObservers();
+	}
 }
