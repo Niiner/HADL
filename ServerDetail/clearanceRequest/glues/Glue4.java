@@ -2,8 +2,8 @@ package clearanceRequest.glues;
 
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
-import elements.ports.Glue;
-import elements.ports.Role;
+import elements.physicalInterface.glues.Glue;
+import elements.physicalInterface.roles.Role;
 
 public class Glue4 extends Glue{
 	

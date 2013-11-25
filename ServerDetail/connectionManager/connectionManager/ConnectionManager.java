@@ -9,7 +9,7 @@ import connectionManager.ports.SecurityCheck;
 import connectionManager.services.DbQueryS;
 import containers.Component;
 import containers.Configuration;
-import elements.ports.Port;
+import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 

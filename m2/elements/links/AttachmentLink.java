@@ -1,7 +1,7 @@
 package elements.links;
 
-import elements.ports.Port;
-import elements.ports.Role;
+import elements.physicalInterface.ports.Port;
+import elements.physicalInterface.roles.Role;
 import exceptions.NewAttachmentNotAllowed;
 
 /**

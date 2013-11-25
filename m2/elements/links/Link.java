@@ -1,10 +1,14 @@
 package elements.links;
 
+/**
+ * This is an abstract class which represents links.
+ * Links can be attachment links or binding links
+ * @author Niiner-PC
+ *
+ */
 public abstract class Link {
 	
 	protected String name;
-	// protected final Linkable end1;
-	// protected final Linkable end2;
 	
 	public Link(String name){
 		this.name = name;

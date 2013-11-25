@@ -1,6 +1,6 @@
 package securityquery.roles;
 
-import elements.ports.Role;
+import elements.physicalInterface.roles.Role;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

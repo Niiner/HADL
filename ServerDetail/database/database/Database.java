@@ -17,7 +17,7 @@ import database.model.Person;
 import database.ports.Query;
 import database.ports.SecurityManagement;
 import database.services.SecurityManagementS;
-import elements.ports.Port;
+import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 

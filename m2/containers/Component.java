@@ -3,9 +3,9 @@ package containers;
 import java.util.ArrayList;
 import java.util.List;
 
-import elements.ports.Port;
-import elements.ports.Properties;
-import elements.ports.Service;
+import elements.physicalInterface.ports.Port;
+import elements.physicalInterface.ports.Properties;
+import elements.physicalInterface.services.Service;
 import enumerations.InterfaceType;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchServiceException;
@@ -19,17 +19,17 @@ import exceptions.WrongInterfaceServiceException;
  *
  */
 public class Component implements IComponentType {
-	
+
 	protected String name;
 	protected Configuration configuration;
-	
+
 	protected List<Properties> properties = new ArrayList<Properties>();	
 	protected List<Port> providedPorts = new ArrayList<Port>();
 	protected List<Port> requiredPorts = new ArrayList<Port>();
 	protected List<Service> providedServices = new ArrayList<Service>();
 	protected List<Service> requiredServices = new ArrayList<Service>();
-	
-		
+
+
 	/**
 	 * Constructor
 	 * @param config The {@link Configuration} to whom this component belongs
@@ -38,16 +38,6 @@ public class Component implements IComponentType {
 	public Component(Configuration config, String name){
 		this.configuration = config;
 		boolean oneProvided;
-		
-		/*for(Port port : portList){
-			if(port.getInterfaceType() == InterfaceType.Provided){
-				oneProvided = true;
-			}
-		}*/
-		
-		// Creer sa propre exception : instancier si au moins un port provided 
-		// this.name = name;
-	
 	}
 
 	/**
@@ -60,7 +50,7 @@ public class Component implements IComponentType {
 		if(port==null){
 			throw new NoSuchPortException("Le port " + port.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
-		
+
 		if(port.getInterfaceType() == InterfaceType.Provided){
 			this.providedPorts.add(port);
 		}
@@ -68,7 +58,7 @@ public class Component implements IComponentType {
 			throw new WrongInterfacePortException("Le port " + port.getName() + " doit disposer d'une interface de type Provided !");
 		}		
 	}
-	
+
 	/**
 	 * Adding a required {@link Port} into the required ports' list of the {@link Component}
 	 * @param port The {@link Port} to add
@@ -79,7 +69,7 @@ public class Component implements IComponentType {
 		if(port==null){
 			throw new NoSuchPortException("Le port " + port.getName() + "n'existe pas ou n'a pas été instancié !");
 		}
-		
+
 		if(port.getInterfaceType() == InterfaceType.Required){
 			this.requiredPorts.add(port);
 		}
@@ -87,7 +77,7 @@ public class Component implements IComponentType {
 			throw new WrongInterfacePortException("Ce port " + port.getName() + " doit disposer d'une interface de type Required !");
 		}		
 	}
-	
+
 	/**
 	 * Adding a provided {@link Service} into the ports' list of the {@link Component}
 	 * @param port The {@link Service} to add
@@ -98,7 +88,7 @@ public class Component implements IComponentType {
 		if(service==null){
 			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
-		
+
 		if(service.getInterfaceType() == InterfaceType.Provided){
 			this.providedServices.add(service);
 		}
@@ -117,7 +107,7 @@ public class Component implements IComponentType {
 		if(service==null){
 			throw new NoSuchServiceException("Le service " + service.getName() + " n'existe pas ou n'a pas été instancié !");
 		}
-		
+
 		if(service.getInterfaceType() == InterfaceType.Required){
 			this.requiredServices.add(service);
 		}

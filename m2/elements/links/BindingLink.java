@@ -1,6 +1,6 @@
 package elements.links;
 
-import elements.ports.Port;
+import elements.physicalInterface.ports.Port;
 import exceptions.NewBindingNotAllowed;
 
 /**

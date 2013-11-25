@@ -1,20 +1,27 @@
-package elements.ports;
+package elements.physicalInterface.roles;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import elements.physicalInterface.PhysicalInterface;
+import elements.physicalInterface.glues.Glue;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
+/**
+ * This class is an abstract class which represents a Role
+ * @author Niiner-PC
+ *
+ */
 public abstract class Role extends PhysicalInterface{
 
 	private List<Glue> glues;
 
 	/**
 	 * Constructor
-	 * @param name The name of the glue
-	 * @param interfaceT the {@link InterfaceType} of the glue
-	 * @param visibilityT the {@link VisibilityType} of the glue
+	 * @param name the name of the glue
+	 * @param interfaceT the {@link InterfaceType} of the role
+	 * @param visibilityT the {@link VisibilityType} of the role
 	 */
 	public Role(String name, InterfaceType interfaceT, VisibilityType visibilityT) {
 		super(name, interfaceT, visibilityT);

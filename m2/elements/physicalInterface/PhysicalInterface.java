@@ -1,10 +1,15 @@
-package elements.ports;
+package elements.physicalInterface;
 
 import java.util.Observable;
 
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
+/**
+ * An abstract class which represents a PhysicalInterface which can be a Role, a Service or a Port
+ * @author Niiner-PC
+ *
+ */
 public abstract class PhysicalInterface extends Observable {
 	
 	protected VisibilityType visibilityType;

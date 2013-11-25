@@ -1,8 +1,8 @@
 package clearanceRequest.roles;
 
 import clearanceRequest.glues.Glue4;
-import elements.ports.Glue;
-import elements.ports.Role;
+import elements.physicalInterface.glues.Glue;
+import elements.physicalInterface.roles.Role;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

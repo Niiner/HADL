@@ -8,19 +8,24 @@ import properties.Visualization;
 import services.SendRequestS;
 import configuration.SystemClientServer;
 import containers.Component;
-import elements.ports.Port;
-import elements.ports.Service;
+import elements.physicalInterface.ports.Port;
+import elements.physicalInterface.services.Service;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchServiceException;
 import exceptions.WrongInterfacePortException;
 import exceptions.WrongInterfaceServiceException;
 
+/**
+ * This class provides an implementation for the Client
+ * @author Niiner-PC
+ *
+ */
 public class Client extends Component implements Observer{
 	
 	/**
 	 * Constructor
-	 * @param config
-	 * @param name
+	 * @param config the {@link Configuration} of the Client
+	 * @param name the name of the client
 	 * @throws NoSuchPortException
 	 * @throws WrongInterfacePortException
 	 * @throws NoSuchServiceException
@@ -30,8 +35,10 @@ public class Client extends Component implements Observer{
 		super(config, name);
 		Port sendRequestP = new SendRequestP("SendRequestP");
 		Service sendRequestS = new SendRequestS("SendRequestS");
+		
 		// Client listen the sendRequestP
 		sendRequestP.addObserver(this);
+		
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));

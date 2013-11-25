@@ -1,6 +1,6 @@
 package connectionManager.ports;
 
-import elements.ports.SynchronPort;
+import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
@@ -11,6 +11,9 @@ public class SecurityCheck extends SynchronPort{
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 	
-	
-
+	public void receiveData(Object msg){
+		System.out.println("[ENTRY] in port " + this.name);
+		setChanged();
+		notifyObservers();
+	}
 }

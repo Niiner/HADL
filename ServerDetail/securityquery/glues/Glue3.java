@@ -1,8 +1,8 @@
 package securityquery.glues;
 
 import securityquery.roles.SecurityManagerR;
-import elements.ports.Glue;
-import elements.ports.Role;
+import elements.physicalInterface.glues.Glue;
+import elements.physicalInterface.roles.Role;
 
 public class Glue3 extends Glue{
 

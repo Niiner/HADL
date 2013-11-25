@@ -9,7 +9,7 @@ import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import elements.ports.Role;
+import elements.physicalInterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 

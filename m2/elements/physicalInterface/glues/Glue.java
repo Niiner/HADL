@@ -1,9 +1,15 @@
-package elements.ports;
+package elements.physicalInterface.glues;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import elements.physicalInterface.roles.Role;
 
+/**
+ * The glue authorize the trasnfert of data between two roles
+ * @author Niiner-PC
+ *
+ */
 public class Glue {
 	
 	protected String name;

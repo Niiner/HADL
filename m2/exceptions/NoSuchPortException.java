@@ -1,6 +1,6 @@
 package exceptions;
 
-import elements.ports.Port;
+import elements.physicalInterface.ports.Port;
 
 /**
  * Allow to raise an exception if a called {@link Port} doesn't exist

@@ -1,6 +1,6 @@
 package connector;
 
-import elements.ports.Role;
+import elements.physicalInterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
@@ -13,7 +13,12 @@ import roles.Caller;
 import configuration.SystemClientServer;
 import containers.PrimitiveConnector;
 
-
+/**
+ * This class provides an implementation for the RPC, a PrimitivConnector
+ * which allow the communication between the server and the client
+ * @author Niiner-PC
+ *
+ */
 public class RPC extends PrimitiveConnector implements Observer{
 
 	private Glue1 glue1;
@@ -22,15 +27,19 @@ public class RPC extends PrimitiveConnector implements Observer{
 
 	public RPC(SystemClientServer config, String name) throws NoSuchRoleException, WrongInterfaceRoleException{
 		super(config, name);
+		
 		// Instantiate Role and Glue
 		called = new Called("Called");
 		caller = new Caller("Caller");
 		glue1 = new Glue1("Glue1");
+		
 		// RPC listen the Called
 		called.addObserver(this);
+		
 		// Add Role to the Glue and vice versa
 		glue1.addRole(called);
 		glue1.addRole(caller);
+		
 		// Add Role and Glue to RPC
 		this.addProvidedRole(called);
 		this.addRequiredRole(caller);

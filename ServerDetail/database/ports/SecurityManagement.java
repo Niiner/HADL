@@ -1,6 +1,6 @@
 package database.ports;
 
-import elements.ports.SynchronPort;
+import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
