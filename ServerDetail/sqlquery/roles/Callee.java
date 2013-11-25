@@ -10,4 +10,10 @@ public class Callee extends Role{
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 
+	public void receiveRequest(Object msg){
+		System.out.println("Entrer dans le role " + this.name);
+		setChanged();
+		notifyObservers();
+	}
+	
 }

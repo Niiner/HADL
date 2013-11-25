@@ -7,21 +7,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
+import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
-import database.controller.PersonController;
 import database.model.Person;
 import database.ports.Query;
 import database.ports.SecurityManagement;
+import database.services.SecurityManagementS;
 import elements.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
-public class Database extends Component {
+public class Database extends Component implements Observer{
 
 	private static Database instance;
 	private Connection connection = null;
+	
+	private SecurityManagement securityManagement;
+	private SecurityManagementS securityManagementS;
+	private Query query;
 
 	/**
 	 * Constructor
@@ -33,8 +40,15 @@ public class Database extends Component {
 	private Database(Configuration config, String name)
 			throws NoSuchPortException, WrongInterfacePortException {
 		super(config, name);
-		this.addProvidedPort(new SecurityManagement("SecurityManagement"));
-		this.addProvidedPort(new Query("Query"));
+		securityManagement = new SecurityManagement("SecurityManagement");
+		securityManagementS = new SecurityManagementS("SecurityManagementS");
+		query = new Query("Query");
+		this.addProvidedPort(securityManagement);
+		this.addProvidedPort(query);
+		this.securityManagementS.addPort(securityManagement);
+		
+		query.addObserver(this);
+		securityManagement.addObserver(this);
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); // loads the driver
@@ -49,7 +63,7 @@ public class Database extends Component {
 			cnfe.printStackTrace();
 		} catch (SQLException sqle) {
 			System.out.println("Erreur SQL : ");
-			// Cf. Comment gérer les erreurs ?
+			// Cf. Comment gerer les erreurs ?
 		} catch (Exception e) {
 			System.out.println("Autre erreur : ");
 			e.printStackTrace();
@@ -177,5 +191,31 @@ public class Database extends Component {
 			}
 		}
 		return p;
+	}
+	
+
+	/**
+	 * @return the securityManagementS
+	 */
+	public SecurityManagementS getSecurityManagementS() {
+		return securityManagementS;
+	}
+
+	/**
+	 * @param securityManagementS the securityManagementS to set
+	 */
+	public void setSecurityManagementS(SecurityManagementS securityManagementS) {
+		this.securityManagementS = securityManagementS;
+	}
+
+	@Override
+	public void update(Observable observable, Object object) {
+		System.out.println("Database notify");
+		if (observable instanceof Query){
+			this.getSecurityManagementS().sendRequest(object);
+		}
+		else if (observable instanceof SecurityManagement){
+			((ServerDetail) this.configuration).transfertData(observable, object);
+		}
 	}
 }

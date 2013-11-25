@@ -22,7 +22,7 @@ public abstract class Role extends PhysicalInterface{
 	}
 
 	public void receiveData(Object msg){
-		System.out.println("On arrive dans le role");
+		System.out.println("Actual.toBeOverridden()");
 	}
 
 	/**

@@ -93,7 +93,10 @@ public class ServerDetail extends Configuration {
 				((BindingLink) link).getToPortComp().receiveData(object);
 			}
 			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)) {
-				System.out.println("on passe pas encore");
+				((AttachmentLink) link).getToRoleConn().receiveData(object);
+			}
+			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)) {
+				((AttachmentLink) link).getFromPortComp().receiveData(object);
 			}
 		}
 	}

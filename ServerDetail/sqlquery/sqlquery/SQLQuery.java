@@ -1,5 +1,9 @@
 package sqlquery.sqlquery;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import serverDetail.ServerDetail;
 import sqlquery.glues.Glue2;
 import sqlquery.roles.Callee;
 import sqlquery.roles.Caller;
@@ -9,7 +13,7 @@ import elements.ports.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
-public class SQLQuery extends PrimitiveConnector{
+public class SQLQuery extends PrimitiveConnector implements Observer{
 
 	private Caller caller;
 	private Callee callee;
@@ -30,6 +34,8 @@ public class SQLQuery extends PrimitiveConnector{
 		// Add Role to the Glue and vice versa
 		glue2.addRole(callee);
 		glue2.addRole(caller);
+		// SQLQUery listen the Callee
+		callee.addObserver(this);
 		// Add Role and Glue to RPC
 		this.addProvidedRole(caller);
 		this.addRequiredRole(callee);
@@ -60,5 +66,13 @@ public class SQLQuery extends PrimitiveConnector{
 			}
 		}
 		return p;
+	}
+
+	@Override
+	public void update(Observable observable, Object object) {
+		System.out.println("SQLQuery notify");
+		if (observable instanceof Callee){
+			((ServerDetail) this.configuration).transfertData(observable, object);
+		}
 	}
 }

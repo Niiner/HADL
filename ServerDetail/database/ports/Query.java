@@ -13,4 +13,9 @@ public class Query extends SynchronPort {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	public void receiveData(Object msg){
+		System.out.println("Entrer dans le port " + this.name);
+		setChanged();
+		notifyObservers();
+	}
 }

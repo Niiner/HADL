@@ -2,7 +2,6 @@ package connectionManager.connectionManager;
 import java.util.Observable;
 import java.util.Observer;
 
-import ports.SendRequestP;
 import serverDetail.ServerDetail;
 import connectionManager.ports.DbQuery;
 import connectionManager.ports.ExternalSocket;
@@ -90,8 +89,7 @@ public class ConnectionManager extends Component implements Observer{
 			this.getDbQueryS().sendRequest(object);
 		}
 		else if (observable instanceof DbQuery){
-			System.out.println("fini");
+			((ServerDetail) this.configuration).transfertData(observable, object);
 		}
-//		((ServerDetail) this.configuration).transfertData(observable, object);
 	}
 }

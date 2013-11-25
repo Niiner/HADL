@@ -2,9 +2,7 @@ package server;
 import java.util.Observable;
 import java.util.Observer;
 
-import links.B1;
 import ports.ReceiveRequestP;
-import ports.SendRequestP;
 import ports.SendRequestP2;
 import serverDetail.ServerDetail;
 import services.ReceiveRequestS;
@@ -34,7 +32,6 @@ public class Server extends Component implements Observer{
 	private Port sendRequestP2; 
 	private Service receiveRequestS;
 	private Service sendRequestS2;
-//	private B1 b1;
 	
 	/**
 	 * Constructor
