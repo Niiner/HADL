@@ -8,7 +8,6 @@ TODO:
 
 Florian:
 - Contrainte OCL sur la Glue (obliger d'avoir au minimum un role)
-- Database ?
 
 Noemie:
 - Linker l'ensemble du parcours

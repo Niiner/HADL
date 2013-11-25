@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 
 import database.database.Database;
 import database.model.Person;
+import exceptions.NoSuchPortException;
+import exceptions.WrongInterfacePortException;
 
 /**
  * This class provides an implementation for the Person Controller
@@ -24,8 +26,11 @@ public class PersonController {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws SQLException
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	public void importPerson() throws FileNotFoundException, IOException, SQLException {
+	public void importPerson() throws FileNotFoundException, IOException, SQLException, 
+	NoSuchPortException, WrongInterfacePortException {
 
 		Person person1 = new Person(1,"Florian");
 		Person person2 = new Person(2, "Noemie");
@@ -39,8 +44,10 @@ public class PersonController {
 	/**
 	 * Add the Person to the database.
 	 * @param person
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	public void add(Person person) throws SQLException{
+	public void add(Person person) throws SQLException, NoSuchPortException, WrongInterfacePortException{
 
 		Statement s = Database.getInstance().getConnection().createStatement();
 		String sqlquery = "INSERT INTO Person (id,name)"
@@ -54,8 +61,10 @@ public class PersonController {
 	 * Returns the list of Persons in the Database
 	 * @return The list of Persons
 	 * @throws SQLException
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	public List<Person> getAll() throws SQLException{
+	public List<Person> getAll() throws SQLException, NoSuchPortException, WrongInterfacePortException{
 		List<Person> persons = new ArrayList();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
@@ -74,8 +83,10 @@ public class PersonController {
 	 * @param id The id of the Person you want to retrieve
 	 * @return A Person List matching the entered id
 	 * @throws SQLException
+	 * @throws WrongInterfacePortException 
+	 * @throws NoSuchPortException 
 	 */
-	public List<Person> getPersonById(int id) throws SQLException {
+	public List<Person> getPersonById(int id) throws SQLException, NoSuchPortException, WrongInterfacePortException {
 		List<Person> persons = new ArrayList();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
@@ -90,25 +101,50 @@ public class PersonController {
 		return persons;
 	}
 
-	public void removeAll() throws SQLException{
+	/**
+	 * Remove all persons in the database
+	 * @throws SQLException
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 */
+	public void removeAll() throws SQLException, NoSuchPortException, WrongInterfacePortException{
 		Statement s = Database.getInstance().getConnection().createStatement();
 		String sqlquery = "DELETE FROM Person;";
 		s.executeUpdate(sqlquery);
 	}
 
-	public static void main(String args[]){
+	/**
+	 * Main
+	 * @param args
+	 * @throws SQLException
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 */
+	public static void main(String args[]) throws SQLException, NoSuchPortException, WrongInterfacePortException{
 
 		PersonController personContr = new PersonController();
 		try {
 			personContr.removeAll();
 		} catch (SQLException ex) {
 			Logger.getLogger(PersonController.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (NoSuchPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WrongInterfacePortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		try {
 			try {
 				personContr.importPerson();
 			} catch (SQLException ex) {
 				Logger.getLogger(PersonController.class.getName()).log(Level.SEVERE, null, ex);
+			} catch (NoSuchPortException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (WrongInterfacePortException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		} catch (IOException ex) {
 			Logger.getLogger(PersonController.class.getName()).log(Level.SEVERE, null, ex);
@@ -117,7 +153,16 @@ public class PersonController {
 			System.out.println(personContr.getAll().size());
 		} catch (SQLException ex) {
 			Logger.getLogger(PersonController.class.getName()).log(Level.SEVERE, null, ex);
+		} catch (NoSuchPortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (WrongInterfacePortException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		// Close the database
+		Database.getInstance().close();
 	}
 
 
