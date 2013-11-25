@@ -1,3 +1,4 @@
+package serverDetail;
 import java.util.Observable;
 
 import links.A3;
@@ -11,6 +12,7 @@ import ports.ReceiveRequestP;
 import ports.SendRequestP2;
 import securityManager.securityManager.SecurityManager;
 import securityquery.securityquery.SecurityQuery;
+import server.Server;
 import sqlquery.sqlquery.SQLQuery;
 import clearanceRequest.clearanceRequest.ClearanceRequest;
 import connectionManager.connectionManager.ConnectionManager;
@@ -65,7 +67,7 @@ public class ServerDetail extends Configuration {
 		a6 = new A6("A6", securityManager.getCredentialQuery(), securityQuery.getSecurityManagerR());
 		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
 		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
-		//		b1 = new B1("B1", ((Server) parent).getReceiveRequestP(), this.getConnectionManager().getExternalSocket());
+		b1 = new B1("B1", ((Server) parent).getReceiveRequestP(), this.getConnectionManager().getExternalSocket());
 
 		this.addLink(a3);
 		this.addLink(a4);
@@ -73,7 +75,7 @@ public class ServerDetail extends Configuration {
 		this.addLink(a6);
 		this.addLink(a7);
 		this.addLink(a8);
-		//		this.addLink(b1);
+		this.addLink(b1);
 	}
 
 	public ConnectionManager getConnectionManager() {

@@ -1,8 +1,10 @@
+package server;
 import java.util.Observable;
 import java.util.Observer;
 
 import ports.ReceiveRequestP;
 import ports.SendRequestP2;
+import serverDetail.ServerDetail;
 import services.ReceiveRequestS;
 import services.SendRequestS2;
 import containers.Component;
@@ -52,14 +54,14 @@ public class Server extends Component implements Observer{
 		super(config, name);
 		
 		// Instanciation 
-		this.serverDetail = new ServerDetail(this, "ServerDetail");
 		this.receiveRequestP = new ReceiveRequestP("ReceiveRequestP");
-		this.sendRequestP2 = new SendRequestP2("ReceiveRequestP"); 
+		this.sendRequestP2 = new SendRequestP2("SendRequestP2"); 
 		this.receiveRequestS = new ReceiveRequestS("ReceiveRequestS");
 		this.sendRequestS2 = new SendRequestS2("SendRequestS2");
 		
 		// Server listen the receiveRequestP
 		receiveRequestP.addObserver(this);
+		sendRequestP2.addObserver(this);
 		
 		// Adding ports and services
 		this.addRequiredPort(receiveRequestP);
@@ -69,8 +71,8 @@ public class Server extends Component implements Observer{
 		this.receiveRequestS.addPort(receiveRequestP);
 		this.sendRequestS2.addPort(sendRequestP2);
 		
-		// Create a new Binding link 
-//		this.b1 = new B1("B1", this.getReceiveRequestP() , serverDetail.getConnectionManager().getExternalSocket());
+		// Create the configuration after implement this component
+		this.serverDetail = new ServerDetail(this, "ServerDetail");
 	}
 	
 	/**
@@ -108,7 +110,7 @@ public class Server extends Component implements Observer{
 			// Call the provided service in server
 			this.getSendRequestS2().sendRequest(object);
 		}
-		if (observable instanceof SendRequestP2){
+		else if (observable instanceof SendRequestP2){
 			// Call the configuration to find the binding link
 			this.serverDetail.transfertData(observable, object);
 		}
