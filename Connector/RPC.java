@@ -1,4 +1,4 @@
-import elements.ports.Role;
+import elements.physicalinterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;

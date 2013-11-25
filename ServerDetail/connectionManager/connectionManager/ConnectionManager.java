@@ -4,7 +4,7 @@ import connectionManager.ports.ExternalSocket;
 import connectionManager.ports.SecurityCheck;
 import containers.Component;
 import containers.Configuration;
-import elements.ports.Port;
+import elements.physicalinterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 

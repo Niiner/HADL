@@ -5,7 +5,7 @@ import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import elements.ports.Role;
+import elements.physicalinterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 

@@ -3,11 +3,11 @@ package containers;
 import java.util.ArrayList;
 import java.util.List;
 
-import elements.links.Link;
-import elements.ports.Port;
-import elements.ports.Properties;
-import elements.ports.Role;
-import elements.ports.Service;
+import elements.physicalinterface.links.Link;
+import elements.physicalinterface.ports.Port;
+import elements.physicalinterface.ports.Properties;
+import elements.physicalinterface.roles.Role;
+import elements.physicalinterface.services.Service;
 import enumerations.InterfaceType;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;

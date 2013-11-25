@@ -1,6 +1,6 @@
 package clearanceRequest.glues;
 
-import elements.ports.Glue;
+import elements.physicalinterface.glues.Glue;
 
 public class Glue4 extends Glue{
 	

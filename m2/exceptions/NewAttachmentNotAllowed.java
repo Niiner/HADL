@@ -1,6 +1,6 @@
 package exceptions;
 
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 
 /**
  * Allow to raise an exception if an {@link AttachmentLink} doesn't respect some constraints

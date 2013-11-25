@@ -1,6 +1,6 @@
 package links;
 
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 import securityManager.ports.CredentialQuery;
 import securityquery.roles.SecurityManagerR;

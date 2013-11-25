@@ -1,6 +1,6 @@
 package securityManager.ports;
 
-import elements.ports.SynchronPort;
+import elements.physicalinterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

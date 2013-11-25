@@ -2,7 +2,7 @@ package links;
 
 import securityManager.ports.SecurityAuthorization;
 import clearanceRequest.roles.Grantor;
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 
 /**

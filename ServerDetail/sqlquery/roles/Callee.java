@@ -1,6 +1,6 @@
 package sqlquery.roles;
 
-import elements.ports.Role;
+import elements.physicalinterface.roles.Role;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

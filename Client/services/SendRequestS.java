@@ -1,8 +1,8 @@
 package services;
 
 import ports.SendRequestP;
-import elements.ports.Port;
-import elements.ports.Service;
+import elements.physicalinterface.ports.Port;
+import elements.physicalinterface.services.Service;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 

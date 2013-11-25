@@ -1,6 +1,6 @@
 package exceptions;
 
-import elements.links.BindingLink;
+import elements.physicalinterface.links.BindingLink;
 
 /**
  * Allow to raise an exception if an {@link BindingLink} doesn't respect some constraints

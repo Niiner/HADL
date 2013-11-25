@@ -1,6 +1,6 @@
 package properties;
 
-import elements.ports.Properties;
+import elements.physicalinterface.ports.Properties;
 
 public class SourceCode extends Properties{
 	

@@ -1,7 +1,7 @@
 package roles;
 
-import elements.ports.Glue;
-import elements.ports.Role;
+import elements.physicalinterface.glues.Glue;
+import elements.physicalinterface.roles.Role;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 import glues.Glue1;

@@ -3,9 +3,9 @@ package containers;
 import java.util.ArrayList;
 import java.util.List;
 
-import elements.ports.Glue;
-import elements.ports.Properties;
-import elements.ports.Role;
+import elements.physicalinterface.glues.Glue;
+import elements.physicalinterface.ports.Properties;
+import elements.physicalinterface.roles.Role;
 import enumerations.InterfaceType;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;

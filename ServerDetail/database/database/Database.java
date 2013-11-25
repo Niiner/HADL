@@ -10,11 +10,10 @@ import java.util.List;
 
 import containers.Component;
 import containers.Configuration;
-import database.controller.PersonController;
 import database.model.Person;
 import database.ports.Query;
 import database.ports.SecurityManagement;
-import elements.ports.Port;
+import elements.physicalinterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
@@ -107,7 +106,7 @@ public class Database extends Component {
 	 * @throws WrongInterfacePortException
 	 */
 	public List<Person> receiveRequest(String message) throws SQLException, NoSuchPortException, WrongInterfacePortException{
-			List<Person> persons = new ArrayList();
+			List<Person> persons = new ArrayList<Person>();
 
 			Statement s = Database.getInstance().getConnection().createStatement();
 			String sqlquery = message;
@@ -138,7 +137,6 @@ public class Database extends Component {
 	public static void main(String args[]) throws NoSuchPortException,
 			WrongInterfacePortException {
 		Database.getInstance();
-		System.out.println("Je lance la DB coco !");
 	}
 
 	/**

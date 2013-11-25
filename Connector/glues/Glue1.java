@@ -1,8 +1,8 @@
 package glues;
 
 import roles.Called;
-import elements.ports.Glue;
-import elements.ports.Role;
+import elements.physicalinterface.glues.Glue;
+import elements.physicalinterface.roles.Role;
 
 public class Glue1 extends Glue{
 	

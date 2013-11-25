@@ -3,7 +3,7 @@ import securityManager.ports.CredentialQuery;
 import securityManager.ports.SecurityAuthorization;
 import containers.Component;
 import containers.Configuration;
-import elements.ports.Port;
+import elements.physicalinterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 

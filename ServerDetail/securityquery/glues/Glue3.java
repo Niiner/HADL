@@ -1,6 +1,6 @@
 package securityquery.glues;
 
-import elements.ports.Glue;
+import elements.physicalinterface.glues.Glue;
 
 public class Glue3 extends Glue{
 

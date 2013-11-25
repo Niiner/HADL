@@ -1,6 +1,6 @@
 package links;
 
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 import ports.SendRequestP;
 import roles.Caller;

@@ -2,7 +2,7 @@ package links;
 
 import sqlquery.roles.Caller;
 import connectionManager.ports.DbQuery;
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 
 /**

@@ -2,7 +2,7 @@ package links;
 
 import securityquery.roles.Requestor;
 import database.ports.SecurityManagement;
-import elements.links.AttachmentLink;
+import elements.physicalinterface.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 
 /**

@@ -1,16 +1,14 @@
 import java.util.Observable;
 import java.util.Observer;
 
-import links.B1;
 import ports.ReceiveRequestP;
-import ports.SendRequestP;
 import ports.SendRequestP2;
 import services.ReceiveRequestS;
 import services.SendRequestS2;
 import containers.Component;
 import containers.Configuration;
-import elements.ports.Port;
-import elements.ports.Service;
+import elements.physicalinterface.ports.Port;
+import elements.physicalinterface.services.Service;
 import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
