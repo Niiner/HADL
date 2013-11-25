@@ -1,3 +1,4 @@
+package client;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -5,6 +6,7 @@ import ports.SendRequestP;
 import properties.SourceCode;
 import properties.Visualization;
 import services.SendRequestS;
+import configuration.SystemClientServer;
 import containers.Component;
 import elements.ports.Port;
 import elements.ports.Service;

@@ -1,3 +1,4 @@
+package serverDetail;
 import database.controller.PersonController;
 
 
@@ -10,7 +11,7 @@ public class Initialize {
 	        try {
 	        	System.out.println("Import en cours");
 	            personController.importPerson();
-	            System.out.println("Import terminé !");
+	            System.out.println("Import termin? !");
 	        }catch(Exception e){
 	            e.printStackTrace();
 	            System.err.println("Impossible d'importer les personnes");

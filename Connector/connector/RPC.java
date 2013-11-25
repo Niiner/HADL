@@ -1,3 +1,4 @@
+package connector;
 import elements.ports.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
@@ -8,6 +9,7 @@ import java.util.Observer;
 
 import roles.Called;
 import roles.Caller;
+import configuration.SystemClientServer;
 import containers.PrimitiveConnector;
 
 

@@ -1,7 +1,11 @@
+package configuration;
 import java.util.Observable;
 
 import links.A1;
 import links.A2;
+import server.Server;
+import client.Client;
+import connector.RPC;
 import containers.Configuration;
 import elements.links.AttachmentLink;
 import elements.links.Link;

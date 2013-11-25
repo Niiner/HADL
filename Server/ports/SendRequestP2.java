@@ -11,6 +11,7 @@ public class SendRequestP2 extends SynchronPort{
 	}
 	
 	public void receiveRequest(Object msg){
+		System.out.println("essai");
 		System.out.println("Entrer dans le port " + this.name);
 		setChanged();
 		notifyObservers();
