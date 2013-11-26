@@ -47,12 +47,7 @@ public class SecurityManager extends Component implements Observer{
 		
 		// Add Observers
 		credentialQuery.addObserver(this);
-		securityAuthorization.addObserver(this);		
-		
-		System.out.println(securityAuthorization);
-		System.out.println(securityAuthorizationS);
-		System.out.println(credentialQuery);
-		
+		securityAuthorization.addObserver(this);				
 	}
 	
 	/**
