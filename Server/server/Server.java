@@ -8,6 +8,7 @@ import ports.SendRequestP2;
 import serverDetail.ServerDetail;
 import services.ReceiveRequestS;
 import services.SendRequestS2;
+import configuration.SystemClientServer;
 import containers.Component;
 import containers.Configuration;
 import elements.physicalInterface.ports.Port;
@@ -135,7 +136,7 @@ public class Server extends Component implements Observer{
 			this.serverDetail.transfertData(observable, object);
 		}
 		else if (observable instanceof ReceiveResponseP){
-			// Transfert vers connector créer des nouveux lien attachement
+			((SystemClientServer) this.configuration).transfertData(observable, object);
 		}
 	}
 }

@@ -2,7 +2,9 @@ package configuration;
 import java.util.Observable;
 
 import links.A1;
+import links.A10;
 import links.A2;
+import links.A9;
 import server.Server;
 import client.Client;
 import connector.RPC;
@@ -25,6 +27,8 @@ public class SystemClientServer extends Configuration {
 	private RPC rpc;
 	private A1 a1;
 	private A2 a2;
+	private A9 a9;
+	private A10 a10;
 	
 	public SystemClientServer(String name) 
 			throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, 
@@ -36,8 +40,12 @@ public class SystemClientServer extends Configuration {
 		rpc = new RPC(this, "RPCConnector");
 		a1 = new A1("A1", c1.getSendRequestP(), rpc.getCaller());
 		a2 = new A2("A2", s.getReceiveRequestP(), rpc.getCalled());
+		a9 = new A9("A9", s.getReceiveResponseP(), rpc.getCallerResponse());
+		a10 = new A10("A10", c1.getReceiveResponseP2(), rpc.getCalledResponse());
 		this.addLink(a1);
 		this.addLink(a2);
+		this.addLink(a9);
+		this.addLink(a10);
 	}
 
 	public Client getC1() {
@@ -53,7 +61,7 @@ public class SystemClientServer extends Configuration {
 			if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)){
 				((AttachmentLink) link).getToRoleConn().receiveData(object);
 			}
-			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)) {
+			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)){
 				((AttachmentLink) link).getFromPortComp().receiveData(object);
 			}
 		}

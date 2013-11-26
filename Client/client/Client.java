@@ -2,6 +2,7 @@ package client;
 import java.util.Observable;
 import java.util.Observer;
 
+import ports.ReceiveResponseP2;
 import ports.SendRequestP;
 import properties.SourceCode;
 import properties.Visualization;
@@ -22,6 +23,8 @@ import exceptions.WrongInterfaceServiceException;
  */
 public class Client extends Component implements Observer{
 	
+	private ReceiveResponseP2 receiveResponseP2;
+	
 	/**
 	 * Constructor
 	 * @param config the {@link Configuration} of the Client
@@ -35,15 +38,18 @@ public class Client extends Component implements Observer{
 		super(config, name);
 		Port sendRequestP = new SendRequestP("SendRequestP");
 		Service sendRequestS = new SendRequestS("SendRequestS");
+		receiveResponseP2 = new ReceiveResponseP2("ReceiveResponseP2");
 		
 		// Client listen the sendRequestP
 		sendRequestP.addObserver(this);
+		receiveResponseP2.addObserver(this);
 		
 		// Adding services and ports to the Client
 		this.properties.add(new Visualization("Visualization"));
 		this.properties.add(new SourceCode("SourceCode"));
 		this.addProvidedPort(sendRequestP);
 		this.addProvidedService(sendRequestS);
+		this.addRequiredPort(receiveResponseP2);
 		sendRequestS.addPort(sendRequestP);
 	}
 	
@@ -72,12 +78,30 @@ public class Client extends Component implements Observer{
 		}
 		return s;
 	}
+	
+
+	/**
+	 * @return the receiveResponseP2
+	 */
+	public ReceiveResponseP2 getReceiveResponseP2() {
+		return receiveResponseP2;
+	}
+
+	/**
+	 * @param receiveResponseP2 the receiveResponseP2 to set
+	 */
+	public void setReceiveResponseP2(ReceiveResponseP2 receiveResponseP2) {
+		this.receiveResponseP2 = receiveResponseP2;
+	}
 
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- Client notify ----- ]");
 		if (observable instanceof SendRequestP){
 			((SystemClientServer) this.configuration).transfertData(observable, object);
+		}
+		else if (observable instanceof ReceiveResponseP2){
+			System.out.println("C'est bon tu as la reponse petit Client");
 		}
 	}
 }
