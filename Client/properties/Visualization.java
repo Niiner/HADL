@@ -4,14 +4,16 @@ import elements.physicalInterface.ports.Properties;
 
 /**
  * 
- * @author Niiner-PC
- *
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class Visualization extends Properties{
+public class Visualization extends Properties {
 
 	/**
 	 * Constructor
-	 * @param name the name of the Visualization
+	 * 
+	 * @param name
+	 *            the name of the Visualization
 	 */
 	public Visualization(String name) {
 		super(name);

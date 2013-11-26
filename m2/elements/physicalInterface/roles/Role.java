@@ -10,25 +10,31 @@ import enumerations.VisibilityType;
 
 /**
  * This class is an abstract class which represents a Role
- * @author Niiner-PC
- *
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public abstract class Role extends PhysicalInterface{
+public abstract class Role extends PhysicalInterface {
 
 	private List<Glue> glues;
 
 	/**
 	 * Constructor
-	 * @param name the name of the glue
-	 * @param interfaceT the {@link InterfaceType} of the role
-	 * @param visibilityT the {@link VisibilityType} of the role
+	 * 
+	 * @param name
+	 *            the name of the glue
+	 * @param interfaceT
+	 *            the {@link InterfaceType} of the role
+	 * @param visibilityT
+	 *            the {@link VisibilityType} of the role
 	 */
-	public Role(String name, InterfaceType interfaceT, VisibilityType visibilityT) {
+	public Role(String name, InterfaceType interfaceT,
+			VisibilityType visibilityT) {
 		super(name, interfaceT, visibilityT);
 		this.glues = new ArrayList<Glue>();
 	}
 
-	public void receiveData(Object msg){
+	public void receiveData(Object msg) {
 		System.out.println("Actual.toBeOverridden()");
 	}
 
@@ -40,26 +46,30 @@ public abstract class Role extends PhysicalInterface{
 	}
 
 	/**
-	 * @param glues the glues to set
+	 * @param glues
+	 *            the glues to set
 	 */
 	public void setGlues(List<Glue> glues) {
 		this.glues = glues;
 	}
 
-
 	/**
-	 * Adding one glue 
-	 * @param glue the {@link Glue} to add
+	 * Adding one glue
+	 * 
+	 * @param glue
+	 *            the {@link Glue} to add
 	 */
-	public void addGlueBasic(Glue glue){
+	public void addGlueBasic(Glue glue) {
 		glues.add(glue);
 	}
-	
+
 	/**
 	 * Adding one glue and adding this {@link Role} in the {@link Glue}
-	 * @param glue the {@link Glue} to add
+	 * 
+	 * @param glue
+	 *            the {@link Glue} to add
 	 */
-	public void addRole(Glue glue){
+	public void addRole(Glue glue) {
 		glues.add(glue);
 		glue.addRoleBasic(this);
 	}

@@ -5,10 +5,11 @@ import elements.physicalInterface.roles.Role;
 import exceptions.NewAttachmentNotAllowed;
 
 /**
- * This class provides an implementation for an AttachmentLink.
- * An attachment link allows to "plug" a Port and a Role.
- * @author E096393A
- *
+ * This class provides an implementation for an AttachmentLink. An attachment
+ * link allows to "plug" a Port and a Role.
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
 public class AttachmentLink extends Link {
 
@@ -17,22 +18,27 @@ public class AttachmentLink extends Link {
 
 	/**
 	 * Constructor
-	 * @param name The name of the AttachmentLink
-	 * @param fromPortComp The {@link Port} to connect with
-	 * @param toRoleConn The {@link Role} to connect with
-	 * @throws NewAttachmentNotAllowed 
+	 * 
+	 * @param name
+	 *            The name of the AttachmentLink
+	 * @param fromPortComp
+	 *            The {@link Port} to connect with
+	 * @param toRoleConn
+	 *            The {@link Role} to connect with
+	 * @throws NewAttachmentNotAllowed
 	 */
-	public AttachmentLink(String name, Port fromPortComp, Role toRoleConn) throws NewAttachmentNotAllowed {
+	public AttachmentLink(String name, Port fromPortComp, Role toRoleConn)
+			throws NewAttachmentNotAllowed {
 		super(name);
-		
-		if((fromPortComp.isProvided() && toRoleConn.isRequired()) 
-				|| (fromPortComp.isRequired() && toRoleConn.isProvided())){
+
+		if ((fromPortComp.isProvided() && toRoleConn.isRequired())
+				|| (fromPortComp.isRequired() && toRoleConn.isProvided())) {
 			this.fromPortComp = fromPortComp;
 			this.toRoleConn = toRoleConn;
-		}
-		else{
-			throw new NewAttachmentNotAllowed("Un AttachmentLink doit posséder absolument un Port Requis " +
-					"et un Role Fourni ou inversement");
+		} else {
+			throw new NewAttachmentNotAllowed(
+					"Un AttachmentLink doit poss��der absolument un Port Requis "
+							+ "et un Role Fourni ou inversement");
 		}
 	}
 
@@ -44,7 +50,8 @@ public class AttachmentLink extends Link {
 	}
 
 	/**
-	 * @param fromPortComp the fromPortComp to set
+	 * @param fromPortComp
+	 *            the fromPortComp to set
 	 */
 	public void setFromPortComp(Port fromPortComp) {
 		this.fromPortComp = fromPortComp;
@@ -58,7 +65,8 @@ public class AttachmentLink extends Link {
 	}
 
 	/**
-	 * @param toRoleConn the toRoleConn to set
+	 * @param toRoleConn
+	 *            the toRoleConn to set
 	 */
 	public void setToRoleConn(Role toRoleConn) {
 		this.toRoleConn = toRoleConn;

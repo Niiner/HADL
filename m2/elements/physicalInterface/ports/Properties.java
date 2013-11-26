@@ -2,18 +2,21 @@ package elements.physicalInterface.ports;
 
 /**
  * This class provides an implementation for Properties
- * @author Niiner-PC
- *
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
 public class Properties {
-	
+
 	private String name;
-	
+
 	/**
 	 * Constructor
-	 * @param name the name of the properties
+	 * 
+	 * @param name
+	 *            the name of the properties
 	 */
-	public Properties(String name){
+	public Properties(String name) {
 		this.name = name;
 	}
 
@@ -25,10 +28,11 @@ public class Properties {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 }

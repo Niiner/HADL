@@ -1,4 +1,5 @@
 package connectionManager.connectionManager;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -17,18 +18,23 @@ import exceptions.NoSuchServiceException;
 import exceptions.WrongInterfacePortException;
 import exceptions.WrongInterfaceServiceException;
 
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
+public class ConnectionManager extends Component implements Observer {
 
-public class ConnectionManager extends Component implements Observer{
-	
 	private ExternalSocket externalSocket;
 	private SecurityCheck securityCheck;
 	private SocketResponse socketResponse;
 	private SocketResponseS socketResponseS;
 	private DbQuery dbQuery;
 	private DbQueryS dbQueryS;
-	
-	
-	public ConnectionManager(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, WrongInterfaceServiceException{
+
+	public ConnectionManager(Configuration config, String name)
+			throws NoSuchPortException, WrongInterfacePortException,
+			NoSuchServiceException, WrongInterfaceServiceException {
 		super(config, name);
 		externalSocket = new ExternalSocket("ExternalSocket");
 		securityCheck = new SecurityCheck("SecurityCheck");
@@ -44,43 +50,43 @@ public class ConnectionManager extends Component implements Observer{
 		this.addRequiredService(socketResponseS);
 		this.dbQueryS.addPort(dbQuery);
 		this.socketResponseS.addPort(socketResponse);
-		
+
 		externalSocket.addObserver(this);
 		dbQuery.addObserver(this);
 		securityCheck.addObserver(this);
 		socketResponse.addObserver(this);
 	}
-	
-	public DbQuery getDbQuery(){
+
+	public DbQuery getDbQuery() {
 		DbQuery p = null;
-		for (Port port : requiredPorts){
-			if (port instanceof DbQuery){
+		for (Port port : requiredPorts) {
+			if (port instanceof DbQuery) {
 				p = (DbQuery) port;
 			}
 		}
 		return p;
 	}
-	
-	public SecurityCheck getSecurityCheck(){
+
+	public SecurityCheck getSecurityCheck() {
 		SecurityCheck p = null;
-		for (Port port : requiredPorts){
-			if (port instanceof SecurityCheck){
+		for (Port port : requiredPorts) {
+			if (port instanceof SecurityCheck) {
 				p = (SecurityCheck) port;
 			}
 		}
 		return p;
 	}
-	
-	public ExternalSocket getExternalSocket(){
+
+	public ExternalSocket getExternalSocket() {
 		ExternalSocket p = null;
-		for (Port port : providedPorts){
-			if (port instanceof ExternalSocket){
+		for (Port port : providedPorts) {
+			if (port instanceof ExternalSocket) {
 				p = (ExternalSocket) port;
 			}
 		}
 		return p;
 	}
-	
+
 	/**
 	 * @return the dbQueryS
 	 */
@@ -89,12 +95,12 @@ public class ConnectionManager extends Component implements Observer{
 	}
 
 	/**
-	 * @param dbQueryS the dbQueryS to set
+	 * @param dbQueryS
+	 *            the dbQueryS to set
 	 */
 	public void setDbQueryS(DbQueryS dbQueryS) {
 		this.dbQueryS = dbQueryS;
 	}
-	
 
 	/**
 	 * @return the socketResponseS
@@ -102,15 +108,14 @@ public class ConnectionManager extends Component implements Observer{
 	public SocketResponseS getSocketResponseS() {
 		return socketResponseS;
 	}
-	
+
 	/**
-	 * @param socketResponseS the socketResponseS to set
+	 * @param socketResponseS
+	 *            the socketResponseS to set
 	 */
 	public void setSocketResponseS(SocketResponseS socketResponseS) {
 		this.socketResponseS = socketResponseS;
 	}
-	
-	
 
 	/**
 	 * @return the socketResponse
@@ -120,7 +125,8 @@ public class ConnectionManager extends Component implements Observer{
 	}
 
 	/**
-	 * @param socketResponse the socketResponse to set
+	 * @param socketResponse
+	 *            the socketResponse to set
 	 */
 	public void setSocketResponse(SocketResponse socketResponse) {
 		this.socketResponse = socketResponse;
@@ -129,17 +135,16 @@ public class ConnectionManager extends Component implements Observer{
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- ConnectionManager notify ----- ]");
-		if (observable instanceof ExternalSocket){
+		if (observable instanceof ExternalSocket) {
 			this.getDbQueryS().sendRequest(object);
-		}
-		else if (observable instanceof DbQuery){
-			((ServerDetail) this.configuration).transfertData(observable, object);
-		}
-		else if (observable instanceof SecurityCheck){
+		} else if (observable instanceof DbQuery) {
+			((ServerDetail) this.configuration).transfertData(observable,
+					object);
+		} else if (observable instanceof SecurityCheck) {
 			this.getSocketResponseS().sendRequest(object);
-		}
-		else if (observable instanceof SocketResponse){
-			((ServerDetail) this.configuration).transfertData(observable, object);
+		} else if (observable instanceof SocketResponse) {
+			((ServerDetail) this.configuration).transfertData(observable,
+					object);
 		}
 	}
 }

@@ -12,32 +12,38 @@ import containers.PrimitiveConnector;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
-public class SecurityQuery extends PrimitiveConnector implements Observer{
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
+public class SecurityQuery extends PrimitiveConnector implements Observer {
 
 	private SecurityManagerR securityManagerR;
 	private Requestor requestor;
 	private Glue3 glue3;
 
-	public SecurityQuery(Configuration config, String name) throws NoSuchRoleException, WrongInterfaceRoleException {
+	public SecurityQuery(Configuration config, String name)
+			throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);
-		
+
 		// Instantiate Role and Glue
 		securityManagerR = new SecurityManagerR("SecurityManagerR");
 		requestor = new Requestor("Requestor");
 		glue3 = new Glue3("Glue3");
-				
+
 		// Add Role to the Glue and vice versa
 		glue3.addRole(securityManagerR);
 		glue3.addRole(requestor);
-		
+
 		securityManagerR.addObserver(this);
-		
+
 		// Add Role and Glue to RPC
 		this.addProvidedRole(securityManagerR);
 		this.addRequiredRole(requestor);
-		this.glues.add(glue3);		
+		this.glues.add(glue3);
 	}
-	
+
 	/**
 	 * @return the securityManagerR
 	 */
@@ -46,7 +52,8 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @param securityManagerR the securityManagerR to set
+	 * @param securityManagerR
+	 *            the securityManagerR to set
 	 */
 	public void setSecurityManagerR(SecurityManagerR securityManagerR) {
 		this.securityManagerR = securityManagerR;
@@ -60,7 +67,8 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @param requestor the requestor to set
+	 * @param requestor
+	 *            the requestor to set
 	 */
 	public void setRequestor(Requestor requestor) {
 		this.requestor = requestor;
@@ -74,7 +82,8 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @param glue3 the glue3 to set
+	 * @param glue3
+	 *            the glue3 to set
 	 */
 	public void setGlue3(Glue3 glue3) {
 		this.glue3 = glue3;
@@ -83,8 +92,9 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- SecurityQuery notify ----- ]");
-		if (observable instanceof SecurityManagerR){
-			((ServerDetail) this.configuration).transfertData(observable, object);
+		if (observable instanceof SecurityManagerR) {
+			((ServerDetail) this.configuration).transfertData(observable,
+					object);
 		}
 	}
 }

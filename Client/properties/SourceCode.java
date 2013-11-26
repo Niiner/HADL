@@ -4,16 +4,18 @@ import elements.physicalInterface.ports.Properties;
 
 /**
  * 
- * @author Niiner-PC
- *
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class SourceCode extends Properties{
-	
+public class SourceCode extends Properties {
+
 	/**
 	 * Constructor
-	 * @param name the name of the SourceCode
+	 * 
+	 * @param name
+	 *            the name of the SourceCode
 	 */
-	public SourceCode(String name){
+	public SourceCode(String name) {
 		super(name);
 	}
 

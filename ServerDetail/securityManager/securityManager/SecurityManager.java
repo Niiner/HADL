@@ -1,4 +1,5 @@
 package securityManager.securityManager;
+
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,23 +9,20 @@ import securityManager.services.SecurityAuthorizationS;
 import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
-import database.ports.SecurityManagement;
-import database.services.SecurityManagementS;
-import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
 /**
  * 
- * @author Niiner-PC
- *
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class SecurityManager extends Component implements Observer{
-	
+public class SecurityManager extends Component implements Observer {
+
 	private SecurityAuthorization securityAuthorization;
 	private SecurityAuthorizationS securityAuthorizationS;
 	private CredentialQuery credentialQuery;
-	
+
 	/**
 	 * 
 	 * @param config
@@ -32,24 +30,26 @@ public class SecurityManager extends Component implements Observer{
 	 * @throws NoSuchPortException
 	 * @throws WrongInterfacePortException
 	 */
-	public SecurityManager(Configuration config, String name) throws NoSuchPortException, WrongInterfacePortException{
+	public SecurityManager(Configuration config, String name)
+			throws NoSuchPortException, WrongInterfacePortException {
 		super(config, name);
-		
+
 		// Instanciation
-		securityAuthorization = new SecurityAuthorization("SecurityAuthorization");
-		securityAuthorizationS = new SecurityAuthorizationS("SecurityAuthorizationS");
-		credentialQuery = new CredentialQuery("CredentialQuery");	
-		
+		securityAuthorization = new SecurityAuthorization(
+				"SecurityAuthorization");
+		securityAuthorizationS = new SecurityAuthorizationS(
+				"SecurityAuthorizationS");
+		credentialQuery = new CredentialQuery("CredentialQuery");
+
 		// Add ports and services
 		this.addRequiredPort(credentialQuery);
-		this.addProvidedPort(securityAuthorization);	
+		this.addProvidedPort(securityAuthorization);
 		this.securityAuthorizationS.addPort(securityAuthorization);
-		
+
 		// Add Observers
 		credentialQuery.addObserver(this);
-		securityAuthorization.addObserver(this);				
+		securityAuthorization.addObserver(this);
 	}
-		
 
 	/**
 	 * @return the securityAuthorization
@@ -58,14 +58,14 @@ public class SecurityManager extends Component implements Observer{
 		return securityAuthorization;
 	}
 
-
 	/**
-	 * @param securityAuthorization the securityAuthorization to set
+	 * @param securityAuthorization
+	 *            the securityAuthorization to set
 	 */
-	public void setSecurityAuthorization(SecurityAuthorization securityAuthorization) {
+	public void setSecurityAuthorization(
+			SecurityAuthorization securityAuthorization) {
 		this.securityAuthorization = securityAuthorization;
 	}
-
 
 	/**
 	 * @return the credentialQuery
@@ -74,15 +74,13 @@ public class SecurityManager extends Component implements Observer{
 		return credentialQuery;
 	}
 
-	
 	/**
-	 * @param credentialQuery the credentialQuery to set
+	 * @param credentialQuery
+	 *            the credentialQuery to set
 	 */
 	public void setCredentialQuery(CredentialQuery credentialQuery) {
 		this.credentialQuery = credentialQuery;
 	}
-
-
 
 	/**
 	 * @return the securityAuthorizationS
@@ -92,20 +90,21 @@ public class SecurityManager extends Component implements Observer{
 	}
 
 	/**
-	 * @param securityAuthorizationS the securityAuthorizationS to set
+	 * @param securityAuthorizationS
+	 *            the securityAuthorizationS to set
 	 */
 	public void setAuthorizationS(SecurityAuthorizationS securityAuthorizationS) {
 		this.securityAuthorizationS = securityAuthorizationS;
 	}
-	
+
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- SecurityManager notify ----- ]");
-		if (observable instanceof CredentialQuery){
+		if (observable instanceof CredentialQuery) {
 			this.getSecurityAuthorizationS().sendRequest(object);
-		}
-		else if (observable instanceof SecurityAuthorization){
-			((ServerDetail) this.configuration).transfertData(observable, object);
+		} else if (observable instanceof SecurityAuthorization) {
+			((ServerDetail) this.configuration).transfertData(observable,
+					object);
 		}
 	}
 }

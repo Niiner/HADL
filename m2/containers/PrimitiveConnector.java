@@ -10,67 +10,79 @@ import enumerations.InterfaceType;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
-
 /**
- * This class provide an implementation for a PrimitivConnector
- * A PrimitiveConnector is composed by Roles and Glues, it can also be composed by properties
- * @author Niiner-PC
- *
+ * This class provide an implementation for a PrimitivConnector A
+ * PrimitiveConnector is composed by Roles and Glues, it can also be composed by
+ * properties
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
 public class PrimitiveConnector implements IConnectorType {
-	
+
 	protected String name;
 	protected Configuration configuration;
-	
-	protected List<Properties> properties = new ArrayList<Properties>();	
+
+	protected List<Properties> properties = new ArrayList<Properties>();
 	protected List<Role> providedRole = new ArrayList<Role>();
-	protected List<Role> requiredRole = new ArrayList<Role>();		
+	protected List<Role> requiredRole = new ArrayList<Role>();
 	protected List<Glue> glues = new ArrayList<Glue>();
-	
+
 	/**
 	 * Constructor
+	 * 
 	 * @param name
 	 */
-	public PrimitiveConnector(Configuration config, String name){
+	public PrimitiveConnector(Configuration config, String name) {
 		this.configuration = config;
 		this.name = name;
 	}
 
 	/**
-	 * Adding a provided {@link Role} into the roles' list of the {@link PrimitiveConnector}
-	 * @param role The {@link Role} to add
-	 * @throws NoSuchRoleException 
-	 * @throws WrongInterfaceRoleException 
+	 * Adding a provided {@link Role} into the roles' list of the
+	 * {@link PrimitiveConnector}
+	 * 
+	 * @param role
+	 *            The {@link Role} to add
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
 	 */
-	public void addProvidedRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
-		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
+	public void addProvidedRole(Role role) throws NoSuchRoleException,
+			WrongInterfaceRoleException {
+		if (role == null) {
+			throw new NoSuchRoleException(
+					"Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
 		}
-		
-		if(role.getInterfaceType() == InterfaceType.Provided){
+
+		if (role.getInterfaceType() == InterfaceType.Provided) {
 			this.providedRole.add(role);
+		} else {
+			throw new WrongInterfaceRoleException(
+					"Ce role dispose du mauvais type d'interface !");
 		}
-		else{
-			throw new WrongInterfaceRoleException("Ce role dispose du mauvais type d'interface !");
-		}		
 	}
 
 	/**
-	 * Adding a required {@link Role} into the required roles' list of the {@link PrimitiveConnector}
-	 * @param role The {@link Role} to add
-	 * @throws NoSuchServiceException 
-	 * @throws WrongInterfaceServiceException 
+	 * Adding a required {@link Role} into the required roles' list of the
+	 * {@link PrimitiveConnector}
+	 * 
+	 * @param role
+	 *            The {@link Role} to add
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
 	 */
-	public void addRequiredRole(Role role) throws NoSuchRoleException, WrongInterfaceRoleException{
-		if(role==null){
-			throw new NoSuchRoleException("Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
+	public void addRequiredRole(Role role) throws NoSuchRoleException,
+			WrongInterfaceRoleException {
+		if (role == null) {
+			throw new NoSuchRoleException(
+					"Ce role n'existe pas ou n'a pas ���t��� instanci��� !");
 		}
-		
-		if(role.getInterfaceType() == InterfaceType.Required){
+
+		if (role.getInterfaceType() == InterfaceType.Required) {
 			this.requiredRole.add(role);
+		} else {
+			throw new WrongInterfaceRoleException(
+					"Ce role dispose du mauvais type d'interface !");
 		}
-		else{
-			throw new WrongInterfaceRoleException("Ce role dispose du mauvais type d'interface !");
-		}		
 	}
 }

@@ -5,18 +5,24 @@ import enumerations.VisibilityType;
 
 /**
  * This class provides an implementation for a Continu Port
- * @author Niiner-PC
- *
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class ContinuPort extends Port{
+public class ContinuPort extends Port {
 
 	/**
 	 * Constructor
-	 * @param name the name of the Continu port
-	 * @param interfaceT the {@link InterfaceType} of the port
-	 * @param visibilityT the {@link VisibilityType} of the port
+	 * 
+	 * @param name
+	 *            the name of the Continu port
+	 * @param interfaceT
+	 *            the {@link InterfaceType} of the port
+	 * @param visibilityT
+	 *            the {@link VisibilityType} of the port
 	 */
-	public ContinuPort(String name, InterfaceType interfaceT, VisibilityType visibilityT) {
+	public ContinuPort(String name, InterfaceType interfaceT,
+			VisibilityType visibilityT) {
 		super(name, interfaceT, visibilityT);
 	}
 

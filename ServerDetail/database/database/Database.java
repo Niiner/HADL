@@ -20,11 +20,16 @@ import database.services.SecurityManagementS;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
-public class Database extends Component implements Observer{
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
+public class Database extends Component implements Observer {
 
 	private static Database instance;
 	private Connection connection = null;
-	
+
 	private SecurityManagement securityManagement;
 	private SecurityManagementS securityManagementS;
 	private Query query;
@@ -32,7 +37,8 @@ public class Database extends Component implements Observer{
 	/**
 	 * Constructor
 	 * 
-	 * @param name Database's name
+	 * @param name
+	 *            Database's name
 	 * @throws WrongInterfacePortException
 	 * @throws NoSuchPortException
 	 */
@@ -43,13 +49,13 @@ public class Database extends Component implements Observer{
 		// Instanciation
 		securityManagement = new SecurityManagement("SecurityManagement");
 		securityManagementS = new SecurityManagementS("SecurityManagementS");
-		query = new Query("Query");		
+		query = new Query("Query");
 
 		// Add ports and services
 		this.addProvidedPort(securityManagement);
 		this.addProvidedPort(query);
 		this.securityManagementS.addPort(securityManagement);
-		
+
 		// Add Observers
 		query.addObserver(this);
 		securityManagement.addObserver(this);
@@ -72,7 +78,7 @@ public class Database extends Component implements Observer{
 		} catch (Exception e) {
 			System.out.println("Autre erreur : ");
 			e.printStackTrace();
-		} 
+		}
 	}
 
 	/**
@@ -116,34 +122,38 @@ public class Database extends Component implements Observer{
 			throws NoSuchPortException, WrongInterfacePortException {
 		return instance;
 	}
-	
+
 	/**
 	 * Return a list of Persons
-	 * @param message The SQL message to send to the database
+	 * 
+	 * @param message
+	 *            The SQL message to send to the database
 	 * @return
 	 * @throws SQLException
 	 * @throws NoSuchPortException
 	 * @throws WrongInterfacePortException
 	 */
-	public List<Person> receiveRequest(String message) throws SQLException, NoSuchPortException, WrongInterfacePortException{
-			List<Person> persons = new ArrayList<Person>();
+	public List<Person> receiveRequest(String message) throws SQLException,
+			NoSuchPortException, WrongInterfacePortException {
+		List<Person> persons = new ArrayList<Person>();
 
-			Statement s = Database.getInstance().getConnection().createStatement();
-			String sqlquery = message;
-			ResultSet res = s.executeQuery(sqlquery);
+		Statement s = Database.getInstance().getConnection().createStatement();
+		String sqlquery = message;
+		ResultSet res = s.executeQuery(sqlquery);
 
-			while(res.next()){
-				persons.add(new Person(res.getInt("id"),res.getString("name")));
-			}
+		while (res.next()) {
+			persons.add(new Person(res.getInt("id"), res.getString("name")));
+		}
 
-			return persons;
+		return persons;
 	}
-	
+
 	/**
 	 * Close the Database
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
-	public void close() throws SQLException{
+	public void close() throws SQLException {
 		this.connection.close();
 	}
 
@@ -185,7 +195,8 @@ public class Database extends Component implements Observer{
 	}
 
 	/**
-	 * @param securityManagementS the securityManagementS to set
+	 * @param securityManagementS
+	 *            the securityManagementS to set
 	 */
 	public void setSecurityManagementS(SecurityManagementS securityManagementS) {
 		this.securityManagementS = securityManagementS;
@@ -199,7 +210,8 @@ public class Database extends Component implements Observer{
 	}
 
 	/**
-	 * @param securityManagement the securityManagement to set
+	 * @param securityManagement
+	 *            the securityManagement to set
 	 */
 	public void setSecurityManagement(SecurityManagement securityManagement) {
 		this.securityManagement = securityManagement;
@@ -213,7 +225,8 @@ public class Database extends Component implements Observer{
 	}
 
 	/**
-	 * @param query the query to set
+	 * @param query
+	 *            the query to set
 	 */
 	public void setQuery(Query query) {
 		this.query = query;
@@ -222,11 +235,11 @@ public class Database extends Component implements Observer{
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- Database notify ----- ]");
-		if (observable instanceof Query){
+		if (observable instanceof Query) {
 			this.getSecurityManagementS().sendRequest(object);
-		}
-		else if (observable instanceof SecurityManagement){
-			((ServerDetail) this.configuration).transfertData(observable, object);
+		} else if (observable instanceof SecurityManagement) {
+			((ServerDetail) this.configuration).transfertData(observable,
+					object);
 		}
 	}
 }

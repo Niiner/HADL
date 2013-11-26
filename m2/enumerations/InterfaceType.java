@@ -2,10 +2,10 @@ package enumerations;
 
 /**
  * An enumeration for the interface type, elements can be provided or required
- * @author Niiner-PC
- *
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
 public enum InterfaceType {
-	Provided,
-	Required
+	Provided, Required
 }

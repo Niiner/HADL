@@ -1,6 +1,5 @@
 package connector;
 
-import elements.physicalInterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
@@ -17,12 +16,13 @@ import configuration.SystemClientServer;
 import containers.PrimitiveConnector;
 
 /**
- * This class provides an implementation for the RPC, a PrimitivConnector
- * which allow the communication between the server and the client
- * @author Niiner-PC
- *
+ * This class provides an implementation for the RPC, a PrimitivConnector which
+ * allow the communication between the server and the client
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class RPC extends PrimitiveConnector implements Observer{
+public class RPC extends PrimitiveConnector implements Observer {
 
 	private Glue1 glue1;
 	private Glue5 glue5;
@@ -31,9 +31,10 @@ public class RPC extends PrimitiveConnector implements Observer{
 	private CalledResponse calledResponse;
 	private CallerResponse callerResponse;
 
-	public RPC(SystemClientServer config, String name) throws NoSuchRoleException, WrongInterfaceRoleException{
+	public RPC(SystemClientServer config, String name)
+			throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);
-		
+
 		// Instantiate Role and Glue
 		called = new Called("Called");
 		caller = new Caller("Caller");
@@ -41,17 +42,17 @@ public class RPC extends PrimitiveConnector implements Observer{
 		callerResponse = new CallerResponse("CallerResponse");
 		glue1 = new Glue1("Glue1");
 		glue5 = new Glue5("Glue5");
-		
+
 		// RPC listen the Called
 		called.addObserver(this);
 		calledResponse.addObserver(this);
-		
+
 		// Add Role to the Glue and vice versa
 		glue1.addRole(called);
 		glue1.addRole(caller);
 		glue5.addRole(calledResponse);
 		glue5.addRole(callerResponse);
-		
+
 		// Add Role and Glue to RPC
 		this.addProvidedRole(called);
 		this.addRequiredRole(caller);
@@ -62,32 +63,64 @@ public class RPC extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @return the role {@link Caller} of {@link RPC} 
+	 * @return the glue1
 	 */
-	public Caller getCaller(){
-		Caller r = null;
-		for (Role role : requiredRole){
-			if (role instanceof Caller){
-				r = (Caller) role;
-			}
-		}
-		return r;
+	public Glue1 getGlue1() {
+		return glue1;
 	}
 
 	/**
-	 * @return the role {@link Called} of {@link RPC}
+	 * @param glue1
+	 *            the glue1 to set
 	 */
-	public Called getCalled(){
-		Called r = null;
-		for (Role role : providedRole){
-			if (role instanceof Called){
-				r = (Called) role;
-			}
-		}
-		return r;
+	public void setGlue1(Glue1 glue1) {
+		this.glue1 = glue1;
 	}
-	
-	
+
+	/**
+	 * @return the glue5
+	 */
+	public Glue5 getGlue5() {
+		return glue5;
+	}
+
+	/**
+	 * @param glue5
+	 *            the glue5 to set
+	 */
+	public void setGlue5(Glue5 glue5) {
+		this.glue5 = glue5;
+	}
+
+	/**
+	 * @return the caller
+	 */
+	public Caller getCaller() {
+		return caller;
+	}
+
+	/**
+	 * @param caller
+	 *            the caller to set
+	 */
+	public void setCaller(Caller caller) {
+		this.caller = caller;
+	}
+
+	/**
+	 * @return the called
+	 */
+	public Called getCalled() {
+		return called;
+	}
+
+	/**
+	 * @param called
+	 *            the called to set
+	 */
+	public void setCalled(Called called) {
+		this.called = called;
+	}
 
 	/**
 	 * @return the calledResponse
@@ -97,7 +130,8 @@ public class RPC extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @param calledResponse the calledResponse to set
+	 * @param calledResponse
+	 *            the calledResponse to set
 	 */
 	public void setCalledResponse(CalledResponse calledResponse) {
 		this.calledResponse = calledResponse;
@@ -111,7 +145,8 @@ public class RPC extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @param callerResponse the callerResponse to set
+	 * @param callerResponse
+	 *            the callerResponse to set
 	 */
 	public void setCallerResponse(CallerResponse callerResponse) {
 		this.callerResponse = callerResponse;
@@ -120,11 +155,12 @@ public class RPC extends PrimitiveConnector implements Observer{
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("RPC notify");
-		if (observable instanceof Called){
-			((SystemClientServer) this.configuration).transfertData(observable, object);
-		}
-		else if (observable instanceof CalledResponse){
-			((SystemClientServer) this.configuration).transfertData(observable, object);
+		if (observable instanceof Called) {
+			((SystemClientServer) this.configuration).transfertData(observable,
+					object);
+		} else if (observable instanceof CalledResponse) {
+			((SystemClientServer) this.configuration).transfertData(observable,
+					object);
 		}
 	}
 }

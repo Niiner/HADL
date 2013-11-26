@@ -21,7 +21,7 @@ import exceptions.WrongInterfaceServiceException;
  * composed by Ports/Roles and Services which can be required or provided. It is
  * also composed by Components and Connectors
  * 
- * @author E096393A
+ * @author FAGNIEZ Florian and RULLIER Noemie
  * 
  */
 public class Configuration implements IComponentType, IConnectorType {
@@ -62,7 +62,7 @@ public class Configuration implements IComponentType, IConnectorType {
 	 * @throws WrongInterfacePortException
 	 */
 	public void addProvidedPort(Port port) throws NoSuchPortException,
-	WrongInterfacePortException {
+			WrongInterfacePortException {
 		if (port == null) {
 			throw new NoSuchPortException("Le port " + port.getName()
 					+ " n'existe pas ou n'a pas été instancié!");
@@ -87,7 +87,7 @@ public class Configuration implements IComponentType, IConnectorType {
 	 * @throws WrongInterfacePortException
 	 */
 	public void addRequiredPort(Port port) throws NoSuchPortException,
-	WrongInterfacePortException {
+			WrongInterfacePortException {
 		if (port == null) {
 			throw new NoSuchPortException("Le port " + port.getName()
 					+ " n'existe pas ou n'a pas été instancié!");
@@ -161,7 +161,7 @@ public class Configuration implements IComponentType, IConnectorType {
 	 * @throws WrongInterfaceRoleException
 	 */
 	public void addProvidedRole(Role role) throws NoSuchRoleException,
-	WrongInterfaceRoleException {
+			WrongInterfaceRoleException {
 		if (role == null) {
 			throw new NoSuchRoleException("Le rôle " + role.getName()
 					+ " n'existe pas ou n'a pas été instancié !");
@@ -185,7 +185,7 @@ public class Configuration implements IComponentType, IConnectorType {
 	 * @throws WrongInterfaceServiceException
 	 */
 	public void addRequiredRole(Role role) throws NoSuchRoleException,
-	WrongInterfaceRoleException {
+			WrongInterfaceRoleException {
 		if (role == null) {
 			throw new NoSuchRoleException("Le rôle " + role.getName()
 					+ " n'existe pas ou n'a pas été instancié !");
@@ -357,7 +357,8 @@ public class Configuration implements IComponentType, IConnectorType {
 	}
 
 	/**
-	 * @param links the links to set          
+	 * @param links
+	 *            the links to set
 	 */
 	public void setLinks(List<Link> links) {
 		this.links = links;
@@ -365,7 +366,9 @@ public class Configuration implements IComponentType, IConnectorType {
 
 	/**
 	 * Allow to add a link
-	 * @param link the link to add
+	 * 
+	 * @param link
+	 *            the link to add
 	 */
 	public void addLink(Link link) {
 		this.links.add(link);

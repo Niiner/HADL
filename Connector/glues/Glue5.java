@@ -6,27 +6,27 @@ import elements.physicalInterface.roles.Role;
 
 /**
  * 
- * @author Niiner-PC
- *
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class Glue5 extends Glue{
-	
+public class Glue5 extends Glue {
+
 	/**
 	 * 
 	 * @param name
 	 */
-	public Glue5(String name){
+	public Glue5(String name) {
 		super(name);
 	}
-	
+
 	/**
 	 * 
 	 * @param msg
 	 */
-	public void receiveRequest(Object msg){
+	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in glue " + this.name);
-		for (Role role : this.getRoles()){
-			if (role instanceof CalledResponse){
+		for (Role role : this.getRoles()) {
+			if (role instanceof CalledResponse) {
 				((CalledResponse) role).receiveRequest(msg);
 			}
 		}

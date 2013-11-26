@@ -6,17 +6,23 @@ import elements.physicalInterface.services.Service;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
 public class SecurityManagementS extends Service {
-	
-	public SecurityManagementS(String name){
+
+	public SecurityManagementS(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
-	
-	public void sendRequest(Object msg){
-		System.out.println("[ Calling service from Securitymanagement to send the request]");
+
+	public void sendRequest(Object msg) {
+		System.out
+				.println("[ Calling service from Securitymanagement to send the request]");
 		SecurityManagement usedPort = null;
-		for (Port port: this.getUsedPorts()){
-			if (port instanceof SecurityManagement){
+		for (Port port : this.getUsedPorts()) {
+			if (port instanceof SecurityManagement) {
 				usedPort = (SecurityManagement) port;
 			}
 		}

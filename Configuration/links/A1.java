@@ -5,9 +5,15 @@ import roles.Caller;
 import elements.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 
-public class A1 extends AttachmentLink{
-	
-	public A1(String name, SendRequestP fromPortComp, Caller toRoleConn) throws NewAttachmentNotAllowed{
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
+public class A1 extends AttachmentLink {
+
+	public A1(String name, SendRequestP fromPortComp, Caller toRoleConn)
+			throws NewAttachmentNotAllowed {
 		super(name, fromPortComp, toRoleConn);
 	}
 }

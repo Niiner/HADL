@@ -6,20 +6,23 @@ import java.util.List;
 import elements.physicalInterface.roles.Role;
 
 /**
- * The glue authorize the trasnfert of data between two roles
- * @author Niiner-PC
- *
+ * The glue authorize the transfert of data between two roles
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
 public class Glue {
-	
+
 	protected String name;
 	private List<Role> roles;
-	
+
 	/**
 	 * Constructor
-	 * @param name The name of the glue
+	 * 
+	 * @param name
+	 *            The name of the glue
 	 */
-	public Glue(String name){
+	public Glue(String name) {
 		this.name = name;
 		this.roles = new ArrayList<Role>();
 	}
@@ -32,7 +35,8 @@ public class Glue {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -46,27 +50,32 @@ public class Glue {
 	}
 
 	/**
-	 * @param roles the roles to set
+	 * @param roles
+	 *            the roles to set
 	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 	/**
-	 * Adding one role 
-	 * @param role the {@link Role} to add
+	 * Adding one role
+	 * 
+	 * @param role
+	 *            the {@link Role} to add
 	 */
-	public void addRoleBasic(Role role){
+	public void addRoleBasic(Role role) {
 		roles.add(role);
 	}
-	
+
 	/**
 	 * Adding one role and adding this {@link Glue} in the {@link Role}
-	 * @param role the {@link Role} to add
+	 * 
+	 * @param role
+	 *            the {@link Role} to add
 	 */
-	public void addRole(Role role){
+	public void addRole(Role role) {
 		roles.add(role);
 		role.addGlueBasic(this);
 	}
-	
+
 }

@@ -1,4 +1,5 @@
 package configuration;
+
 import java.util.Observable;
 
 import links.A1;
@@ -20,8 +21,13 @@ import exceptions.WrongInterfacePortException;
 import exceptions.WrongInterfaceRoleException;
 import exceptions.WrongInterfaceServiceException;
 
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
 public class SystemClientServer extends Configuration {
-	
+
 	private Client c1;
 	private Server s;
 	private RPC rpc;
@@ -29,11 +35,12 @@ public class SystemClientServer extends Configuration {
 	private A2 a2;
 	private A9 a9;
 	private A10 a10;
-	
-	public SystemClientServer(String name) 
-			throws NoSuchPortException, WrongInterfacePortException, NoSuchServiceException, 
-			WrongInterfaceServiceException, NoSuchRoleException, WrongInterfaceRoleException, 
-			NewAttachmentNotAllowed, NewBindingNotAllowed{
+
+	public SystemClientServer(String name) throws NoSuchPortException,
+			WrongInterfacePortException, NoSuchServiceException,
+			WrongInterfaceServiceException, NoSuchRoleException,
+			WrongInterfaceRoleException, NewAttachmentNotAllowed,
+			NewBindingNotAllowed {
 		super(null, name);
 		c1 = new Client(this, "FlorianPC");
 		s = new Server(this, "LaisseLibreCoursATonImagination");
@@ -55,13 +62,16 @@ public class SystemClientServer extends Configuration {
 	public void setC1(Client c1) {
 		this.c1 = c1;
 	}
-	
-	public void transfertData(Observable observable, Object object){
-		for (Link link : links){
-			if (link instanceof AttachmentLink && ((AttachmentLink) link).getFromPortComp().equals(observable)){
+
+	public void transfertData(Observable observable, Object object) {
+		for (Link link : links) {
+			if (link instanceof AttachmentLink
+					&& ((AttachmentLink) link).getFromPortComp().equals(
+							observable)) {
 				((AttachmentLink) link).getToRoleConn().receiveData(object);
-			}
-			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)){
+			} else if (link instanceof AttachmentLink
+					&& ((AttachmentLink) link).getToRoleConn().equals(
+							observable)) {
 				((AttachmentLink) link).getFromPortComp().receiveData(object);
 			}
 		}

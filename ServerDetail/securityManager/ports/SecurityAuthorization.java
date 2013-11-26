@@ -4,14 +4,18 @@ import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
 
-
-public class SecurityAuthorization extends SynchronPort{
+/**
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
+ */
+public class SecurityAuthorization extends SynchronPort {
 
 	public SecurityAuthorization(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
-	
-	public void receiveRequest(Object msg){
+
+	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
 		notifyObservers();

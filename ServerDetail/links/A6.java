@@ -6,25 +6,29 @@ import elements.links.AttachmentLink;
 import exceptions.NewAttachmentNotAllowed;
 
 /**
- * This class provides an implementation for an attachment link A6
- * It establishes a link between the SecurityQuery PrimitivConnector
- * and SecurityManager Component
- * @author Niiner
- *
+ * This class provides an implementation for an attachment link A6 It
+ * establishes a link between the SecurityQuery PrimitivConnector and
+ * SecurityManager Component
+ * 
+ * @author FAGNIEZ Florian and RULLIER Noemie
+ * 
  */
-public class A6 extends AttachmentLink{
+public class A6 extends AttachmentLink {
 
 	/**
 	 * Constructor
-	 * @param name The name of the Attachment link
-	 * @param fromPortComp The port component
-	 * @param toRoleConn The role connector
-	 * @throws NewAttachmentNotAllowed 
+	 * 
+	 * @param name
+	 *            The name of the Attachment link
+	 * @param fromPortComp
+	 *            The port component
+	 * @param toRoleConn
+	 *            The role connector
+	 * @throws NewAttachmentNotAllowed
 	 */
-	public A6(String name, CredentialQuery fromPortComp, SecurityManagerR toRoleConn) throws NewAttachmentNotAllowed {
+	public A6(String name, CredentialQuery fromPortComp,
+			SecurityManagerR toRoleConn) throws NewAttachmentNotAllowed {
 		super(name, fromPortComp, toRoleConn);
-		// TODO Auto-generated constructor stub
 	}
-	
 
 }
