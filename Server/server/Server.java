@@ -3,6 +3,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import ports.ReceiveRequestP;
+import ports.ReceiveResponseP;
 import ports.SendRequestP2;
 import serverDetail.ServerDetail;
 import services.ReceiveRequestS;
@@ -32,6 +33,7 @@ public class Server extends Component implements Observer{
 	private Port sendRequestP2; 
 	private Service receiveRequestS;
 	private Service sendRequestS2;
+	private ReceiveResponseP receiveResponseP;
 	
 	/**
 	 * Constructor
@@ -57,16 +59,19 @@ public class Server extends Component implements Observer{
 		this.sendRequestP2 = new SendRequestP2("SendRequestP2"); 
 		this.receiveRequestS = new ReceiveRequestS("ReceiveRequestS");
 		this.sendRequestS2 = new SendRequestS2("SendRequestS2");
+		this.receiveResponseP = new ReceiveResponseP("ReceiveResponseP");
 		
 		// Server listen the receiveRequestP
 		receiveRequestP.addObserver(this);
 		sendRequestP2.addObserver(this);
+		receiveResponseP.addObserver(this);
 		
 		// Adding ports and services
 		this.addRequiredPort(receiveRequestP);
 		this.addProvidedPort(sendRequestP2);
 		this.addRequiredService(receiveRequestS);
 		this.addProvidedService(sendRequestS2);
+		this.addProvidedPort(receiveResponseP);
 		this.receiveRequestS.addPort(receiveRequestP);
 		this.sendRequestS2.addPort(sendRequestP2);
 		
@@ -101,6 +106,22 @@ public class Server extends Component implements Observer{
 		}
 		return s;
 	}
+	
+	
+
+	/**
+	 * @return the receiveResponseP
+	 */
+	public ReceiveResponseP getReceiveResponseP() {
+		return receiveResponseP;
+	}
+
+	/**
+	 * @param receiveResponseP the receiveResponseP to set
+	 */
+	public void setReceiveResponseP(ReceiveResponseP receiveResponseP) {
+		this.receiveResponseP = receiveResponseP;
+	}
 
 	@Override
 	public void update(Observable observable, Object object) {
@@ -112,6 +133,9 @@ public class Server extends Component implements Observer{
 		else if (observable instanceof SendRequestP2){
 			// Call the configuration to find the binding link
 			this.serverDetail.transfertData(observable, object);
+		}
+		else if (observable instanceof ReceiveResponseP){
+			// Transfert vers connector créer des nouveux lien attachement
 		}
 	}
 }

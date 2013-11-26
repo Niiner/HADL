@@ -8,6 +8,7 @@ import links.A6;
 import links.A7;
 import links.A8;
 import links.B1;
+import links.B2;
 import ports.ReceiveRequestP;
 import ports.SendRequestP2;
 import securityManager.securityManager.SecurityManager;
@@ -26,8 +27,10 @@ import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchRoleException;
+import exceptions.NoSuchServiceException;
 import exceptions.WrongInterfacePortException;
 import exceptions.WrongInterfaceRoleException;
+import exceptions.WrongInterfaceServiceException;
 
 
 public class ServerDetail extends Configuration {
@@ -47,11 +50,12 @@ public class ServerDetail extends Configuration {
 	private A7 a7;
 	private A8 a8;
 	private B1 b1;
+	private B2 b2;
 
 	public ServerDetail(Component parent, String name) 
 			throws NoSuchPortException, WrongInterfacePortException, 
 			NoSuchRoleException, WrongInterfaceRoleException, 
-			NewAttachmentNotAllowed, NewBindingNotAllowed {
+			NewAttachmentNotAllowed, NewBindingNotAllowed, NoSuchServiceException, WrongInterfaceServiceException {
 
 		super(parent, name);
 		connectionManager = new ConnectionManager(this, "connectionManager");
@@ -69,6 +73,7 @@ public class ServerDetail extends Configuration {
 		a7 = new A7("A7", securityManager.getSecurityAuthorization(), clearanceRequest.getGrantor());
 		a8 = new A8("A8", connectionManager.getSecurityCheck(), clearanceRequest.getRequestor());
 		b1 = new B1("B1", ((Server) parent).getReceiveRequestP(), this.getConnectionManager().getExternalSocket());
+		b2 = new B2("B2", this.getConnectionManager().getSocketResponse(), ((Server) parent).getReceiveResponseP());
 
 		this.addLink(a3);
 		this.addLink(a4);
@@ -77,6 +82,7 @@ public class ServerDetail extends Configuration {
 		this.addLink(a7);
 		this.addLink(a8);
 		this.addLink(b1);
+		this.addLink(b2);
 	}
 
 	public ConnectionManager getConnectionManager() {
@@ -97,6 +103,9 @@ public class ServerDetail extends Configuration {
 			}
 			else if (link instanceof AttachmentLink && ((AttachmentLink) link).getToRoleConn().equals(observable)) {
 				((AttachmentLink) link).getFromPortComp().receiveData(object);
+			}
+			else if (link instanceof BindingLink && ((BindingLink) link).getFromPortConfig().equals(observable)) {
+				((BindingLink) link).getToPortComp().receiveData(object);
 			}
 		}
 	}
