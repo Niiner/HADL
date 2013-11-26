@@ -17,7 +17,6 @@ import database.model.Person;
 import database.ports.Query;
 import database.ports.SecurityManagement;
 import database.services.SecurityManagementS;
-import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
@@ -178,27 +177,6 @@ public class Database extends Component implements Observer{
 		return this.connection;
 	}
 
-	public SecurityManagement getSecurityManagement() {
-		SecurityManagement p = null;
-		for (Port port : providedPorts) {
-			if (port instanceof SecurityManagement) {
-				p = (SecurityManagement) port;
-			}
-		}
-		return p;
-	}
-
-	public Query getQuery() {
-		Query p = null;
-		for (Port port : providedPorts) {
-			if (port instanceof Query) {
-				p = (Query) port;
-			}
-		}
-		return p;
-	}
-	
-
 	/**
 	 * @return the securityManagementS
 	 */
@@ -211,6 +189,34 @@ public class Database extends Component implements Observer{
 	 */
 	public void setSecurityManagementS(SecurityManagementS securityManagementS) {
 		this.securityManagementS = securityManagementS;
+	}
+
+	/**
+	 * @return the securityManagement
+	 */
+	public SecurityManagement getSecurityManagement() {
+		return securityManagement;
+	}
+
+	/**
+	 * @param securityManagement the securityManagement to set
+	 */
+	public void setSecurityManagement(SecurityManagement securityManagement) {
+		this.securityManagement = securityManagement;
+	}
+
+	/**
+	 * @return the query
+	 */
+	public Query getQuery() {
+		return query;
+	}
+
+	/**
+	 * @param query the query to set
+	 */
+	public void setQuery(Query query) {
+		this.query = query;
 	}
 
 	@Override

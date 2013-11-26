@@ -49,34 +49,39 @@ public class SecurityManager extends Component implements Observer{
 		credentialQuery.addObserver(this);
 		securityAuthorization.addObserver(this);				
 	}
+		
+
+	/**
+	 * @return the securityAuthorization
+	 */
+	public SecurityAuthorization getSecurityAuthorization() {
+		return securityAuthorization;
+	}
+
+
+	/**
+	 * @param securityAuthorization the securityAuthorization to set
+	 */
+	public void setSecurityAuthorization(SecurityAuthorization securityAuthorization) {
+		this.securityAuthorization = securityAuthorization;
+	}
+
+
+	/**
+	 * @return the credentialQuery
+	 */
+	public CredentialQuery getCredentialQuery() {
+		return credentialQuery;
+	}
+
 	
 	/**
-	 * 
-	 * @return
+	 * @param credentialQuery the credentialQuery to set
 	 */
-	public CredentialQuery getCredentialQuery(){
-		CredentialQuery p = null;
-		for (Port port : requiredPorts){
-			if (port instanceof CredentialQuery){
-				p = (CredentialQuery) port;
-			}
-		}
-		return p;
+	public void setCredentialQuery(CredentialQuery credentialQuery) {
+		this.credentialQuery = credentialQuery;
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public SecurityAuthorization getSecurityAuthorization(){
-		SecurityAuthorization p = null;
-		for (Port port : providedPorts){
-			if (port instanceof SecurityAuthorization){
-				p = (SecurityAuthorization) port;
-			}
-		}
-		return p;
-	}
+
 
 
 	/**

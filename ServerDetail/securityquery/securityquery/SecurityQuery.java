@@ -7,10 +7,8 @@ import securityquery.glues.Glue3;
 import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
 import serverDetail.ServerDetail;
-import sqlquery.roles.Callee;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import elements.physicalInterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -39,33 +37,49 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 		this.addRequiredRole(requestor);
 		this.glues.add(glue3);		
 	}
-
-	/**
-	 * @returns the role {@link SecurityManagerR} of {@link SecurityQuery}
-	 */
-	public SecurityManagerR getSecurityManagerR(){
-		SecurityManagerR p = null;
-		for (Role role : providedRole){
-			if (role instanceof SecurityManagerR){
-				p = (SecurityManagerR) role;
-			}
-		}
-		return p;
-	}
-
-	/**
-	 * @return the role {@link Requestor} of {@link SecurityQuery}
-	 */
-	public Requestor getRequestor(){
-		Requestor p = null;
-		for (Role role : requiredRole){
-			if (role instanceof Requestor){
-				p = (Requestor) role;
-			}
-		}
-		return p;
-	}
 	
+	/**
+	 * @return the securityManagerR
+	 */
+	public SecurityManagerR getSecurityManagerR() {
+		return securityManagerR;
+	}
+
+	/**
+	 * @param securityManagerR the securityManagerR to set
+	 */
+	public void setSecurityManagerR(SecurityManagerR securityManagerR) {
+		this.securityManagerR = securityManagerR;
+	}
+
+	/**
+	 * @return the requestor
+	 */
+	public Requestor getRequestor() {
+		return requestor;
+	}
+
+	/**
+	 * @param requestor the requestor to set
+	 */
+	public void setRequestor(Requestor requestor) {
+		this.requestor = requestor;
+	}
+
+	/**
+	 * @return the glue3
+	 */
+	public Glue3 getGlue3() {
+		return glue3;
+	}
+
+	/**
+	 * @param glue3 the glue3 to set
+	 */
+	public void setGlue3(Glue3 glue3) {
+		this.glue3 = glue3;
+	}
+
 	@Override
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- SecurityQuery notify ----- ]");
@@ -73,6 +87,4 @@ public class SecurityQuery extends PrimitiveConnector implements Observer{
 			((ServerDetail) this.configuration).transfertData(observable, object);
 		}
 	}
-
-
 }
