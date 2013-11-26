@@ -3,13 +3,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 import serverDetail.ServerDetail;
-import sqlquery.roles.Callee;
 import clearanceRequest.glues.Glue4;
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import elements.physicalInterface.roles.Role;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -42,29 +40,45 @@ public class ClearanceRequest extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @return the role {@link Grantor} of {@link ClearanceRequest}
+	 * @return the grantor
 	 */
-	public Grantor getGrantor(){
-		Grantor r = null;
-		for (Role role : requiredRole){
-			if (role instanceof Grantor){
-				r = (Grantor) role;
-			}
-		}
-		return r;
+	public Grantor getGrantor() {
+		return grantor;
 	}
 
 	/**
-	 * @return the role {@link Requestor} of {@link ClearanceRequest}
+	 * @param grantor the grantor to set
 	 */
-	public Requestor getRequestor(){
-		Requestor r = null;
-		for (Role role : providedRole){
-			if (role instanceof Requestor){
-				r = (Requestor) role;
-			}
-		}
-		return r;
+	public void setGrantor(Grantor grantor) {
+		this.grantor = grantor;
+	}
+
+	/**
+	 * @return the requestor
+	 */
+	public Requestor getRequestor() {
+		return requestor;
+	}
+
+	/**
+	 * @param requestor the requestor to set
+	 */
+	public void setRequestor(Requestor requestor) {
+		this.requestor = requestor;
+	}
+
+	/**
+	 * @return the glue4
+	 */
+	public Glue4 getGlue4() {
+		return glue4;
+	}
+
+	/**
+	 * @param glue4 the glue4 to set
+	 */
+	public void setGlue4(Glue4 glue4) {
+		this.glue4 = glue4;
 	}
 
 	@Override

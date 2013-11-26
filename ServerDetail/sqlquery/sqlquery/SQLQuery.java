@@ -47,29 +47,45 @@ public class SQLQuery extends PrimitiveConnector implements Observer{
 	}
 
 	/**
-	 * @return the role {@link Caller} of {@link SQLQuery}
+	 * @return the caller
 	 */
-	public Caller getCaller(){
-		Caller p = null;
-		for (Role role : providedRole){
-			if (role instanceof Caller){
-				p = (Caller) role;
-			}
-		}
-		return p;
+	public Caller getCaller() {
+		return caller;
 	}
 
 	/**
-	 * @return the role {@link Callee} of {@link SQLQuery}
+	 * @param caller the caller to set
 	 */
-	public Callee getCallee(){
-		Callee p = null;
-		for (Role role : requiredRole){
-			if (role instanceof Callee){
-				p = (Callee) role;
-			}
-		}
-		return p;
+	public void setCaller(Caller caller) {
+		this.caller = caller;
+	}
+
+	/**
+	 * @return the callee
+	 */
+	public Callee getCallee() {
+		return callee;
+	}
+
+	/**
+	 * @param callee the callee to set
+	 */
+	public void setCallee(Callee callee) {
+		this.callee = callee;
+	}
+
+	/**
+	 * @return the glue2
+	 */
+	public Glue2 getGlue2() {
+		return glue2;
+	}
+
+	/**
+	 * @param glue2 the glue2 to set
+	 */
+	public void setGlue2(Glue2 glue2) {
+		this.glue2 = glue2;
 	}
 
 	@Override
