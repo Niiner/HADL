@@ -3,6 +3,7 @@ package sqlquery.sqlquery;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import serverDetail.ServerDetail;
 import sqlquery.glues.Glue2;
 import sqlquery.roles.Callee;
@@ -103,7 +104,7 @@ public class SQLQuery extends PrimitiveConnector implements Observer {
 		System.out.println("[ ----- SqlQuery notify ----- ]");
 		if (observable instanceof Callee) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

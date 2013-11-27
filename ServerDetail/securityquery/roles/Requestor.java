@@ -1,5 +1,6 @@
 package securityquery.roles;
 
+import message.Message;
 import securityquery.glues.Glue3;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
@@ -21,7 +22,7 @@ public class Requestor extends Role {
 		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()) {
 			if (glue instanceof Glue3) {
-				((Glue3) glue).receiveRequest(msg);
+				((Glue3) glue).receiveRequest((Message) msg);
 			}
 		}
 	}

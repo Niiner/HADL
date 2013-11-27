@@ -10,6 +10,7 @@ import links.A7;
 import links.A8;
 import links.B1;
 import links.B2;
+import message.Message;
 import ports.ReceiveRequestP;
 import ports.SendRequestP2;
 import securityManager.securityManager.SecurityManager;
@@ -114,7 +115,7 @@ public class ServerDetail extends Configuration {
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getFromPortComp().equals(
 							observable)) {
-				((AttachmentLink) link).getToRoleConn().receiveData(object);
+				((AttachmentLink) link).getToRoleConn().receiveData((Message) object);
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getToRoleConn().equals(
 							observable)) {

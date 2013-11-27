@@ -1,5 +1,6 @@
 package connectionManager.services;
 
+import message.Message;
 import connectionManager.ports.DbQuery;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;
@@ -25,7 +26,7 @@ public class DbQueryS extends Service {
 				usedPort = (DbQuery) port;
 			}
 		}
-		usedPort.receiveRequest(msg);
+		usedPort.receiveRequest((Message) msg);
 	}
 
 }

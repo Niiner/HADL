@@ -1,5 +1,6 @@
 package clearanceRequest.glues;
 
+import message.Message;
 import clearanceRequest.roles.Requestor;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
@@ -19,7 +20,7 @@ public class Glue4 extends Glue {
 		System.out.println("[ENTRY] in glue " + this.name);
 		for (Role role : this.getRoles()) {
 			if (role instanceof Requestor) {
-				((Requestor) role).receiveRequest(msg);
+				((Requestor) role).receiveRequest((Message) msg);
 			}
 		}
 	}

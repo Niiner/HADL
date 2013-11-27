@@ -3,6 +3,7 @@ package client;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import ports.ReceiveResponseP2;
 import ports.SendRequestP;
 import properties.SourceCode;
@@ -11,6 +12,7 @@ import services.SendRequestS;
 import configuration.SystemClientServer;
 import containers.Component;
 import containers.Configuration;
+import database.model.Person;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchServiceException;
 import exceptions.WrongInterfacePortException;
@@ -113,9 +115,16 @@ public class Client extends Component implements Observer {
 		System.out.println("[ ----- Client notify ----- ]");
 		if (observable instanceof SendRequestP) {
 			((SystemClientServer) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		} else if (observable instanceof ReceiveResponseP2) {
-			System.out.println("C'est bon tu as la reponse petit Client");
+			System.out.println("----------------------------------------");
+			System.out.println("------------ Reponse client ------------");
+			System.out.println("----------------------------------------");
+			
+			for (Object myobject : ((Message) object).getResponse()) {
+				System.out.println("Personne : " + ((Person) myobject).getName() + 
+						" d'ID : " + ((Person) myobject).getId());
+			}
 		}
 	}
 }

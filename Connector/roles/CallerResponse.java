@@ -1,5 +1,6 @@
 package roles;
 
+import message.Message;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
 import enumerations.InterfaceType;
@@ -21,7 +22,7 @@ public class CallerResponse extends Role {
 		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()) {
 			if (glue instanceof Glue5) {
-				((Glue5) glue).receiveRequest(msg);
+				((Glue5) glue).receiveRequest((Message) msg);
 			}
 		}
 	}

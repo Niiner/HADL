@@ -1,5 +1,6 @@
 package services;
 
+import message.Message;
 import ports.SendRequestP2;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;
@@ -28,7 +29,7 @@ public class SendRequestS2 extends Service {
 				usedPort = (SendRequestP2) port;
 			}
 		}
-		usedPort.receiveRequest(msg);
+		usedPort.receiveRequest((Message) msg);
 	}
 
 }

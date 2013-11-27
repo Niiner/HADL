@@ -6,6 +6,7 @@ import links.A1;
 import links.A10;
 import links.A2;
 import links.A9;
+import message.Message;
 import server.Server;
 import client.Client;
 import connector.RPC;
@@ -68,11 +69,11 @@ public class SystemClientServer extends Configuration {
 			if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getFromPortComp().equals(
 							observable)) {
-				((AttachmentLink) link).getToRoleConn().receiveData(object);
+				((AttachmentLink) link).getToRoleConn().receiveData((Message) object);
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getToRoleConn().equals(
 							observable)) {
-				((AttachmentLink) link).getFromPortComp().receiveData(object);
+				((AttachmentLink) link).getFromPortComp().receiveData((Message) object);
 			}
 		}
 	}

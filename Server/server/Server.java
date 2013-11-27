@@ -3,6 +3,7 @@ package server;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import ports.ReceiveRequestP;
 import ports.ReceiveResponseP;
 import ports.SendRequestP2;
@@ -12,6 +13,7 @@ import services.SendRequestS2;
 import configuration.SystemClientServer;
 import containers.Component;
 import containers.Configuration;
+import database.model.Person;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;
 import exceptions.NewAttachmentNotAllowed;

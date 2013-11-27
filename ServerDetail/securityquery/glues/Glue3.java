@@ -1,5 +1,6 @@
 package securityquery.glues;
 
+import message.Message;
 import securityquery.roles.SecurityManagerR;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
@@ -19,7 +20,7 @@ public class Glue3 extends Glue {
 		System.out.println("[ENTRY] in glue " + this.name);
 		for (Role role : this.getRoles()) {
 			if (role instanceof SecurityManagerR) {
-				((SecurityManagerR) role).receiveRequest(msg);
+				((SecurityManagerR) role).receiveRequest((Message) msg);
 			}
 		}
 	}

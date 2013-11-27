@@ -3,12 +3,14 @@ package securityManager.securityManager;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import securityManager.ports.CredentialQuery;
 import securityManager.ports.SecurityAuthorization;
 import securityManager.services.SecurityAuthorizationS;
 import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
+import database.model.Person;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 
@@ -101,10 +103,10 @@ public class SecurityManager extends Component implements Observer {
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- SecurityManager notify ----- ]");
 		if (observable instanceof CredentialQuery) {
-			this.getSecurityAuthorizationS().sendRequest(object);
+			this.getSecurityAuthorizationS().sendRequest((Message) object);
 		} else if (observable instanceof SecurityAuthorization) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

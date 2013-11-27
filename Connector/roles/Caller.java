@@ -1,5 +1,6 @@
 package roles;
 
+import message.Message;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
 import enumerations.InterfaceType;

@@ -1,5 +1,6 @@
 package connector;
 
+import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
@@ -8,6 +9,7 @@ import glues.Glue5;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import roles.Called;
 import roles.CalledResponse;
 import roles.Caller;
@@ -154,13 +156,13 @@ public class RPC extends PrimitiveConnector implements Observer {
 
 	@Override
 	public void update(Observable observable, Object object) {
-		System.out.println("RPC notify");
+		System.out.println("[ ----- RPC notify ----- ]");
 		if (observable instanceof Called) {
 			((SystemClientServer) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		} else if (observable instanceof CalledResponse) {
 			((SystemClientServer) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package glues;
 
+import message.Message;
 import roles.Called;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
@@ -27,7 +28,7 @@ public class Glue1 extends Glue {
 		System.out.println("[ENTRY] in glue " + this.name);
 		for (Role role : this.getRoles()) {
 			if (role instanceof Called) {
-				((Called) role).receiveRequest(msg);
+				((Called) role).receiveRequest((Message) msg);
 			}
 		}
 	}

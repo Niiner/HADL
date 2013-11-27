@@ -18,6 +18,6 @@ public class DbQuery extends SynchronPort {
 	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
-		notifyObservers();
+		notifyObservers(msg);
 	}
 }

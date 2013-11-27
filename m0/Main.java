@@ -1,3 +1,4 @@
+import message.Message;
 import configuration.SystemClientServer;
 import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
@@ -14,7 +15,11 @@ public class Main {
 		SystemClientServer system;
 		try {
 			system = new SystemClientServer("Client-Serveur");
-			system.getC1().getSendRequestS().sendRequest("Trace message");
+						
+			// Request SQL and response null for the moment 
+			Message message = new Message("SELECT * FROM Person;", null);
+			system.getC1().getSendRequestS().sendRequest((Message) message);
+			
 		} catch (NoSuchPortException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

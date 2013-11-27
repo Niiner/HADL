@@ -3,6 +3,7 @@ package elements.physicalInterface.roles;
 import java.util.ArrayList;
 import java.util.List;
 
+import message.Message;
 import elements.physicalInterface.PhysicalInterface;
 import elements.physicalInterface.glues.Glue;
 import enumerations.InterfaceType;

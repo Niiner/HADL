@@ -1,5 +1,6 @@
 package ports;
 
+import message.Message;
 import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
@@ -28,10 +29,10 @@ public class SendRequestP extends SynchronPort {
 	 * 
 	 * @param msg
 	 */
-	public void receiveRequest(String msg) {
+	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
-		notifyObservers();
+		notifyObservers(msg);
 	}
 
 }

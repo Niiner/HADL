@@ -3,12 +3,14 @@ package clearanceRequest.clearanceRequest;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import serverDetail.ServerDetail;
 import clearanceRequest.glues.Glue4;
 import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.Configuration;
 import containers.PrimitiveConnector;
+import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -95,7 +97,7 @@ public class ClearanceRequest extends PrimitiveConnector implements Observer {
 		System.out.println("[ ----- ClearanceRequest notify ----- ]");
 		if (observable instanceof Requestor) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

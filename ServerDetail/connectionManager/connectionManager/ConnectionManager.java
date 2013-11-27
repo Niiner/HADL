@@ -3,6 +3,7 @@ package connectionManager.connectionManager;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import serverDetail.ServerDetail;
 import connectionManager.ports.DbQuery;
 import connectionManager.ports.ExternalSocket;
@@ -12,6 +13,7 @@ import connectionManager.services.DbQueryS;
 import connectionManager.services.SocketResponseS;
 import containers.Component;
 import containers.Configuration;
+import database.model.Person;
 import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchServiceException;
@@ -139,12 +141,12 @@ public class ConnectionManager extends Component implements Observer {
 			this.getDbQueryS().sendRequest(object);
 		} else if (observable instanceof DbQuery) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		} else if (observable instanceof SecurityCheck) {
 			this.getSocketResponseS().sendRequest(object);
 		} else if (observable instanceof SocketResponse) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

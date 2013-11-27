@@ -3,12 +3,14 @@ package securityquery.securityquery;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import securityquery.glues.Glue3;
 import securityquery.roles.Requestor;
 import securityquery.roles.SecurityManagerR;
 import serverDetail.ServerDetail;
 import containers.Configuration;
 import containers.PrimitiveConnector;
+import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -94,7 +96,7 @@ public class SecurityQuery extends PrimitiveConnector implements Observer {
 		System.out.println("[ ----- SecurityQuery notify ----- ]");
 		if (observable instanceof SecurityManagerR) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

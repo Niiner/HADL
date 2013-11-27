@@ -1,5 +1,6 @@
 package securityManager.services;
 
+import message.Message;
 import securityManager.ports.SecurityAuthorization;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;
@@ -26,7 +27,7 @@ public class SecurityAuthorizationS extends Service {
 				usedPort = (SecurityAuthorization) port;
 			}
 		}
-		usedPort.receiveRequest(msg);
+		usedPort.receiveRequest((Message) msg);
 	}
 
 }

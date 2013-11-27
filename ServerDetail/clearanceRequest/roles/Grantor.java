@@ -1,5 +1,6 @@
 package clearanceRequest.roles;
 
+import message.Message;
 import clearanceRequest.glues.Glue4;
 import elements.physicalInterface.glues.Glue;
 import elements.physicalInterface.roles.Role;
@@ -21,7 +22,7 @@ public class Grantor extends Role {
 		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()) {
 			if (glue instanceof Glue4) {
-				((Glue4) glue).receiveRequest(msg);
+				((Glue4) glue).receiveRequest((Message) msg);
 			}
 		}
 	}

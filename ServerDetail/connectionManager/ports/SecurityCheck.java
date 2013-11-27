@@ -1,5 +1,7 @@
 package connectionManager.ports;
 
+import message.Message;
+import database.model.Person;
 import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;
@@ -18,6 +20,6 @@ public class SecurityCheck extends SynchronPort {
 	public void receiveData(Object msg) {
 		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();
-		notifyObservers();
+		notifyObservers(msg);
 	}
 }

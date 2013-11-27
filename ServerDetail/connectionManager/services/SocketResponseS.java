@@ -1,6 +1,8 @@
 package connectionManager.services;
 
+import message.Message;
 import connectionManager.ports.SocketResponse;
+import database.model.Person;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;
 import enumerations.InterfaceType;
@@ -25,7 +27,7 @@ public class SocketResponseS extends Service {
 				usedPort = (SocketResponse) port;
 			}
 		}
-		usedPort.receiveRequest(msg);
+		usedPort.receiveRequest((Message) msg);
 	}
 
 }

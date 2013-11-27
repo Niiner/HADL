@@ -136,6 +136,7 @@ public class Database extends Component implements Observer {
 	 */
 	public List<Object> receiveRequest(Message object) throws SQLException,
 			NoSuchPortException, WrongInterfacePortException {
+		
 		List<Object> persons = new ArrayList<Object>();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
@@ -145,7 +146,7 @@ public class Database extends Component implements Observer {
 		while (res.next()) {
 			persons.add(new Person(res.getInt("id"), res.getString("name")));
 		}
-
+		
 		return persons;
 	}
 
@@ -158,17 +159,17 @@ public class Database extends Component implements Observer {
 		this.connection.close();
 	}
 
-	/**
-	 * Main method : launch database
-	 * 
-	 * @param args
-	 * @throws WrongInterfacePortException
-	 * @throws NoSuchPortException
-	 */
-	public static void main(String args[]) throws NoSuchPortException,
-			WrongInterfacePortException {
-		Database.getInstance();
-	}
+//	/**
+//	 * Main method : launch database
+//	 * 
+//	 * @param args
+//	 * @throws WrongInterfacePortException
+//	 * @throws NoSuchPortException
+//	 */
+//	public static void main(String args[]) throws NoSuchPortException,
+//			WrongInterfacePortException {
+//		Database.getInstance();
+//	}
 
 	/**
 	 * Set the Connection
@@ -252,7 +253,7 @@ public class Database extends Component implements Observer {
 			this.getSecurityManagementS().sendRequest(object);
 		} else if (observable instanceof SecurityManagement) {
 			((ServerDetail) this.configuration).transfertData(observable,
-					object);
+					(Message) object);
 		}
 	}
 }

@@ -20,6 +20,6 @@ public class ReceiveRequestP extends SynchronPort {
 	public void receiveData(Object msg) {
 		System.out.println("[ENTRY] in port" + this.name);
 		setChanged();
-		notifyObservers();
+		notifyObservers(msg);
 	}
 }
