@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import message.Message;
 import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
@@ -126,19 +127,19 @@ public class Database extends Component implements Observer {
 	/**
 	 * Return a list of Persons
 	 * 
-	 * @param message
+	 * @param object
 	 *            The SQL message to send to the database
 	 * @return
 	 * @throws SQLException
 	 * @throws NoSuchPortException
 	 * @throws WrongInterfacePortException
 	 */
-	public List<Person> receiveRequest(String message) throws SQLException,
+	public List<Object> receiveRequest(Message object) throws SQLException,
 			NoSuchPortException, WrongInterfacePortException {
-		List<Person> persons = new ArrayList<Person>();
+		List<Object> persons = new ArrayList<Object>();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
-		String sqlquery = message;
+		String sqlquery = object.getRequest();
 		ResultSet res = s.executeQuery(sqlquery);
 
 		while (res.next()) {
@@ -236,6 +237,18 @@ public class Database extends Component implements Observer {
 	public void update(Observable observable, Object object) {
 		System.out.println("[ ----- Database notify ----- ]");
 		if (observable instanceof Query) {
+			try {
+				((Message) object).setResponse(this.receiveRequest((Message) object));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPortException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (WrongInterfacePortException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.getSecurityManagementS().sendRequest(object);
 		} else if (observable instanceof SecurityManagement) {
 			((ServerDetail) this.configuration).transfertData(observable,
