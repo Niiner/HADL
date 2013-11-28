@@ -13,8 +13,6 @@ import connectionManager.services.DbQueryS;
 import connectionManager.services.SocketResponseS;
 import containers.Component;
 import containers.Configuration;
-import database.model.Person;
-import elements.physicalInterface.ports.Port;
 import exceptions.NoSuchPortException;
 import exceptions.NoSuchServiceException;
 import exceptions.WrongInterfacePortException;
@@ -34,6 +32,16 @@ public class ConnectionManager extends Component implements Observer {
 	private DbQuery dbQuery;
 	private DbQueryS dbQueryS;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param config
+	 * @param name
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
+	 */
 	public ConnectionManager(Configuration config, String name)
 			throws NoSuchPortException, WrongInterfacePortException,
 			NoSuchServiceException, WrongInterfaceServiceException {
@@ -59,34 +67,49 @@ public class ConnectionManager extends Component implements Observer {
 		socketResponse.addObserver(this);
 	}
 
-	public DbQuery getDbQuery() {
-		DbQuery p = null;
-		for (Port port : requiredPorts) {
-			if (port instanceof DbQuery) {
-				p = (DbQuery) port;
-			}
-		}
-		return p;
-	}
-
-	public SecurityCheck getSecurityCheck() {
-		SecurityCheck p = null;
-		for (Port port : requiredPorts) {
-			if (port instanceof SecurityCheck) {
-				p = (SecurityCheck) port;
-			}
-		}
-		return p;
-	}
-
+	/**
+	 * @return the externalSocket
+	 */
 	public ExternalSocket getExternalSocket() {
-		ExternalSocket p = null;
-		for (Port port : providedPorts) {
-			if (port instanceof ExternalSocket) {
-				p = (ExternalSocket) port;
-			}
-		}
-		return p;
+		return externalSocket;
+	}
+
+	/**
+	 * @param externalSocket
+	 *            the externalSocket to set
+	 */
+	public void setExternalSocket(ExternalSocket externalSocket) {
+		this.externalSocket = externalSocket;
+	}
+
+	/**
+	 * @return the securityCheck
+	 */
+	public SecurityCheck getSecurityCheck() {
+		return securityCheck;
+	}
+
+	/**
+	 * @param securityCheck
+	 *            the securityCheck to set
+	 */
+	public void setSecurityCheck(SecurityCheck securityCheck) {
+		this.securityCheck = securityCheck;
+	}
+
+	/**
+	 * @return the dbQuery
+	 */
+	public DbQuery getDbQuery() {
+		return dbQuery;
+	}
+
+	/**
+	 * @param dbQuery
+	 *            the dbQuery to set
+	 */
+	public void setDbQuery(DbQuery dbQuery) {
+		this.dbQuery = dbQuery;
 	}
 
 	/**

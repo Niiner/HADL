@@ -1,6 +1,5 @@
 package connector;
 
-import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 import glues.Glue1;
@@ -33,6 +32,14 @@ public class RPC extends PrimitiveConnector implements Observer {
 	private CalledResponse calledResponse;
 	private CallerResponse callerResponse;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param config
+	 * @param name
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
+	 */
 	public RPC(SystemClientServer config, String name)
 			throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);

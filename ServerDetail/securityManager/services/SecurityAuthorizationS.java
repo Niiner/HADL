@@ -14,10 +14,20 @@ import enumerations.VisibilityType;
  */
 public class SecurityAuthorizationS extends Service {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public SecurityAuthorizationS(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Send a request
+	 * 
+	 * @param msg
+	 */
 	public void sendRequest(Object msg) {
 		System.out
 				.println("[ Calling service from SecurityAuthorization to send the request ]");

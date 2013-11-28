@@ -37,6 +37,19 @@ public class SystemClientServer extends Configuration {
 	private A9 a9;
 	private A10 a10;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
+	 * @throws NewAttachmentNotAllowed
+	 * @throws NewBindingNotAllowed
+	 */
 	public SystemClientServer(String name) throws NoSuchPortException,
 			WrongInterfacePortException, NoSuchServiceException,
 			WrongInterfaceServiceException, NoSuchRoleException,
@@ -56,14 +69,28 @@ public class SystemClientServer extends Configuration {
 		this.addLink(a10);
 	}
 
+
+	/**
+	 * @return the c1
+	 */
 	public Client getC1() {
 		return c1;
 	}
 
+
+	/**
+	 * @param c1 the c1 to set
+	 */
 	public void setC1(Client c1) {
 		this.c1 = c1;
 	}
 
+
+	/**
+	 * Transfer the data to a role or port
+	 * @param observable
+	 * @param object
+	 */
 	public void transfertData(Observable observable, Object object) {
 		for (Link link : links) {
 			if (link instanceof AttachmentLink

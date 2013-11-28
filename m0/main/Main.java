@@ -1,3 +1,4 @@
+package main;
 import message.Message;
 import configuration.SystemClientServer;
 import exceptions.NewAttachmentNotAllowed;

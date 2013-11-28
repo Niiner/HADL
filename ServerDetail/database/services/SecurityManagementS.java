@@ -13,10 +13,20 @@ import enumerations.VisibilityType;
  */
 public class SecurityManagementS extends Service {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public SecurityManagementS(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Send a request
+	 * 
+	 * @param msg
+	 */
 	public void sendRequest(Object msg) {
 		System.out
 				.println("[ Calling service from Securitymanagement to send the request]");

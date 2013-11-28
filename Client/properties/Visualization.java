@@ -4,6 +4,8 @@ import elements.physicalInterface.ports.Properties;
 
 /**
  * 
+ * This class provides an implementation for the Visualization
+ * 
  * @author FAGNIEZ Florian and RULLIER Noemie
  * 
  */

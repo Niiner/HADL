@@ -12,6 +12,14 @@ import exceptions.NewAttachmentNotAllowed;
  */
 public class A1 extends AttachmentLink {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 * @param fromPortComp
+	 * @param toRoleConn
+	 * @throws NewAttachmentNotAllowed
+	 */
 	public A1(String name, SendRequestP fromPortComp, Caller toRoleConn)
 			throws NewAttachmentNotAllowed {
 		super(name, fromPortComp, toRoleConn);

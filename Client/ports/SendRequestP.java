@@ -1,6 +1,5 @@
 package ports;
 
-import message.Message;
 import elements.physicalInterface.ports.SynchronPort;
 import enumerations.InterfaceType;
 import enumerations.VisibilityType;

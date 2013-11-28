@@ -1,6 +1,5 @@
 package services;
 
-import message.Message;
 import ports.SendRequestP;
 import elements.physicalInterface.ports.Port;
 import elements.physicalInterface.services.Service;

@@ -20,8 +20,6 @@ public class ReceiveResponseP2 extends SynchronPort {
 	 *            the name of SendRequestP
 	 */
 	public ReceiveResponseP2(String name) {
-		// TODO: Demander comment sont determinees les visibilites des
-		// composants ?
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 

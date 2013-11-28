@@ -13,6 +13,7 @@ import elements.physicalInterface.roles.Role;
 public class Glue5 extends Glue {
 
 	/**
+	 * Constructor
 	 * 
 	 * @param name
 	 */
@@ -21,6 +22,7 @@ public class Glue5 extends Glue {
 	}
 
 	/**
+	 * Receiving the data from a role
 	 * 
 	 * @param msg
 	 */

@@ -11,10 +11,20 @@ import enumerations.VisibilityType;
  */
 public class SecurityManagement extends SynchronPort {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public SecurityManagement(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Receive a request
+	 * 
+	 * @param msg
+	 */
 	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in port " + this.name);
 		setChanged();

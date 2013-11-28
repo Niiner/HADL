@@ -10,7 +10,6 @@ import clearanceRequest.roles.Grantor;
 import clearanceRequest.roles.Requestor;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -25,6 +24,14 @@ public class ClearanceRequest extends PrimitiveConnector implements Observer {
 	private Requestor requestor;
 	private Glue4 glue4;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param config
+	 * @param name
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
+	 */
 	public ClearanceRequest(Configuration config, String name)
 			throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);

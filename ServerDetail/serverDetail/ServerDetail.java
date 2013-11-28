@@ -58,6 +58,21 @@ public class ServerDetail extends Configuration {
 	private B1 b1;
 	private B2 b2;
 
+	/**
+	 * 
+	 * Constructor
+	 * 
+	 * @param parent
+	 * @param name
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
+	 * @throws NewAttachmentNotAllowed
+	 * @throws NewBindingNotAllowed
+	 * @throws NoSuchServiceException
+	 * @throws WrongInterfaceServiceException
+	 */
 	public ServerDetail(Component parent, String name)
 			throws NoSuchPortException, WrongInterfacePortException,
 			NoSuchRoleException, WrongInterfaceRoleException,
@@ -98,10 +113,17 @@ public class ServerDetail extends Configuration {
 		this.addLink(b2);
 	}
 
+	/**
+	 * @return the connectionManager
+	 */
 	public ConnectionManager getConnectionManager() {
 		return connectionManager;
 	}
 
+	/**
+	 * @param connectionManager
+	 *            the connectionManager to set
+	 */
 	public void setConnectionManager(ConnectionManager connectionManager) {
 		this.connectionManager = connectionManager;
 	}
@@ -115,7 +137,8 @@ public class ServerDetail extends Configuration {
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getFromPortComp().equals(
 							observable)) {
-				((AttachmentLink) link).getToRoleConn().receiveData((Message) object);
+				((AttachmentLink) link).getToRoleConn().receiveData(
+						(Message) object);
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getToRoleConn().equals(
 							observable)) {

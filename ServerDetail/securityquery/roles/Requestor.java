@@ -14,10 +14,20 @@ import enumerations.VisibilityType;
  */
 public class Requestor extends Role {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public Requestor(String name) {
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 
+	/**
+	 * Receive data
+	 * 
+	 * @param msg
+	 */
 	public void receiveData(Object msg) {
 		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()) {

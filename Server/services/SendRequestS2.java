@@ -16,10 +16,21 @@ import enumerations.VisibilityType;
  */
 public class SendRequestS2 extends Service {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public SendRequestS2(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Send the data to the associate port
+	 * 
+	 * @param msg
+	 *            The data
+	 */
 	public void sendRequest(Object msg) {
 		System.out
 				.println("[ Calling service from Server to send the request ]");

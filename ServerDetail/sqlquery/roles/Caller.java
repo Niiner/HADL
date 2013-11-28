@@ -13,10 +13,20 @@ import enumerations.VisibilityType;
  */
 public class Caller extends Role {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public Caller(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Receive data
+	 * 
+	 * @param msg
+	 */
 	public void receiveData(Object msg) {
 		System.out.println("[ENTRY] in role " + this.name);
 		for (Glue glue : this.getGlues()) {

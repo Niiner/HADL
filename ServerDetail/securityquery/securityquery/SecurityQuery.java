@@ -10,7 +10,6 @@ import securityquery.roles.SecurityManagerR;
 import serverDetail.ServerDetail;
 import containers.Configuration;
 import containers.PrimitiveConnector;
-import database.model.Person;
 import exceptions.NoSuchRoleException;
 import exceptions.WrongInterfaceRoleException;
 
@@ -25,6 +24,14 @@ public class SecurityQuery extends PrimitiveConnector implements Observer {
 	private Requestor requestor;
 	private Glue3 glue3;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param config
+	 * @param name
+	 * @throws NoSuchRoleException
+	 * @throws WrongInterfaceRoleException
+	 */
 	public SecurityQuery(Configuration config, String name)
 			throws NoSuchRoleException, WrongInterfaceRoleException {
 		super(config, name);

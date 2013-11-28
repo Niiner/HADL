@@ -11,10 +11,20 @@ import enumerations.VisibilityType;
  */
 public class SecurityManagerR extends Role {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public SecurityManagerR(String name) {
 		super(name, InterfaceType.Provided, VisibilityType.Public);
 	}
 
+	/**
+	 * Receive a request
+	 * 
+	 * @param msg
+	 */
 	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in role " + this.name);
 		setChanged();

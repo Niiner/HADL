@@ -10,7 +10,6 @@ import securityManager.services.SecurityAuthorizationS;
 import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
-import database.model.Person;
 import exceptions.NoSuchPortException;
 import exceptions.WrongInterfacePortException;
 

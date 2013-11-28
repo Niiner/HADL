@@ -4,6 +4,8 @@ import elements.physicalInterface.ports.Properties;
 
 /**
  * 
+ * This class provides an implementation for the SourceCode
+ * 
  * @author FAGNIEZ Florian and RULLIER Noemie
  * 
  */

@@ -14,10 +14,21 @@ import enumerations.VisibilityType;
  */
 public class DbQueryS extends Service {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public DbQueryS(String name) {
 		super(name, InterfaceType.Required, VisibilityType.Public);
 	}
 
+	/**
+	 * Allow the service to send a request
+	 * 
+	 * @param msg
+	 *            The message to receive
+	 */
 	public void sendRequest(Object msg) {
 		System.out.println("[ CALLING SERVICE ]");
 		DbQuery usedPort = null;

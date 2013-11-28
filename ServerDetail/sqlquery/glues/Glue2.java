@@ -11,10 +11,20 @@ import elements.physicalInterface.roles.Role;
  */
 public class Glue2 extends Glue {
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 */
 	public Glue2(String name) {
 		super(name);
 	}
 
+	/**
+	 * Receive a request
+	 * 
+	 * @param msg
+	 */
 	public void receiveRequest(Object msg) {
 		System.out.println("[ENTRY] in glue " + this.name);
 		for (Role role : this.getRoles()) {
