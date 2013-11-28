@@ -11,6 +11,12 @@ public abstract class Link {
 
 	protected String name;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param name
+	 *            The name of the Link
+	 */
 	public Link(String name) {
 		this.name = name;
 	}

@@ -14,8 +14,8 @@ import exceptions.WrongInterfaceServiceException;
 
 /**
  * This class provides an implementation for a Component A component is composed
- * by Ports and Services which can be required or provided, it can also comp
- * orts properties
+ * by Ports and Services which can be required or provided, it can also comports
+ * properties
  * 
  * @author FAGNIEZ Florian and RULLIER Noemie
  * 

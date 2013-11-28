@@ -3,7 +3,6 @@ package elements.physicalInterface.roles;
 import java.util.ArrayList;
 import java.util.List;
 
-import message.Message;
 import elements.physicalInterface.PhysicalInterface;
 import elements.physicalInterface.glues.Glue;
 import enumerations.InterfaceType;
@@ -35,6 +34,12 @@ public abstract class Role extends PhysicalInterface {
 		this.glues = new ArrayList<Glue>();
 	}
 
+	/**
+	 * Called when the role must receive some data
+	 * 
+	 * @param msg
+	 *            The data
+	 */
 	public void receiveData(Object msg) {
 		System.out.println("Actual.toBeOverridden()");
 	}
