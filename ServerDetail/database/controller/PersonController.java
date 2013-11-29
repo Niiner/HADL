@@ -32,13 +32,37 @@ public class PersonController {
 	public void importPerson() throws FileNotFoundException, IOException,
 			SQLException, NoSuchPortException, WrongInterfacePortException {
 
+		Statement s = Database.getInstance().getConnection().createStatement();
+
 		Person person1 = new Person(1, "Florian");
 		Person person2 = new Person(2, "Noemie");
 		Person person3 = new Person(3, "Chaton");
 
-		this.add(person1);
-		this.add(person2);
-		this.add(person3);
+		this.addInitial(s, person1);
+		this.addInitial(s, person2);
+		this.addInitial(s, person3);
+	}
+
+	/**
+	 * Import all the Persons in the constructor
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws WrongInterfacePortException
+	 * @throws NoSuchPortException
+	 */
+	public void importPerson(Statement s) throws FileNotFoundException,
+			IOException, SQLException, NoSuchPortException,
+			WrongInterfacePortException {
+
+		Person person1 = new Person(1, "Florian");
+		Person person2 = new Person(2, "Noemie");
+		Person person3 = new Person(3, "Chaton");
+
+		this.addInitial(s, person1);
+		this.addInitial(s, person2);
+		this.addInitial(s, person3);
 	}
 
 	/**
@@ -52,6 +76,24 @@ public class PersonController {
 			WrongInterfacePortException {
 
 		Statement s = Database.getInstance().getConnection().createStatement();
+		String sqlquery = "INSERT INTO Person (id,name)" + "VALUES('"
+				+ person.getId() + "', " + "'" + person.getName() + "') ";
+		System.out.println(sqlquery);
+		s.executeUpdate(sqlquery);
+	}
+
+	/**
+	 * Add the Person to the database in the constructor
+	 * 
+	 * @param person
+	 * @throws WrongInterfacePortException
+	 * @throws NoSuchPortException
+	 */
+	public void addInitial(Statement s, Person person) throws SQLException,
+			NoSuchPortException, WrongInterfacePortException {
+
+		// Statement s =
+		// Database.getInstance().getConnection().createStatement();
 		String sqlquery = "INSERT INTO Person (id,name)" + "VALUES('"
 				+ person.getId() + "', " + "'" + person.getName() + "') ";
 		System.out.println(sqlquery);
@@ -120,62 +162,75 @@ public class PersonController {
 		s.executeUpdate(sqlquery);
 	}
 
-//	/**
-//	 * Main
-//	 * 
-//	 * @param args
-//	 * @throws SQLException
-//	 * @throws NoSuchPortException
-//	 * @throws WrongInterfacePortException
-//	 */
-//	public static void main(String args[]) throws SQLException,
-//			NoSuchPortException, WrongInterfacePortException {
-//		PersonController personContr = new PersonController();
-//		try {
-//			personContr.removeAll();
-//		} catch (SQLException ex) {
-//			Logger.getLogger(PersonController.class.getName()).log(
-//					Level.SEVERE, null, ex);
-//		} catch (NoSuchPortException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (WrongInterfacePortException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		try {
-//			try {
-//				System.out.println("Test 4 ");
-//				personContr.importPerson();
-//			} catch (SQLException ex) {
-//				Logger.getLogger(PersonController.class.getName()).log(
-//						Level.SEVERE, null, ex);
-//			} catch (NoSuchPortException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (WrongInterfacePortException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		} catch (IOException ex) {
-//			Logger.getLogger(PersonController.class.getName()).log(
-//					Level.SEVERE, null, ex);
-//		}
-//		try {
-//			System.out.println(personContr.getAll().size());
-//		} catch (SQLException ex) {
-//			Logger.getLogger(PersonController.class.getName()).log(
-//					Level.SEVERE, null, ex);
-//		} catch (NoSuchPortException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (WrongInterfacePortException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		// Close the database
-//		Database.getInstance().close();
-//	}
+	/**
+	 * Remove all persons in the database in the constructor
+	 * 
+	 * @throws SQLException
+	 * @throws NoSuchPortException
+	 * @throws WrongInterfacePortException
+	 */
+	public void removeAllInitial(Statement s) throws SQLException,
+			NoSuchPortException, WrongInterfacePortException {
+		String sqlquery = "DELETE FROM Person;";
+		s.executeUpdate(sqlquery);
+	}
+
+	// /**
+	// * Main
+	// *
+	// * @param args
+	// * @throws SQLException
+	// * @throws NoSuchPortException
+	// * @throws WrongInterfacePortException
+	// */
+	// public static void main(String args[]) throws SQLException,
+	// NoSuchPortException, WrongInterfacePortException {
+	// PersonController personContr = new PersonController();
+	// try {
+	// personContr.removeAll();
+	// } catch (SQLException ex) {
+	// Logger.getLogger(PersonController.class.getName()).log(
+	// Level.SEVERE, null, ex);
+	// } catch (NoSuchPortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// } catch (WrongInterfacePortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// try {
+	// try {
+	// System.out.println("Test 4 ");
+	// personContr.importPerson();
+	// } catch (SQLException ex) {
+	// Logger.getLogger(PersonController.class.getName()).log(
+	// Level.SEVERE, null, ex);
+	// } catch (NoSuchPortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// } catch (WrongInterfacePortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// } catch (IOException ex) {
+	// Logger.getLogger(PersonController.class.getName()).log(
+	// Level.SEVERE, null, ex);
+	// }
+	// try {
+	// System.out.println(personContr.getAll().size());
+	// } catch (SQLException ex) {
+	// Logger.getLogger(PersonController.class.getName()).log(
+	// Level.SEVERE, null, ex);
+	// } catch (NoSuchPortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// } catch (WrongInterfacePortException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	//
+	// // Close the database
+	// Database.getInstance().close();
+	// }
 
 }

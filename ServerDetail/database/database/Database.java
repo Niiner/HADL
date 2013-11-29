@@ -48,7 +48,6 @@ public class Database extends Component implements Observer {
 			throws NoSuchPortException, WrongInterfacePortException {
 		super(config, name);
 
-		
 		PersonController persCtr = new PersonController();
 		// Instanciation
 		securityManagement = new SecurityManagement("SecurityManagement");
@@ -71,8 +70,11 @@ public class Database extends Component implements Observer {
 					"jdbc:mysql://localhost:3306/hadl", "root", "root"));
 
 			// Create table for the database
+			Statement s = connection.createStatement();
 			createTablePerson();
-			persCtr.importPerson();
+			// Initialization
+			persCtr.removeAllInitial(s);
+			persCtr.importPerson(s);
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("Driver introuvable : ");
 			cnfe.printStackTrace();
@@ -139,7 +141,7 @@ public class Database extends Component implements Observer {
 	 */
 	public List<Object> receiveRequest(Message object) throws SQLException,
 			NoSuchPortException, WrongInterfacePortException {
-		
+
 		List<Object> persons = new ArrayList<Object>();
 
 		Statement s = Database.getInstance().getConnection().createStatement();
@@ -149,7 +151,7 @@ public class Database extends Component implements Observer {
 		while (res.next()) {
 			persons.add(new Person(res.getInt("id"), res.getString("name")));
 		}
-		
+
 		return persons;
 	}
 
@@ -162,17 +164,17 @@ public class Database extends Component implements Observer {
 		this.connection.close();
 	}
 
-//	/**
-//	 * Main method : launch database
-//	 * 
-//	 * @param args
-//	 * @throws WrongInterfacePortException
-//	 * @throws NoSuchPortException
-//	 */
-//	public static void main(String args[]) throws NoSuchPortException,
-//			WrongInterfacePortException {
-//		Database.getInstance();
-//	}
+	// /**
+	// * Main method : launch database
+	// *
+	// * @param args
+	// * @throws WrongInterfacePortException
+	// * @throws NoSuchPortException
+	// */
+	public static void main(String args[]) throws NoSuchPortException,
+			WrongInterfacePortException {
+		Database.getInstance();
+	}
 
 	/**
 	 * Set the Connection
@@ -242,7 +244,8 @@ public class Database extends Component implements Observer {
 		System.out.println("[ ----- Database notify ----- ]");
 		if (observable instanceof Query) {
 			try {
-				((Message) object).setResponse(this.receiveRequest((Message) object));
+				((Message) object).setResponse(this
+						.receiveRequest((Message) object));
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

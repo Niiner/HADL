@@ -69,7 +69,6 @@ public class SystemClientServer extends Configuration {
 		this.addLink(a10);
 	}
 
-
 	/**
 	 * @return the c1
 	 */
@@ -77,17 +76,17 @@ public class SystemClientServer extends Configuration {
 		return c1;
 	}
 
-
 	/**
-	 * @param c1 the c1 to set
+	 * @param c1
+	 *            the c1 to set
 	 */
 	public void setC1(Client c1) {
 		this.c1 = c1;
 	}
 
-
 	/**
 	 * Transfer the data to a role or port
+	 * 
 	 * @param observable
 	 * @param object
 	 */
@@ -96,11 +95,13 @@ public class SystemClientServer extends Configuration {
 			if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getFromPortComp().equals(
 							observable)) {
-				((AttachmentLink) link).getToRoleConn().receiveData((Message) object);
+				((AttachmentLink) link).getToRoleConn().receiveData(
+						(Message) object);
 			} else if (link instanceof AttachmentLink
 					&& ((AttachmentLink) link).getToRoleConn().equals(
 							observable)) {
-				((AttachmentLink) link).getFromPortComp().receiveData((Message) object);
+				((AttachmentLink) link).getFromPortComp().receiveData(
+						(Message) object);
 			}
 		}
 	}
