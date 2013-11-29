@@ -41,7 +41,6 @@ public class Component implements IComponentType {
 	 */
 	public Component(Configuration config, String name) {
 		this.configuration = config;
-		boolean oneProvided;
 	}
 
 	/**

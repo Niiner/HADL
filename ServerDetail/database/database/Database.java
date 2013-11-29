@@ -14,6 +14,7 @@ import message.Message;
 import serverDetail.ServerDetail;
 import containers.Component;
 import containers.Configuration;
+import database.controller.PersonController;
 import database.model.Person;
 import database.ports.Query;
 import database.ports.SecurityManagement;
@@ -47,6 +48,8 @@ public class Database extends Component implements Observer {
 			throws NoSuchPortException, WrongInterfacePortException {
 		super(config, name);
 
+		
+		PersonController persCtr = new PersonController();
 		// Instanciation
 		securityManagement = new SecurityManagement("SecurityManagement");
 		securityManagementS = new SecurityManagementS("SecurityManagementS");
@@ -69,7 +72,7 @@ public class Database extends Component implements Observer {
 
 			// Create table for the database
 			createTablePerson();
-
+			persCtr.importPerson();
 		} catch (ClassNotFoundException cnfe) {
 			System.out.println("Driver introuvable : ");
 			cnfe.printStackTrace();
