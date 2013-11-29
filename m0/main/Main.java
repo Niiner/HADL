@@ -1,7 +1,7 @@
 package main;
 
 import message.Message;
-import configuration.SystemClientServer;
+import configurationPackage.configuration.SystemClientServer;
 import exceptions.NewAttachmentNotAllowed;
 import exceptions.NewBindingNotAllowed;
 import exceptions.NoSuchPortException;

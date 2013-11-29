@@ -1,8 +1,8 @@
 eclipse.preferences.version=1
-encoding//Server/server/Server.java=UTF-8
-encoding//Server/services/SendRequestS2.java=UTF-8
-encoding//ServerDetail/database/services/SecurityManagementS.java=UTF-8
-encoding//ServerDetail/securityManager/securityManager/SecurityManager.java=UTF-8
+encoding//m1/serverDetailPackage/database/services/SecurityManagementS.java=UTF-8
+encoding//m1/serverDetailPackage/securityManager/securityManager/SecurityManager.java=UTF-8
+encoding//m1/serverPackage/server/Server.java=UTF-8
+encoding//m1/serverPackage/services/SendRequestS2.java=UTF-8
 encoding//m2/containers/Component.java=UTF-8
 encoding//m2/containers/Configuration.java=UTF-8
 encoding//m2/containers/PrimitiveConnector.java=UTF-8

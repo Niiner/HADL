@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="m2"/>
-	<classpathentry kind="src" path="Client"/>
-	<classpathentry kind="src" path="Server"/>
-	<classpathentry kind="src" path="Connector"/>
-	<classpathentry kind="src" path="Configuration"/>
-	<classpathentry kind="src" path="ServerDetail"/>
 	<classpathentry kind="src" path="m0"/>
 	<classpathentry kind="src" path="m1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
